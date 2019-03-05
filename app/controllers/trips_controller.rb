@@ -17,6 +17,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.group = Group.new
     @trip.user = current_user
+    @trip.group = Group.new
     if @trip.save
       redirect_to trip_path(@trip)
     else

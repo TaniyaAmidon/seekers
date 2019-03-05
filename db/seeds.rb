@@ -3,9 +3,27 @@ puts "Cleaning database"
 require 'faker'
 
 Activity.destroy_all
-
+User.destroy_all
+UserActivity.destroy_all
 
 puts 'starting seed...'
+
+puts 'creating activities'
+
+
+#seed activities
+
+activities = Activity.create([
+{ name: 'Hiking' },
+{ name: 'Skiing' },
+{ name: 'Snowboarding' },
+{ name: 'Mountain Biking' },
+{ name: 'Cycling' },
+{ name: 'Whitewater Rafting' },
+{ name: 'Climbing' },
+{ name: 'Skydiving' },
+{ name: 'Sailing' },])
+
 
 puts 'seeding users...'
 
@@ -22,24 +40,30 @@ end
 
 puts "seeding users completed - #{User.count} users in database"
 
+puts "seeding user activities (1-4 per user)"
 
-#seed activities
-puts 'creating activities'
+i = User.first.id
 
+User.count.times do
+  user = User.find(i)
+  acts = Activity.all.sample(rand(1..4))
+  acts.each { |act| UserActivity.create!(user: user, activity: act)}
+  i += 1
+end
 
-#seed activities
-
-activities = Activity.create([
-{ name: 'Hiking' },
-{ name: 'Skiing' },
-{ name: 'Snowboarding' },
-{ name: 'Skiing' },
-{ name: 'Cycling' },
-{ name: 'Skiing' },
-{ name: 'Climbing' },
-{ name: 'Skiing' }])
+puts "user activities seeded"
 
 
+puts "starting seed.."
 
+# 20.times do
+#   Trip.create!(
+#   destination: Faker::Address.city,
+#   description: Faker::Hipster.sentence,
+#   price: (400..900).to_a.sample,
+#   user_id: User.sample
+#   )
+# end
 
-puts 'Seed done'
+puts "Seed done"
+
