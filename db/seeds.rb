@@ -1,4 +1,5 @@
 Activity.destroy_all
+require 'faker'
 
 
 puts "starting seed.."
@@ -16,3 +17,19 @@ activities = Activity.create([{ name: 'Hiking' }, { name: 'Skiing' }, { name: 'S
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Seed done"
+
+puts "starting seed.."
+
+20.times do
+  Trip.create!(
+  destination: Faker::Address.city,
+  description: Faker::Hipster.sentence,
+  price: (400..900).to_a.sample,
+  user_id: User.sample
+  )
+end
+
+puts "Seed done"
+
+
+# photo: open("https://loremflickr.com/600/800/person")
