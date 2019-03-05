@@ -4,10 +4,11 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.find(params[:id])
     @group = Group.create
   end
 
   def destroy
-    @group.destroy
+    @group = Group.destroy
   end
 end
