@@ -1,0 +1,13 @@
+<h1>Edit <%= @user.first_name %>'s profile</h1>
+
+<%= form_for @user, method: "patch" do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :email %>
+  <%= f.date_field :dob %>
+  <%= f.text_field :location %>
+  <%= f.text_area :bio %>
+  <%= f.submit "Edit profile" %>
+<% end %>
+
+<%= link_to "Return to profile", user_path(@user) %>

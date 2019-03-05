@@ -1,0 +1,12 @@
+<h1><%= @user.first_name %> <%= @user.last_name %>'s profile</h1>
+
+<ul>
+  <li><%= @user.first_name %></li>
+  <li><%= @user.last_name %></li>
+  <li><%= @user.email %></  li>
+  <li><%= @user.dob %></li>
+  <li><%= @user.location %></li>
+  <li><%= @user.bio %></li>
+</ul>
+
+<%= link_to "Edit user", edit_user_path %>
