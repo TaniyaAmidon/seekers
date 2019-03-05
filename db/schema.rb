@@ -78,10 +78,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_154254) do
 
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
-
   add_foreign_key "trips", "groups"
   add_foreign_key "trips", "users"
-
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
 
