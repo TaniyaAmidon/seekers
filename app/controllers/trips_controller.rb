@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_action :find_trip, only: [:show, :edit, :update, :destroy]
+
   def index
     @trips = Trip.all
   end
@@ -17,6 +18,7 @@ class TripsController < ApplicationController
       redirect_to trip_path(@trip)
     else
       render :new
+    end
   end
 
   def edit
@@ -42,4 +44,3 @@ class TripsController < ApplicationController
     params.require(:trip).permit(:description, :destination, :price, :group_id)
   end
 end
-
