@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  # no join tables created yet - uncomment when available
+  # has_many :trips
+  # has_many :payments
+  # has_many :groups, through: :group_members
+  # has_many :activities, through: :user_activities
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
