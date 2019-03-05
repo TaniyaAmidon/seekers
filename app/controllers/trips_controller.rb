@@ -13,7 +13,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(params[:id])
+    @trip = Trip.new(trip_params)
+    @trip.group = Group.new
     @trip.user = current_user
     if @trip.save
       redirect_to trip_path(@trip)
@@ -42,6 +43,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:description, :destination, :price, :group_id)
+    params.require(:trip).permit(:description, :destination, :price)
   end
 end
