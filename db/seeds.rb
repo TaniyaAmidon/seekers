@@ -18,11 +18,12 @@ activities = Activity.create([
 { name: 'Hiking' },
 { name: 'Skiing' },
 { name: 'Snowboarding' },
-{ name: 'Skiing' },
+{ name: 'Mountain Biking' },
 { name: 'Cycling' },
-{ name: 'Skiing' },
+{ name: 'Whitewater Rafting' },
 { name: 'Climbing' },
-{ name: 'Skiing' }])
+{ name: 'Skydiving' },
+{ name: 'Sailing' },])
 
 
 puts 'seeding users...'
@@ -40,15 +41,14 @@ end
 
 puts "seeding users completed - #{User.count} users in database"
 
-puts "seeding user activities (2-4 activities per user)"
+puts "seeding user activities (1-4 per user)"
+
+i = User.first.id
 
 User.count.times do
-  i = User.first.id
   user = User.find(i)
-  rand(2..4).times do
-    act = Activity.all.sample
-    UserActivity.create!(user: user, activity: act)
-  end
+  acts = Activity.all.sample(rand(1..4))
+  acts.each { |act| UserActivity.create!(user: user, activity: act)}
   i += 1
 end
 
