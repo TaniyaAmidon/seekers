@@ -1,9 +1,13 @@
 Activity.destroy_all
 
+
 puts "starting seed.."
 
 #seed activities
 puts 'creating activities'
+
+
+#seed activities
 
 activities = Activity.create([{ name: 'Hiking' }, { name: 'Skiing' }, { name: 'Snowboarding' },{ name: 'Skiing' }, { name: 'Cycling' }, { name: 'Skiing' }, { name: 'Climbing' }, { name: 'Skiing' }])
 
