@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :find_user, only [:show, :edit, :update]
+  before_action :find_user
+
+  # remove skip_before authentication when signup/login flows ready
+  skip_before_action :authenticate_user!
+
   def show
   end
 
@@ -7,7 +11,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update!(user_params)
+    @user.update(user_params)
+    if @user.save
+      flash[:notice] = 'Profile updated'
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = 'Could not update profile, please try again'
+      render :edit
+    end
   end
 
   private
