@@ -1,2 +1,3 @@
 class Activity < ApplicationRecord
 end
+
