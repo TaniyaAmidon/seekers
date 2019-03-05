@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
+Activity.destroy_all
+
+
+puts "starting seed.."
+
+#seed activities
+puts 'creating activities'
+
+
+#seed activities
+
+activities = Activity.create([{ name: 'Hiking' }, { name: 'Skiing' }, { name: 'Snowboarding' },{ name: 'Skiing' }, { name: 'Cycling' }, { name: 'Skiing' }, { name: 'Climbing' }, { name: 'Skiing' }])
+
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Seed done"
