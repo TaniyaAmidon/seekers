@@ -1,3 +1,5 @@
+puts "Cleaning database"
+
 require 'faker'
 
 Activity.destroy_all
