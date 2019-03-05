@@ -3,6 +3,7 @@ puts "Cleaning database"
 require 'faker'
 
 Activity.destroy_all
+require 'faker'
 
 
 puts 'starting seed...'
@@ -42,4 +43,17 @@ activities = Activity.create([
 
 
 
-puts 'Seed done'
+
+puts "starting seed.."
+
+# 20.times do
+#   Trip.create!(
+#   destination: Faker::Address.city,
+#   description: Faker::Hipster.sentence,
+#   price: (400..900).to_a.sample,
+#   user_id: User.sample
+#   )
+# end
+
+puts "Seed done"
+
