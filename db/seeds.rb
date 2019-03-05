@@ -4,6 +4,7 @@ require 'faker'
 
 Activity.destroy_all
 User.destroy_all
+UserActivity.destroy_all
 
 
 puts 'starting seed...'
