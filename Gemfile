@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'faker'
 gem 'money-rails'
 gem 'stripe'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
 
 
 group :development do
