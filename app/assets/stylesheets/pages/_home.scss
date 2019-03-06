@@ -27,16 +27,16 @@ a {
 }
 
 .underline {
-  border-bottom: 2px solid currentColor;
+  border-bottom: 8px solid white;
   display: inline-block;
-  line-height: 0.85;
+  line-height: 1.85;
   &:hover{
 
   }
 }
 
 div .info {
- text-align: left;
+  margin-left: 16px;
   position: absolute;
   top: 50%;
 }
