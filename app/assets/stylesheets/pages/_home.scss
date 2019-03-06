@@ -18,6 +18,23 @@ p {
   color: white;
 }
 
+a {
+  color: white ;
+  text-decoration: none;
+ &:hover {
+  text-decoration: none;
+ }
+}
+
+.underline {
+  border-bottom: 2px solid currentColor;
+  display: inline-block;
+  line-height: 0.85;
+  &:hover{
+
+  }
+}
+
 div .info {
  text-align: left;
   position: absolute;
