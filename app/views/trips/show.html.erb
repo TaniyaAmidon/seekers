@@ -4,7 +4,7 @@
   <p><strong>Trip description: </strong><%= @trip.description %></p>
   <p><strong>Trip destination: </strong><%= @trip.destination %></p>
   <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>
-  <p><strong>Trip price: </strong>£<%= @trip.price / 100 %></p>
+  <p><strong>Trip price: </strong>£<%= @trip.price%></p>
   <% @trip.group.users.each do |user| %>
     <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
   <% end %>
