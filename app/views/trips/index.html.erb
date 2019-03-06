@@ -1,24 +1,26 @@
+<div class="container">
 <h1>Trips Index</h1>
 <br>
 <h2>View all trips here</h2>
 
-<ul>
+<div class="d-flex flex-wrap">
+
  <%@trips.each do |trip| %>
 
-        <li><%= trip.description %></li>
-        <li><%= trip.destination %></li>
-        <li><%= trip.price %></li>
+    <div class="card w-25" style="min-width: 200px">
+      <div class="card-title">
+        <%= trip.destination %> | <%= trip.activity.name %>
+      </div>
+      <div class="card-subtitle">
+        <%= trip.price %>
+      </div>
+      <div class="card-text">
+        <%= trip.description %>
+        <br>
         <%= link_to "View trip", trip_path(trip) %>
-  <% end %>
- </ul>
-<%= link_to "View trip", trip_path %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
- <ul>
- <%@trips.each do |trip| %>
-
-        <li><%= trip.description %></li>
-        <li><%= trip.destination %></li>
-        <li><%= trip.price %></li>
-        <%= link_to "View trip", trip_path(trip) %>
-  <% end %>
- </ul>
+</div>
