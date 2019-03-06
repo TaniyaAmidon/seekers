@@ -28,10 +28,11 @@ a {
   font-size: 24px;
  &:hover {
   text-decoration: none;
+  color: white;
  }
 }
 
-.underline {
+.info .underline {
   border-bottom: 4px solid white;
   display: inline-block;
   line-height: 1.5;
