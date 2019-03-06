@@ -1,7 +1,18 @@
 <h1>Trips Index</h1>
 <br>
 <h2>View all trips here</h2>
-<%= link_to "View trip", trip_path(@trip) %>
+
+ <ul>
+ <%@trips.each do |trip| %>
+
+        <li><%= trip.description %></li>
+        <li><%= trip.destination %></li>
+        <li><%= trip.price %></li>
+        <%= link_to "View trip", trip_path(trip) %>
+  <% end %>
+ </ul>
+
+
 
 
 
