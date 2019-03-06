@@ -11,14 +11,3 @@
         <%= link_to "View trip", trip_path(trip) %>
   <% end %>
  </ul>
-<%= link_to "View trip", trip_path %>
-
- <ul>
- <%@trips.each do |trip| %>
-
-        <li><%= trip.description %></li>
-        <li><%= trip.destination %></li>
-        <li><%= trip.price %></li>
-        <%= link_to "View trip", trip_path(trip) %>
-  <% end %>
- </ul>
