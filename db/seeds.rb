@@ -2,12 +2,14 @@ puts "Cleaning database"
 
 require 'faker'
 
-Activity.destroy_all
-User.destroy_all
-UserActivity.destroy_all
-Group.destroy_all
 GroupMember.destroy_all
+UserActivity.destroy_all
+Activity.destroy_all
 Trip.destroy_all
+User.destroy_all
+Group.destroy_all
+
+
 
 puts 'starting seed...'
 
