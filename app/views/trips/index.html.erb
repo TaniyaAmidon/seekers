@@ -2,6 +2,8 @@
 <br>
 <h2>View all trips here</h2>
 
+<%= link_to "View trip", trip_path %>
+
  <ul>
  <%@trips.each do |trip| %>
 
@@ -11,8 +13,3 @@
         <%= link_to "View trip", trip_path(trip) %>
   <% end %>
  </ul>
-
-
-
-
-
