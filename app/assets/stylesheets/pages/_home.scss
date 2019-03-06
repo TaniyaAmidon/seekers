@@ -16,6 +16,8 @@ h1 {
 }
 
 p {
+  font-family: "IBM plex sans";
+  font-weight: lighter;
   color: white;
   font-size: 24px;
 }
@@ -39,7 +41,7 @@ a {
 }
 
 div .info {
-  margin-left: 16px;
+  margin-left: 48px;
   position: absolute;
   top: 40%;
 }
