@@ -1,9 +1,18 @@
-<h1>Trips Show</h1>
-<br>
-<h2>Selected trip will be shown here</h2>
-<br>
-<%= link_to "Edit trip", edit_trip_path  %>
-<br>
-<%= link_to "Return to Trips Index", trips_path %>
+<h1>Would you like to go on (trip name), with <%= @trip.user.first_name %><%#= @trip.title %></h1>
 
-<p>Button to delete trip</p>
+<div class="trip-info">
+  <p><strong>Trip description: </strong><%= @trip.description %></p>
+  <p><strong>Trip destination: </strong><%= @trip.destination %></p>
+  <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>
+  <p><strong>Trip price: </strong>£<%= @trip.price%></p>
+  <% @trip.group.users.each do |user| %>
+    <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
+  <% end %>
+  <%= link_to "Contact Organiser",new_user_registration_path   %>
+  <p><%= link_to "Return to Trips Index", trips_path %></p>
+ </div>
+
+
+<!--
+<p><%#= link_to "Edit trip", edit_trip_path  %></p> -->
+
