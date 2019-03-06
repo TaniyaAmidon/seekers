@@ -84,11 +84,14 @@ groups = Group.all
 puts "starting trips.."
 
 20.times do
+  act = Activity.all.sample
+  destination = Faker::Address.city
   Trip.create!(
-  destination: Faker::Address.city,
+  title: "#{act.name} in #{destination}",
+  destination: destination,
   description: Faker::Hipster.sentence,
-  price: (400..900).to_a.sample,
-  activity: Activity.all.sample,
+  price: rand(400..900),
+  activity: act,
   group: groups.sample,
   user: users.sample
   )
@@ -97,4 +100,3 @@ end
 
 
 puts "Seed done"
-
