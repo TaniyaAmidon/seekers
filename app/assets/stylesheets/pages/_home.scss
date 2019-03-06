@@ -14,7 +14,12 @@ h1 {
   color: white;
 }
 
-div .info {
-display: flex;
+p {
+  color: white;
+}
 
+div .info {
+ text-align: left;
+  position: absolute;
+  top: 50%;
 }
