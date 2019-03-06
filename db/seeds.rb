@@ -5,6 +5,9 @@ require 'faker'
 Activity.destroy_all
 User.destroy_all
 UserActivity.destroy_all
+Group.destroy_all
+GroupMember.destroy_all
+Trip.destroy_all
 
 puts 'starting seed...'
 
@@ -22,8 +25,9 @@ activities = Activity.create([
 { name: 'Whitewater Rafting' },
 { name: 'Climbing' },
 { name: 'Skydiving' },
-{ name: 'Sailing' },])
+{ name: 'Sailing' }])
 
+puts "user activities seeded"
 
 puts 'seeding users...'
 
@@ -51,19 +55,44 @@ User.count.times do
   i += 1
 end
 
-puts "user activities seeded"
+
+puts "creating groups.."
+
+20.times do
+  Group.create!
+end
+
+puts "Groups created!"
+
+users = User.all
+
+Group.all.each do |group|
+  5.times do
+    GroupMember.create!(group: group, user: users.sample)
+  end
+end
+
+puts "group members created"
+
+groups = Group.all
 
 
-puts "starting seed.."
 
-# 20.times do
-#   Trip.create!(
-#   destination: Faker::Address.city,
-#   description: Faker::Hipster.sentence,
-#   price: (400..900).to_a.sample,
-#   user_id: User.sample
-#   )
-# end
+
+puts "starting trips.."
+
+20.times do
+  Trip.create!(
+  destination: Faker::Address.city,
+  description: Faker::Hipster.sentence,
+  price: (400..900).to_a.sample,
+  activity: Activity.all.sample,
+  group: groups.sample,
+  user: users.sample
+  )
+end
+
+
 
 puts "Seed done"
 
