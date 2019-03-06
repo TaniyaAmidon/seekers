@@ -8,7 +8,7 @@
   <% @trip.group.users.each do |user| %>
     <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
   <% end %>
-  <%= link_to "Contact Organiser",new_user_registration_path   %>
+  <%= link_to "Contact Organiser",new_user_path   %>
   <p><%= link_to "Return to Trips Index", trips_path %></p>
  </div>
 
