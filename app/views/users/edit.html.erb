@@ -1,12 +1,14 @@
 <h1>Edit <%= @user.first_name %>'s profile</h1>
 
-<%= form_for @user, method: "patch" do |f| %>
-  <%= f.text_field :first_name %>
-  <%= f.text_field :last_name %>
-  <%= f.text_field :email %>
-  <%= f.date_field :dob %>
-  <%= f.text_field :location %>
-  <%= f.text_area :bio %>
+<%= simple_form_for @user, method: "patch" do |f| %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :dob %>
+  <%= f.input :location %>
+  <%= f.input :bio %>
   <%= f.submit "Edit profile" %>
 <% end %>
 

@@ -1,1 +1,48 @@
 // Specific CSS for your home-page
+.home-image {
+  background:linear-gradient(100deg,rgba(28,49,53,0.65), rgba(0,0,0,0.20)), url(https://images.unsplash.com/photo-1497501849790-78f74380d9d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80) no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  overflow:hidden;
+}
+
+h1 {
+  color: white;
+  font-size: 56px;
+}
+
+p {
+  font-family: "IBM plex sans";
+  font-weight: lighter;
+  color: white;
+  font-size: 24px;
+}
+
+a {
+  color: #3CEAD0 ;
+  text-decoration: none;
+  font-size: 24px;
+ &:hover {
+  text-decoration: none;
+  color: white;
+ }
+}
+
+.info .underline {
+  border-bottom: 4px solid white;
+  display: inline-block;
+  line-height: 1.5;
+  &:hover{
+
+  }
+}
+
+div .info {
+  margin-left: 48px;
+  position: absolute;
+  top: 40%;
+}
