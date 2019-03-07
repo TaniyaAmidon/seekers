@@ -9,6 +9,8 @@
 
 <%= simple_form_for [@trip, @group_member] do |f|%>
 
+<%= f.input :message_to_organiser, label: "Enter a message to the organiser"  %>
+
 <%= f.submit "Request to join group", class: "btn btn-success"%>
 
 <% end %>

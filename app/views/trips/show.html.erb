@@ -1,7 +1,7 @@
-<h1>Would you like to go on (trip name), with <%= @trip.user.first_name %><%#= @trip.title %></h1>
+
+<h1>Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
 <div class="trip-info">
-  <p><strong><%= @trip.title %></strong></p>
   <p><strong>Trip description: </strong><%= @trip.description %></p>
   <p><strong>Trip destination: </strong><%= @trip.destination %></p>
   <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>
@@ -11,7 +11,7 @@
   <% end %>
 
     <% if user_signed_in? %>
-    <%= link_to "Contact Organiser",new_user_registration_path  %>
+    <%#= link_to "Contact Organiser", new_trip_group_member_path %>
     <% else %>
     <%= link_to "Register to contact organiser",new_user_registration_path  %>
     <% end %>

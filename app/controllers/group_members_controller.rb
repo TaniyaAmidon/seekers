@@ -8,10 +8,11 @@ class GroupMembersController < ApplicationController
 
   def create
     @trip = Trip.find(params[:trip_id])
-    @group_member = GroupMember.new
+    @group_member = GroupMember.new(group_member_params)
     @group_member.user = current_user
     @group_member.group = @trip.group
     @group_member.status = "pending"
+    @group_member.save
   end
 
   def destroy
@@ -35,6 +36,6 @@ class GroupMembersController < ApplicationController
   end
 
   def group_member_params
-    params.require(:group_member).permit(:group, :user, :status)
+    params.require(:group_member).permit(:group, :user, :status, :message_to_organiser)
   end
 end
