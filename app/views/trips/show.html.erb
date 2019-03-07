@@ -9,8 +9,15 @@
   <% @trip.group.users.each do |user| %>
     <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
   <% end %>
-  <%= link_to "Contact Organiser",new_user_registration_path   %>
+
+    <% if user_signed_in? %>
+    <%= link_to "Contact Organiser",new_user_registration_path  %>
+    <% else %>
+    <%= link_to "Register to contact organiser",new_user_registration_path  %>
+    <% end %>
+
   <p><%= link_to "Return to Trips Index", trips_path %></p>
+
  </div>
 
 
