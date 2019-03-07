@@ -1,27 +1,40 @@
 <div class="container">
   <%= content_for(:title, "View active trips") %>
-  <h1>View active trips</h1>
-  <br>
-  <h2>View all trips here</h2>
+  <div class="trip-title underline">
+    <h1>Choose your dream adventure...</h1>
+  </div>
+
+  <div class="trip-icons d-flex justify-content-between">
+    <a class="btn btn-outline-primary altitude" href="#" ><i class="fas fa-mountain"></i> altitude</a>
+    <a class="btn btn-outline-primary summer" href="#"><i class="fas fa-sun"></i> summer</a>
+    <a class="btn btn-outline-primary water" href="#"><i class="fas fa-water"></i> water</a>
+    <a class="btn btn-outline-primary snow" href="#"><i class="far fa-snowflake"></i> snow</a>
+    <a class="btn btn-outline-primary wind" href="#"><i class="fas fa-wind"></i> wind</a>
+  </div>
 
   <div class="d-flex flex-wrap">
-
- <%@trips.each do |trip| %>
-
-    <div class="card w-25" style="min-width: 200px">
-      <div class="card-title">
-        <%= trip.destination %> | <%= trip.activity.name %>
-      </div>
-      <div class="card-subtitle">
-        <%= trip.price %>
-      </div>
-      <div class="card-text">
-        <%= trip.description %>
-        <br>
-        <%= link_to "View trip", trip_path(trip) %>
-      </div>
+    <div class="row">
+      <% @trips.each do |trip| %>
+        <div class="col-sm-6 col-md-3 trip-column">
+          <%#= cl_image_tag trip.photo, height: 300, width: 300 %>
+          <div class="card trip-card">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1520853290592-81017d2bde21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80" alt="Card image cap">
+            <div class="card-info">
+              <div class="title">
+                <%= trip.activity.name %>
+              </div>
+              <div class="description">
+                <%= trip.title %>
+              </div>
+              <div class="subtitle">
+                £ <%= trip.price %> <i class="fas fa-circle green-dot"></i> (May 2019) <%#=trip.date %>
+              </div>
+              <%= link_to "", trip_path(trip), class: "stretched-link" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 
 </div>
