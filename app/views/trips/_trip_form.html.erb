@@ -1,8 +1,12 @@
 <%= simple_form_for trip do |f| %>
 <%= f.input :title %>
 <%= f.input :destination %>
-<%= f.input :start_date, as: :date, html5: true %>
-<%= f.input :end_date, as: :date, html5: true %>
+
+<%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+<%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+
+<!-- <input type="date" name="start_date">
+ --><!-- <input type="date" name="end_date"> -->
 <%= f.input :description, as: :text %>
 <%= f.input :organiser_exp, as: :text %>
 <%= f.input :visited_before, as: :boolean %>
