@@ -25,6 +25,12 @@ class GroupMembersController < ApplicationController
   end
 
   def update
+    @group_member.update(group_member_params)
+    if @group_member.save
+      flash[:notice] = 'Status updated'
+    else
+      flash[:alert] = 'Could not update status'
+    end
   end
 
   def index
