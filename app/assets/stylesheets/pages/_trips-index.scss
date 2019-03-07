@@ -44,7 +44,7 @@
 
 .trip-card {
   .card-info{
-    margin-top: 8px;
+    margin: 8px 0 8px 8px;
   }
   .green-dot {
     color: #72ebd1;
@@ -52,5 +52,24 @@
   }
   .title {
     color: #a7a7a7;
+    font-size: 14px;
+    font-family: IBM Plex Sans;
   }
+  .description {
+    font-size: 18px;
+    font-family: Cabin;
+  }
+  .subtitle {
+    font-family: IBM Plex Sans;
+    font-size: 16px;
+    color: #a7a7a7;
+  }
+  &:hover,
+  &:focus {
+    transform: scale3d(1.006, 1.006, 1);
+  }
+}
+
+.trip-card :hover {
+
 }

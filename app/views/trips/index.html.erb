@@ -21,15 +21,15 @@
             <img class="card-img-top" src="https://images.unsplash.com/photo-1520853290592-81017d2bde21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80" alt="Card image cap">
             <div class="card-info">
               <div class="title">
-                <%= trip.destination %> <i class="fas fa-circle green-dot"></i> <%= trip.activity.name %>
+                <%= trip.activity.name %> <i class="fas fa-circle green-dot"></i>  <%= trip.destination %>
               </div>
-              <div class="card-text">
+              <div class="description">
                 <%= trip.description %>
               </div>
-              <div class="card-subtitle">
+              <div class="subtitle">
                 £ <%= trip.price %> <i class="fas fa-circle green-dot"></i> (May 2019) <%#=trip.date %>
               </div>
-              <%= link_to "View trip", trip_path(trip) %>
+              <%= link_to "", trip_path(trip), class: "stretched-link" %>
             </div>
           </div>
         </div>
