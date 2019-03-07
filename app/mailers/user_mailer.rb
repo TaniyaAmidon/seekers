@@ -6,8 +6,8 @@ class UserMailer < ApplicationMailer
 
   def respond_to_application(member)
     group = member.group.id
-    trip = Trip.where(group_id: group).first
-    organiser_id = trip.user.id
+    @trip = Trip.where(group_id: group).first
+    organiser_id = @trip.user.id
     organiser = User.where(id: organiser_id).first
 
     mail(to: organiser.email, subject: 'You have an application to join!')
