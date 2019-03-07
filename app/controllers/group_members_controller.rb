@@ -1,5 +1,6 @@
 class GroupMembersController < ApplicationController
-  before_action :find_group_member, only: [:show, :edit, :update, :destroy]
+  before_action :find_group_member, only: [:edit, :update,:show, :reject, :accept, :destroy, :pending_index, :rejected_index, :accepted_index]
+  before_action :find_trip, only: [:edit, :update, :pending_index, :rejected_index, :accepted_index, :index]
 
   def new
     @trip = Trip.find(params[:trip_id])
@@ -12,27 +13,50 @@ class GroupMembersController < ApplicationController
     @group_member.user = current_user
     @group_member.group = @trip.group
     @group_member.status = "pending"
-     unless @group_member.save
-    render 'new'
-  end
-
+    render 'new' unless @group_member.save
   end
 
   def destroy
     @group_member.destroy
-    # redirect_to (group_member inder show)
   end
 
   def edit
-
   end
 
   def update
-
+    @group_member.update(group_member_params)
+    if @group_member.save
+      flash[:notice] = 'Status updated'
+      redirect_to trip_group_members_path(@trip)
+    else
+      flash[:alert] = 'Could not update status'
+    end
   end
 
+  def index
+    @group_members = GroupMember.where(group: @trip.group)
+  end
+
+  def pending_index
+    @pending_members = GroupMember.where(status: "pending", group: @trip.group)
+  end
+  helper_method :pending_index
+
+  def accepted_index
+    @accepted_members = GroupMember.where(status: "accepted", group: @trip.group)
+  end
+  helper_method :accepted_index
+
+  def rejected_index
+    @rejected_members = GroupMember.where(status: "rejected", group: @trip.group)
+  end
+  helper_method :rejected_index
 
   private
+
+  def find_trip
+    @trip = Trip.find(params[:trip_id])
+  end
 
   def find_group_member
     @group_member = GroupMember.find(params[:id])

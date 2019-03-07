@@ -59,8 +59,18 @@ ActiveRecord::Schema.define(version: 2019_03_07_121448) do
     t.integer "price_cents", default: 0, null: false
     t.integer "activity_id"
     t.string "title"
+
     t.date "trip_date"
     t.integer "days"
+
+    t.date "start_date"
+    t.date "end_date"
+    t.text "organiser_exp"
+    t.boolean "visited_before"
+    t.text "crew_exp"
+    t.boolean "crew_exp_required"
+    t.integer "max_crew_size"
+    t.string "photo"
     t.index ["group_id"], name: "index_trips_on_group_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
