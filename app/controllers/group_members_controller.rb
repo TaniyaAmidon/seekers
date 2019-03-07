@@ -1,6 +1,6 @@
 class GroupMembersController < ApplicationController
-  before_action :find_group_member, only: [:show, :reject, :accept, :destroy, :pending_index, :rejected_index, :accepted_index]
-  before_action :find_trip, only: [:pending_index, :rejected_index, :accepted_index, :index]
+  before_action :find_group_member, only: [:edit, :update,:show, :reject, :accept, :destroy, :pending_index, :rejected_index, :accepted_index]
+  before_action :find_trip, only: [:edit, :update, :pending_index, :rejected_index, :accepted_index, :index]
 
   def new
     @trip = Trip.find(params[:trip_id])
@@ -20,13 +20,13 @@ class GroupMembersController < ApplicationController
     @group_member.destroy
   end
 
-  # def reject
-  #   @group_member.status = "rejected"
-  # end
+  def edit
 
-  # def accept
-  #   @group_member.status = "accepted"
-  # end
+  end
+
+  def update
+  end
+
   def index
     @group_members = GroupMember.where(group: @trip.group)
   end
