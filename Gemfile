@@ -7,11 +7,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.2'
-gem 'redis'
+gem 'redis', '3.3'
+
 
 gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'geocoder'
+gem 'jquery-rails' # Add this line if you use Rails 5.1
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
@@ -23,6 +26,7 @@ gem 'stripe'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'algoliasearch-rails'
+
 
 group :development do
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
@@ -37,5 +41,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
 end
