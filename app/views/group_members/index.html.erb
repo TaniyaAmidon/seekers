@@ -1,40 +1,50 @@
 <h1>View the statuses of different group members</h1>
-<% @trip = Trip.find(params[:trip_id]) %>
 
-<% pending_index.each do |member| %>
-<ul>
-  <li><%= member.user.first_name %></li>
-  <li><%= member.message_to_organiser %></li>
-  <li><%= member.status %></li>
-</ul>
 
-<%= simple_form_for [@trip, member] do |f|%>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <% pending_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.message_to_organiser %></li>
+        <li><%= member.status %></li>
+      </ul>
 
-<%= f.input :status, :as => :hidden, :input_html => { :value => "rejected" } %>
+      <%= simple_form_for [@trip, member] do |f|%>
 
-<%= f.submit "reject", class: "btn btn-danger"%>
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "rejected" } %>
 
-<% end %>
+        <%= f.submit "reject", class: "btn btn-danger"%>
 
-<%= simple_form_for [@trip, member] do |f|%>
+      <% end %>
 
-<%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
+      <%= simple_form_for [@trip, member] do |f|%>
 
-<%= f.submit "accept", class: "btn btn-success"%>
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
 
-<% end %>
-<% end %>
+        <%= f.submit "accept", class: "btn btn-success"%>
 
-<% rejected_index.each do |member| %>
-<ul>
-  <li><%= member.user.first_name %></li>
-  <li><%= member.status %></li>
-</ul>
-<% end %>
+      <% end %>
+      <% end %>
+    </div>
 
-<% accepted_index.each do |member| %>
-<ul>
-  <li><%= member.user.first_name %></li>
-  <li><%= member.status %></li>
-</ul>
-<% end %>
+    <div class="col-sm">
+      <% rejected_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.status %></li>
+      </ul>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <% accepted_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.status %></li>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
