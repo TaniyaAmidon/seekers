@@ -2,10 +2,12 @@ class GroupMembersController < ApplicationController
   before_action :find_group_member, only: [:show, :edit, :update, :destroy]
 
   def new
+    @trip = Trip.find(params[:trip_id])
+    @group_member = GroupMember.new
   end
 
   def create
-    @trip = Trip.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
     @group_member = GroupMember.new
     @group_member.user = current_user
     @group_member.group = @trip.group
