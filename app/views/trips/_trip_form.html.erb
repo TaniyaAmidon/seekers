@@ -11,6 +11,10 @@
 <%= f.input :max_crew_size, collection: 2..12 %>
 <%= f.association :activity %>
 <%= f.input :price %>
+<!-- photouploader throws undefined method error -->
+<%#= f.input :photo %>
+<%#= f.input :photo_cache, as: :hidden %>
+
 
 <%= f.submit "Create Trip"%>
 <% end %>
