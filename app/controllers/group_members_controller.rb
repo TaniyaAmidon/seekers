@@ -23,6 +23,14 @@ class GroupMembersController < ApplicationController
     # redirect_to (group_member inder show)
   end
 
+  def reject
+    @group_member.status = "rejected"
+  end
+
+  def accept
+    @group_member.status = "accepted"
+  end
+
   def edit
 
   end
