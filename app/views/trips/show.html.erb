@@ -11,7 +11,7 @@
   <% end %>
 
     <% if user_signed_in? %>
-    <%#= link_to "Contact Organiser", new_trip_group_member_path %>
+    <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
     <% else %>
     <%= link_to "Register to contact organiser",new_user_registration_path  %>
     <% end %>

@@ -1,5 +1,5 @@
 <h1>Request to join group</h1>
-<% @trip = Trip.find(params[:trip_id]) %>
+
 <p>request to join <%= @trip.user.first_name %>'s trip to <%= @trip.destination %>  </p>
 <%= @trip.title %>
 <br>
@@ -15,4 +15,3 @@
 
 <% end %>
 
-<%= link_to "request to join group", trip_group_members_path %>
