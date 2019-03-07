@@ -27,7 +27,6 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'algoliasearch-rails'
 
-
 group :development do
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
   gem 'binding_of_caller'
