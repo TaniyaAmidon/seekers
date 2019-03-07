@@ -58,13 +58,13 @@ User.count.times do
 end
 
 
-# puts "creating groups.."
+puts "creating groups.."
 
-# 20.times do
-#   Group.create!
-# end
+20.times do
+  Group.create!
+end
 
-# puts "Groups created!"
+puts "Groups created!"
 
 users = User.all
 
