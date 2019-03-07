@@ -19,7 +19,7 @@
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo? %>
-             <%= cl_image_tag current_user.photo.url, class: "avatar-user dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+             <%= cl_image_tag current_user.photo.url, crop: :fit, class: "avatar-user dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
           <%= image_tag "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
