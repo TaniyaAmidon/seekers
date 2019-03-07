@@ -1,7 +1,16 @@
 <%= simple_form_for trip do |f| %>
 <%= f.input :title %>
 <%= f.input :destination %>
-<%= f.input :description %>
+<%= f.input :start_date, as: :date, html5: true %>
+<%= f.input :end_date, as: :date, html5: true %>
+<%= f.input :description, as: :text %>
+<%= f.input :organiser_exp, as: :text %>
+<%= f.input :visited_before, as: :boolean %>
+<%= f.input :crew_exp, as: :text %>
+<%= f.input :crew_exp_required, as: :boolean %>
+<%= f.input :max_crew_size, collection: 2..12 %>
+<%= f.association :activity %>
 <%= f.input :price %>
+
 <%= f.submit "Create Trip"%>
 <% end %>
