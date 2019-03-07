@@ -1,6 +1,6 @@
 <div class="container">
   <%= content_for(:title, "View active trips") %>
-  <div class="trip-title">
+  <div class="trip-title underline">
     <h1>Choose your dream adventure...</h1>
   </div>
 
@@ -15,16 +15,16 @@
   <div class="d-flex flex-wrap">
     <div class="row">
       <% @trips.each do |trip| %>
-        <div class="col-sm-6 col-md-3">
+        <div class="col-sm-6 col-md-3 trip-column">
           <%#= cl_image_tag trip.photo, height: 300, width: 300 %>
           <div class="card trip-card">
             <img class="card-img-top" src="https://images.unsplash.com/photo-1520853290592-81017d2bde21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80" alt="Card image cap">
             <div class="card-info">
               <div class="title">
-                <%= trip.activity.name %> <i class="fas fa-circle green-dot"></i>  <%= trip.destination %>
+                <%= trip.activity.name %>
               </div>
               <div class="description">
-                <%= trip.description %>
+                <%= trip.title %>
               </div>
               <div class="subtitle">
                 £ <%= trip.price %> <i class="fas fa-circle green-dot"></i> (May 2019) <%#=trip.date %>

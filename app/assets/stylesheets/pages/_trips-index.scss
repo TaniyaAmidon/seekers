@@ -1,7 +1,14 @@
 .trip-title {
   margin-top: 16px;
-  padding-bottom: 16px;
+  font-family: IBM Plex Sans;
 }
+.underline {
+  border-bottom: 4px solid #67d5bf;
+  display: inline-block;
+  line-height: 0.5;
+  &:hover{}
+  margin-bottom: 16px;
+  }
 
 .trip-icons {
   padding: 16px;
@@ -11,38 +18,57 @@
     border-color: #e84990;
     border-radius: 16px;
     width: 150px;
+    &:hover {
+      background-color: #e84990;
+      color: white;
+    }
   }
   .summer {
     color: #7ff137;
     border-color: #7ff137;
     border-radius: 16px;
     width: 150px;
+    &:hover {
+      background-color: #7ff137;
+      color: white;
+    }
   }
   .water {
     color: #4cb6ea;
     border-color: #4cb6ea;
     border-radius: 16px;
     width: 150px;
+    &:hover {
+      background-color: #4cb6ea;
+      color: white;
+    }
   }
   .snow {
     color: #85f2e1;
     border-color: #85f2e1;
     border-radius: 16px;
     width: 150px;
+    &:hover {
+      background-color: #85f2e1;
+      color: white;
+    }
   }
   .wind {
     color: #3d58ea;
     border-color: #3d58ea;
     border-radius: 16px;
     width: 150px;
+    &:hover {
+      background-color: #3d58ea;
+      color: white;
+    }
   }
 }
 
-.card-info {
-  // padding: px;
-}
-
 .trip-card {
+  transition: transform .5s;
+  height: 100%;
+  // margin-bottom: 16px;
   .card-info{
     margin: 8px 0 8px 8px;
   }
@@ -64,12 +90,12 @@
     font-size: 16px;
     color: #a7a7a7;
   }
-  &:hover,
-  &:focus {
-    transform: scale3d(1.006, 1.006, 1);
+  &:hover
+  {
+    transform: scale3d(1.04, 1.04, 1.04);
   }
 }
 
-.trip-card :hover {
-
+.trip-column {
+  margin-bottom: 16px;
 }
