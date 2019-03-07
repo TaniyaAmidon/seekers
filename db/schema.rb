@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_03_07_121448) do
-=======
-ActiveRecord::Schema.define(version: 2019_03_06_140503) do
->>>>>>> c2d0d44b98d8d0e25f0abe26b9e8d15f421aed14
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_140503) do
     t.integer "price_cents", default: 0, null: false
     t.integer "activity_id"
     t.string "title"
+    t.date "trip_date"
+    t.integer "days"
     t.index ["group_id"], name: "index_trips_on_group_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end

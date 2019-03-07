@@ -1,11 +1,21 @@
+# development:
+#   adapter: redis
+#   url: 'redis://localhost:6379/1'
+
+# test:
+#   adapter: async
+
+# production:
+#   adapter: redis
+#   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+#   channel_prefix: seekers_production
 development:
-  adapter: redis
-  url: 'redis://localhost:6379/1'
+  adapter: async
 
 test:
   adapter: async
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: seekers_production
+  url: <%= ENV['REDISCLOUD_URL'] %>
+  channel_prefix: sessions_production
