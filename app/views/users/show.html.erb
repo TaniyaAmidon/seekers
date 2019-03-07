@@ -2,7 +2,7 @@
 
 <div>
 <ul>
-  <%= cl_image_tag @user.photo, height: 300, width: 300, crop: :fit, cloud_name: 'sophiespratley' %>
+  <%= cl_image_tag @user.photo, height: 300, width: 300 %>
   <li><strong>First Name: </strong><%= @user.first_name %></li>
     <li><strong>Last name: </strong><%= @user.last_name %></li>
     <li><strong>Email: </strong><%= @user.email %></  li>
@@ -12,4 +12,4 @@
   </ul>
   </div>
 
-<%= link_to "Edit user", edit_user_registration_path %>
+<%= link_to "Edit user", edit_user_path %>

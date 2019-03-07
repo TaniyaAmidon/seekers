@@ -4,11 +4,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :photo, autofocus: true %>
-    <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :first_name,
     placeholder: "Khal",
     required: true,
+    autofocus: true,
     input_html: {autocomplete: "first_name" }  %>
     <%= f.input :last_name,
     placeholder: "Drogo",
