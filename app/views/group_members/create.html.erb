@@ -1,1 +1,5 @@
-create.html.erb
+<% @trip = Trip.find(params[:trip_id]) %>
+<p>Your request has been submitted to <%= @trip.title %></p>
+<p>While you wait for a response why not</p>
+<%= link_to "build your profile", edit_user_path(current_user)  %>
+<%= link_to "browse other trips", trips_path %>
