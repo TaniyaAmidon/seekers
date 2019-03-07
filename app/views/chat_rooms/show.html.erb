@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 chat-form">
-        <div class="chat-header"><h4>#<%= @chat_room.name %></h4></div>
+        <div class="chat-header"><h4><%= @chat_room.name.capitalize %></h4></div>
         <div class="messages">
           <% @chat_room.messages.each do |message| %>
             <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
