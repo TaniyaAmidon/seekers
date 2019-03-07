@@ -4,6 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
+      <h2>Pending members</h2>
       <% pending_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
@@ -30,7 +31,8 @@
     </div>
 
     <div class="col-sm">
-      <% rejected_index.each do |member| %>
+      <h2>Accepted members</h2>
+      <% accepted_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
         <li><%= member.status %></li>
@@ -39,12 +41,14 @@
     </div>
 
     <div class="col-sm">
-      <% accepted_index.each do |member| %>
+      <h2>Rejected members</h2>
+      <% rejected_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
         <li><%= member.status %></li>
       </ul>
       <% end %>
     </div>
+
   </div>
 </div>
