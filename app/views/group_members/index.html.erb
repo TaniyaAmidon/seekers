@@ -1,0 +1,54 @@
+<h1>View the statuses of different group members</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h2>Pending members</h2>
+      <% pending_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.message_to_organiser %></li>
+        <li><%= member.status %></li>
+      </ul>
+
+      <%= simple_form_for [@trip, member] do |f|%>
+
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "rejected" } %>
+
+        <%= f.submit "reject", class: "btn btn-danger"%>
+
+      <% end %>
+
+      <%= simple_form_for [@trip, member] do |f|%>
+
+        <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
+
+        <%= f.submit "accept", class: "btn btn-success"%>
+
+      <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <h2>Accepted members</h2>
+      <% accepted_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.status %></li>
+      </ul>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <h2>Rejected members</h2>
+      <% rejected_index.each do |member| %>
+      <ul>
+        <li><%= member.user.first_name %></li>
+        <li><%= member.status %></li>
+      </ul>
+      <% end %>
+    </div>
+
+  </div>
+</div>
