@@ -58,25 +58,8 @@ User.count.times do
 end
 
 
-# puts "creating groups.."
-
-# 20.times do
-#   Group.create!
-# end
-
-# puts "Groups created!"
 
 users = User.all
-
-Group.all.each do |group|
-  5.times do
-    GroupMember.create!(group: group, user: users.sample)
-  end
-end
-
-puts "group members created"
-
-groups = Group.all
 
 
 
@@ -98,7 +81,7 @@ experiences = ['In west Philadelphia born and raised, on the playground was wher
   description: "This is a #{duration}-day #{act.name.downcase} trip to the #{destination_adjective} #{destination}. If you love #{act.name.downcase} you'd be a ruddy idiot to miss it.",
   price: rand(200..1000),
    activity: act,
-  group: groups.sample,
+  group: Group.new,
   user: users.sample,
   start_date: start_date,
   end_date: (start_date + duration),
