@@ -18,12 +18,11 @@
     label: "Date of birth:",
     start_year: Date.today.year - 18,
     end_year: Date.today.year - 90 %>
-    <%= f.input :location, input_html: {id: "location" },
+    <%= f.input :location, input_html: {id: "autocomplete-location" },
     label: "Location:",
     placeholder: "Westeros",
     required: true,
-    autofocus: true,
-    input_html: {autocomplete: "location" }  %>
+    autofocus: true  %>
 
 
 
@@ -55,3 +54,5 @@
 
 
 <%#= render "devise/shared/links" %>
+
+

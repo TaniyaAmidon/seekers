@@ -4,10 +4,21 @@ import places from 'places.js';
 
 
 const initAutocomplete = () => {
-  const addressInput = document.getElementById('autocomplete-destination');
-  if (addressInput) {
-    places({ container: addressInput });
+  const destinationInput = document.getElementById('autocomplete-destination');
+  if (destinationInput) {
+    places({ container: destinationInput });
   }
 };
 
 initAutocomplete();
+
+const locationAutocomplete = () => {
+  const userLocationInput = document.getElementById('autocomplete-location');
+  if (userLocationInput) {
+    places({ container: userLocationInput });
+  }
+};
+
+locationAutocomplete();
+
+
