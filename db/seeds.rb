@@ -58,25 +58,8 @@ User.count.times do
 end
 
 
-puts "creating groups.."
-
-20.times do
-  Group.create!
-end
-
-puts "Groups created!"
 
 users = User.all
-
-Group.all.each do |group|
-  5.times do
-    GroupMember.create!(group: group, user: users.sample)
-  end
-end
-
-puts "group members created"
-
-groups = Group.all
 
 
 
@@ -92,7 +75,7 @@ puts "starting trips.."
   description: Faker::Hipster.sentence,
   price: rand(400..900),
   activity: act,
-  group: groups.sample,
+  group: Group.new,
   user: users.sample
   )
 end
