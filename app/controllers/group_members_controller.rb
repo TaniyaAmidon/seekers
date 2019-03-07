@@ -12,10 +12,7 @@ class GroupMembersController < ApplicationController
     @group_member.user = current_user
     @group_member.group = @trip.group
     @group_member.status = "pending"
-     unless @group_member.save
-    render 'new'
-  end
-
+    render 'new' unless @group_member.save
   end
 
   def destroy
