@@ -58,43 +58,39 @@ User.count.times do
 end
 
 
-puts "creating groups.."
-
-20.times do
-  Group.create!
-end
-
-puts "Groups created!"
 
 users = User.all
-
-Group.all.each do |group|
-  5.times do
-    GroupMember.create!(group: group, user: users.sample)
-  end
-end
-
-puts "group members created"
-
-groups = Group.all
 
 
 
 
 puts "starting trips.."
 
+adjectives = %w(breathtaking electrifying enchanting frantic gripping hair-raising sensational mind-blowing)
+experiences = ['In west Philadelphia born and raised, on the playground was where I spent most of my days', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.']
+
 20.times do
   act = Activity.all.sample
-  destination = Faker::Address.city
+  destination = Faker::Address.country
+  start_date = Faker::Date.between(Date.today, Date.today + 180)
+  duration = rand(3..21)
+  destination_adjective = adjectives.sample
   Trip.create!(
   title: "#{act.name} in #{destination}",
   destination: destination,
-  description: Faker::Hipster.sentence,
-  price: rand(400..900),
-  activity: act,
-  group: groups.sample,
-  user: users.sample
-  )
+  description: "This is a #{duration}-day #{act.name.downcase} trip to the #{destination_adjective} #{destination}. If you love #{act.name.downcase} you'd be a ruddy idiot to miss it.",
+  price: rand(200..1000),
+   activity: act,
+  group: Group.new,
+  user: users.sample,
+  start_date: start_date,
+  end_date: (start_date + duration),
+  organiser_exp: experiences.sample,
+  visited_before: [true,false].sample,
+  crew_exp: experiences.sample,
+  crew_exp_required: [true,false].sample,
+  max_crew_size: rand(2..12),
+  photo: nil)
 end
 
 

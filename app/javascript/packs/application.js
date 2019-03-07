@@ -1,5 +1,5 @@
 import "bootstrap";
-
+import "../plugins/flatpickr"
 import places from 'places.js';
 
 
@@ -20,5 +20,3 @@ const locationAutocomplete = () => {
 };
 
 locationAutocomplete();
-
-
