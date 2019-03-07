@@ -15,7 +15,6 @@ class Trip < ApplicationRecord
   # allows stripe integration
   monetize :price_cents
 
-
   private
 
   def start_date_must_be_future
