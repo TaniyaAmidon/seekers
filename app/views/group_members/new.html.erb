@@ -1,0 +1,17 @@
+<h1>Request to join group</h1>
+
+<p>request to join <%= @trip.user.first_name %>'s trip to <%= @trip.destination %>  </p>
+<%= @trip.title %>
+<br>
+<%= @trip.destination %>
+<br>
+<%= @trip.description %>
+
+<%= simple_form_for [@trip, @group_member] do |f|%>
+
+<%= f.input :message_to_organiser, label: "Enter a message to the organiser"  %>
+
+<%= f.submit "Request to join group", class: "btn btn-success"%>
+
+<% end %>
+

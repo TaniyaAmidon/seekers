@@ -3,13 +3,13 @@
 <div>
 <ul>
   <%= cl_image_tag @user.photo, height: 300, width: 300 %>
-  <li><%= @user.first_name %></li>
-  <li><%= @user.last_name %></li>
-  <li><%= @user.email %></  li>
-  <li><%= @user.dob %></li>
-  <li><%= @user.location %></li>
-  <li><%= @user.bio %></li>
-</ul>
-</div>
+  <li><strong>First Name: </strong><%= @user.first_name %></li>
+    <li><strong>Last name: </strong><%= @user.last_name %></li>
+    <li><strong>Email: </strong><%= @user.email %></  li>
+    <li><strong>Date of Birth: </strong><%= @user.dob %></li>
+    <li><strong>Your location: </strong><%= @user.location %></li>
+    <li><strong>A bit about you: </strong><%= @user.bio %></li>
+  </ul>
+  </div>
 
 <%= link_to "Edit user", edit_user_path %>
