@@ -1,3 +1,6 @@
+.chat-form {
+  margin: 0 auto;
+}
 .messages {
   font-size: 14px;
   color: #868686;
@@ -13,10 +16,11 @@
 .message {
   display: flex;
   margin-bottom: 10px;
+  color: #555753;
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #F2F9FC;
+      background-color: #d6fa98;
     }
   }
 }
@@ -53,7 +57,7 @@ input.form-control {
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
+  background-color: #72ebd1;
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
