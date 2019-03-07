@@ -18,12 +18,15 @@
     label: "Date of birth:",
     start_year: Date.today.year - 18,
     end_year: Date.today.year - 90 %>
-    <%= f.input :location,
+    <%= f.input :location, input_html: {id: "location" },
     label: "Location:",
     placeholder: "Westeros",
     required: true,
     autofocus: true,
     input_html: {autocomplete: "location" }  %>
+
+
+
     <%= f.input :bio, as: :text,
     label: "Tell us a little about yourself (100 words max):",
     placeholder: "I've been trying to invade Westeros to reclaim the Seven Kingdoms as a gift to my unborn child.",
