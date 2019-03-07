@@ -15,6 +15,9 @@ class Trip < ApplicationRecord
   # allows stripe integration
   monetize :price_cents
 
+  geocoded_by :destination
+  after_validation :geocode, if: :will_save_change_to_destination?
+
   private
 
   def start_date_must_be_future

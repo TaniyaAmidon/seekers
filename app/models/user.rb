@@ -14,4 +14,6 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :location, :dob, presence: true
   validates :first_name, :last_name, length: { minimum: 2, too_short: "Name must be two characters minimum" }
   validates :bio, length: { maximum: 500, too_long: "%{count} characters is the maximum allowed" }
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
