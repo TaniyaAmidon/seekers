@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_173350) do
+ActiveRecord::Schema.define(version: 2019_03_07_111653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2019_03_06_173350) do
   create_table "activities", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
     t.string "name"
   end
 
@@ -36,6 +40,14 @@ ActiveRecord::Schema.define(version: 2019_03_06_173350) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "chat_room_id"
+    t.string "content"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.text "description"
     t.bigint "group_id"
@@ -46,6 +58,14 @@ ActiveRecord::Schema.define(version: 2019_03_06_173350) do
     t.integer "price_cents", default: 0, null: false
     t.integer "activity_id"
     t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "organiser_exp"
+    t.boolean "visited_before"
+    t.text "crew_exp"
+    t.boolean "crew_exp_required"
+    t.integer "max_crew_size"
+    t.string "photo"
     t.index ["group_id"], name: "index_trips_on_group_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
@@ -79,6 +99,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_173350) do
 
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "trips", "groups"
   add_foreign_key "trips", "users"
   add_foreign_key "user_activities", "activities"
