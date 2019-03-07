@@ -38,7 +38,19 @@
   }
 }
 
-.trip-card {
-
+.card-info {
+  // padding: px;
 }
 
+.trip-card {
+  .card-info{
+    margin-top: 8px;
+  }
+  .green-dot {
+    color: #72ebd1;
+    font-size: 8px;
+  }
+  .title {
+    color: #a7a7a7;
+  }
+}
