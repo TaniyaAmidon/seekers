@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   mount ForestLiana::Engine => '/forest'
   root to: 'pages#home'
   resources :trips do
-    resources :group_members, only: [:new, :create, :edit, :update, :destroy]
+    resources :group_members, only: [:new, :create, :destroy, :index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
