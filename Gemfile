@@ -15,6 +15,7 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'forest_liana'
 gem 'faker'
 gem 'money-rails'
 gem 'stripe'
@@ -23,6 +24,8 @@ gem 'carrierwave', '~> 1.2'
 gem 'algoliasearch-rails'
 
 group :development do
+  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem 'binding_of_caller'
   gem 'web-console', '>= 3.3.0'
 end
 

@@ -1,4 +1,5 @@
-<h1>Would you like to go on (trip name), with <%= @trip.user.first_name %><%#= @trip.title %></h1>
+
+<h1>Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
 <div class="trip-info">
   <p><strong>Trip description: </strong><%= @trip.description %></p>
@@ -8,8 +9,15 @@
   <% @trip.group.users.each do |user| %>
     <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
   <% end %>
-  <%= link_to "Contact Organiser",new_user_registration_path   %>
+
+    <% if user_signed_in? %>
+    <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
+    <% else %>
+    <%= link_to "Register to contact organiser",new_user_registration_path  %>
+    <% end %>
+
   <p><%= link_to "Return to Trips Index", trips_path %></p>
+
  </div>
 
 

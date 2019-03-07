@@ -1,7 +1,8 @@
-<%= simple_form_for trip do |f| %>
-  <%= f.input :destination, input_html: {id: "autocomplete-destination" }%>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.submit "Create Trip"%>
+<%= simple_form_for trip do |f| %>                  
+<%= f.input :title %>
+<%= f.input :destination, input_html: {id: "autocomplete-destination" }%>  
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.submit "Create Trip"%>
 <% end %>
 
