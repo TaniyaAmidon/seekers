@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :edit, :update, :destroy]
 
+  resources :chat_rooms, only: :show do
+    resources :messages, only: :create
+  end
+  mount ActionCable.server => "/cable"
+
 end
