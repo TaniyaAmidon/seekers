@@ -28,6 +28,20 @@ class GroupMembersController < ApplicationController
     @group_member.status = "accepted"
   end
 
+  def pending_index
+    @pending_members = GroupMember.where(status: "pending")
+  end
+
+  def accepted_index
+    @accepted_members = GroupMember.where(status: "accepted")
+  end
+
+  def rejected_index
+    @rejected_members = GroupMember.where(status: "rejected")
+  end
+
+  def
+
   private
 
   def find_group_member
