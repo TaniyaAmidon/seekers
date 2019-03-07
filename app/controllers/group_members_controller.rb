@@ -1,5 +1,5 @@
 class GroupMembersController < ApplicationController
-  before_action :find_group_member, only: [:show, :edit, :update, :destroy]
+  before_action :find_group_member, only: [:show, :reject, :accept, :destroy]
 
   def new
     @trip = Trip.find(params[:trip_id])
@@ -27,15 +27,6 @@ class GroupMembersController < ApplicationController
   def accept
     @group_member.status = "accepted"
   end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
 
   private
 
