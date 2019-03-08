@@ -6,6 +6,9 @@
     <title>
       Seekers - group adventure travel made easy | <%= yield(:title) if :title %>
     </title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <link rel="icon" href="<%= asset_path 'seekers_logo.png' %>" type="image/x-icon" />

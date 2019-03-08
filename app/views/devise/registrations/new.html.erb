@@ -1,56 +1,63 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="form-inputs show-holder devise-login">
+    <div class="form-header">
+      <h1>Sign up</h1>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <div class="form-content">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-    placeholder: "Khal",
-    required: true,
-    autofocus: true,
-    input_html: {autocomplete: "first_name" }  %>
-    <%= f.input :last_name,
-    placeholder: "Drogo",
-    required: true,
-    autofocus: true,
-    input_html: {autocomplete: "last_name" }  %>
-    <%= f.input :dob, as: :date, html5: true,
-    label: "Date of birth:",
-    start_year: Date.today.year - 18,
-    end_year: Date.today.year - 90 %>
-    <%= f.input :location, input_html: {id: "autocomplete-location" },
-    label: "Location:",
-    placeholder: "Westeros",
-    required: true,
-    autofocus: true  %>
+        <div class="form-inputs">
+          <%= f.input :first_name,
+          placeholder: "Khal",
+          required: true,
+          autofocus: true,
+          input_html: {autocomplete: "first_name" }  %>
+          <%= f.input :last_name,
+          placeholder: "Drogo",
+          required: true,
+          autofocus: true,
+          input_html: {autocomplete: "last_name" }  %>
+          <%= f.input :dob, as: :date, html5: true,
+          label: "Date of birth:",
+          start_year: Date.today.year - 18,
+          end_year: Date.today.year - 90 %>
+          <%= f.input :location, input_html: {id: "autocomplete-location" },
+          label: "Location:",
+          placeholder: "Westeros",
+          required: true,
+          autofocus: true  %>
 
 
 
-    <%= f.input :bio, as: :text,
-    label: "Tell us a little about yourself (100 words max):",
-    placeholder: "I've been trying to invade Westeros to reclaim the Seven Kingdoms as a gift to my unborn child.",
-    autofocus: true %>
-    <%#= f.input :photo %>
-    <%#= f.input :photo_cache, as: :hidden %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+          <%= f.input :bio, as: :text,
+          label: "Tell us a little about yourself (100 words max):",
+          placeholder: "I've been trying to invade Westeros to reclaim the Seven Kingdoms as a gift to my unborn child.",
+          autofocus: true %>
+          <%#= f.input :photo %>
+          <%#= f.input :photo_cache, as: :hidden %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions d-flex ">
+          <%= f.button :submit, "Create profile", class: "login"  %>
+        </div>
+          <%= link_to "Return to Trips Index", trips_path, class: "return"  %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Create profile" %>
-  </div>
-  <%= link_to "Return to Trips Index", trips_path %>
-<% end %>
-
+</div>
 
 
 <%#= render "devise/shared/links" %>
