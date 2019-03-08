@@ -1,7 +1,10 @@
 import "bootstrap";
 import "../plugins/flatpickr"
 import places from 'places.js';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { initMapbox } from '../plugins/init_mapbox';
 
+initMapbox();
 
 const initAutocomplete = () => {
   const destinationInput = document.getElementById('autocomplete-destination');

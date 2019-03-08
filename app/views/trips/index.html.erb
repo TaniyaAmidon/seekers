@@ -1,7 +1,7 @@
 <div class="container">
   <%= content_for(:title, "View active trips") %>
   <div class="trip-title underline">
-    <h1>Choose your dream adventure...</h1>
+    <h1>Choose your dream adventure... <a href="#map"><i class="fas fa-map-signs"></i></a></h1>
   </div>
 
   <div class="trip-icons d-flex justify-content-between">
@@ -36,6 +36,16 @@
       <% end %>
     </div>
   </div>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+    </div>
+
 
 </div>
+
 
