@@ -37,6 +37,24 @@ class TripsController < ApplicationController
     redirect_to trips_path(@trip)
   end
 
+  def pending_index
+    @trip = Trip.find(params[:id])
+    @pending_members = GroupMember.where(status: "pending", group: @trip.group)
+  end
+  helper_method :pending_index
+
+  def accepted_index
+    @trip = Trip.find(params[:id])
+    @accepted_members = GroupMember.where(status: "accepted", group: @trip.group)
+  end
+  helper_method :accepted_index
+
+  def rejected_index
+    @trip = Trip.find(params[:id])
+    @rejected_members = GroupMember.where(status: "rejected", group: @trip.group)
+  end
+  helper_method :rejected_index
+
   private
 
   def find_trip
