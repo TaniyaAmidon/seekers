@@ -50,13 +50,11 @@ wrapper: :floating_labels_form,
   <%= f.input :crew_exp_required, label: "Is it important that your crew have relevant experience?", wrapper: :custom_boolean_switch %>
   <%= f.input :max_crew_size, collection: 2..12, label: "What's the maximum number of adventurers you'd like to bring along?" %>
   <%= f.input :price, label: "What's the approximate total £ cost of the trip per person?" %>
-  <%#= f.input :photo %>
-  <%#= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn-primary btn-lg" %>
-</div>
-
-
-<!-- photouploader throws undefined method error -->
+  Upload a photo that captures the essence of your adventure
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn-primary" %>
+  
 <% end %>
 
 </div>
