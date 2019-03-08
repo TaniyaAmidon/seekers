@@ -22,8 +22,8 @@
   <% end %>
 
   <% group = @trip.group.group_members.where(user: current_user) %>
-    <% if group.any? %>
-    <p>you are already a group member on this trip</p>
+    <% if group.any? || current_user == @trip.user %>
+    <p>you are already part of this trip</p>
     <% else %>
     <h1>You are not a group member on this trip, why not apply to join?</h1>
   <% end %>
@@ -38,7 +38,7 @@
     <% end %>
   <% end %>
 
-  <% if accepted_array.include?(current_user.id) %>
+  <% if accepted_array.include?(current_user.id) || current_user == @trip.user %>
 
     <% groupid = @trip.group.id%>
     <% rooms = ChatRoom.where(group_id: groupid) %>
