@@ -3,13 +3,15 @@ class TripsController < ApplicationController
   before_action :find_trip, only: [:show, :edit, :update, :destroy, :pending_index, :accepted_index, :rejected_index]
 
   def index
-    @trip = Trip.where.not(latitude: nil, longitude: nil)
+    @trips = Trip.where.not(latitude: nil, longitude: nil)
 
-    @markers = @trip.map do |trip|
+    @markers = @trips.map do |trip|
       {
         lng: trip.longitude,
-        lat: trip.latitude
+        lat: trip.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
       }
+    end
   end
 
   def show
@@ -22,6 +24,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.group = Group.new
+    ChatRoom.new(group: @trip.group)
     @trip.user = current_user
     if @trip.save
       redirect_to trip_path(@trip)
