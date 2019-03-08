@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_trip, only: [:show, :edit, :update, :destroy]
+  before_action :find_trip, only: [:show, :edit, :update, :destroy, :pending_index, :accepted_index, :rejected_index]
 
   def index
     @trips = Trip.all
@@ -38,22 +38,25 @@ class TripsController < ApplicationController
   end
 
   def pending_index
-    @trip = Trip.find(params[:id])
     @pending_members = GroupMember.where(status: "pending", group: @trip.group)
   end
   helper_method :pending_index
 
   def accepted_index
-    @trip = Trip.find(params[:id])
     @accepted_members = GroupMember.where(status: "accepted", group: @trip.group)
   end
   helper_method :accepted_index
 
   def rejected_index
-    @trip = Trip.find(params[:id])
     @rejected_members = GroupMember.where(status: "rejected", group: @trip.group)
   end
   helper_method :rejected_index
+
+  # def is_accepted?
+  #   @user = current_user
+  #   if user.
+
+  # end
 
   private
 

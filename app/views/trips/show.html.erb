@@ -1,8 +1,9 @@
 
 <h1>Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
-
-  <%= render "group_members/index" %>
+  <% if current_user == @trip.user %>
+    <%= render "group_members/index" %>
+  <% end %>
 
 <div class="trip-info">
   <p><strong>Trip description: </strong><%= @trip.description %></p>
@@ -12,6 +13,27 @@
   <% @trip.group.users.each do |user| %>
     <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
   <% end %>
+
+
+  <% group = @trip.group.group_members.where(user: current_user) %>
+    <% if group.any? %>
+    <p>you are already a group member on this trip</p>
+    <% else %>
+    <h1>You are not a group member on this trip, why not apply to join?</h1>
+    <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
+  <% end %>
+
+  <% accepted_array = [] %>
+    <% group.each do |member| %>
+      <% if member.status == 'accepted' %>
+      <% accepted_array << member.user_id %>
+    <% end %>
+  <% end %>
+
+  <% if accepted_array.include?(current_user.id) %>
+  <p>You are the ONE</p>
+  <% end %>
+
 
     <% if user_signed_in? %>
     <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
