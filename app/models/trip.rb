@@ -18,6 +18,8 @@ class Trip < ApplicationRecord
   geocoded_by :destination
   after_validation :geocode, if: :will_save_change_to_destination?
 
+  mount_uploader :photo, PhotoUploader
+
   private
 
   def start_date_must_be_future

@@ -21,14 +21,23 @@
     flex-direction: row-reverse;
     .message-content {
       background-color: #d6fa98;
+      text-align: right;
+      padding: 4px 8px 2px 8px;
+      h4 {
+        color: black;
+        font-size: 16px;
+      }
     }
   }
 }
 .message-content {
   background-color: #F7F7F7;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 0 10px;
-  padding: 11px 10px 8px 10px;
+    padding: 4px 8px 2px 8px;
+   h4 {
+    font-size: 16px;
+  }
 }
 .avatar {
   width: 42px;
@@ -67,3 +76,5 @@ input.form-control {
     margin: 0;
   }
 }
+
+
