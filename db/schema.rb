@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_183526) do
+ActiveRecord::Schema.define(version: 2019_03_08_112639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_03_07_183526) do
 
   create_table "chat_rooms", force: :cascade do |t|
     t.string "name"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_chat_rooms_on_group_id"
   end
 
   create_table "group_members", force: :cascade do |t|
@@ -59,8 +61,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_183526) do
     t.integer "price_cents", default: 0, null: false
     t.integer "activity_id"
     t.string "title"
-    t.date "trip_date"
-    t.integer "days"
     t.date "start_date"
     t.date "end_date"
     t.text "organiser_exp"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_183526) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chat_rooms", "groups"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "messages", "chat_rooms"
