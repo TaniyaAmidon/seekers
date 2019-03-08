@@ -1,8 +1,8 @@
-<div class="trip-info">
-<h1>Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
+<div class="show-holder">
+<h1 class="form-header">Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
 
-  <div class="show-holder">
+  <div class="trip-info">
     <p><strong>Trip description: </strong><%= @trip.description %></p>
     <p><strong>Trip destination: </strong><%= @trip.destination %></p>
     <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>

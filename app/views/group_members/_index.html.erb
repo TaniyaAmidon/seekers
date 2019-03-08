@@ -1,10 +1,10 @@
-<h1>View the statuses of different group members</h1>
+<h2 class="form-header">View the statuses of different group members</h2>
 
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <h2>Pending members</h2>
+      <h3>Pending members</h3>
       <% pending_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
@@ -31,21 +31,19 @@
     </div>
 
     <div class="col-sm">
-      <h2>Accepted members</h2>
+      <h3>Accepted members</h3>
       <% accepted_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
-        <li><%= member.status %></li>
       </ul>
       <% end %>
     </div>
 
     <div class="col-sm">
-      <h2>Rejected members</h2>
+      <h3>Rejected members</h3>
       <% rejected_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
-        <li><%= member.status %></li>
       </ul>
       <% end %>
     </div>
