@@ -27,9 +27,9 @@ wrapper: :floating_labels_form,
 
 <%= f.input :max_crew_size, collection: 2..12, label: "What's the maximum number of adventurers you'd like to bring along?" %>
 <%= f.input :price, label: "What's the approximate total £ cost of the trip per person?" %>
-<!-- photouploader throws undefined method error -->
-<%#= f.input :photo %>
-<%#= f.input :photo_cache, as: :hidden %>
+Upload a photo that captures the essence of your adventure
+<%= f.input :photo %>
+<%= f.input :photo_cache, as: :hidden %>
 <%= f.button :submit, class: "btn-primary" %>
 <% end %>
 
