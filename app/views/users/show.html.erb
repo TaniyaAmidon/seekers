@@ -1,15 +1,88 @@
-<h1><%= @user.first_name %> <%= @user.last_name %>'s profile</h1>
-
-<div>
-<ul>
-  <%= cl_image_tag @user.photo, height: 300, width: 300 %>
-  <li><strong>First Name: </strong><%= @user.first_name %></li>
-    <li><strong>Last name: </strong><%= @user.last_name %></li>
-    <li><strong>Email: </strong><%= @user.email %></  li>
-    <li><strong>Date of Birth: </strong><%= @user.dob %></li>
-    <li><strong>Your location: </strong><%= @user.location %></li>
-    <li><strong>A bit about you: </strong><%= @user.bio %></li>
-  </ul>
+<div class="container">
+  <div class="row">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  </div>
+  <div class="row">
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= cl_image_tag @user.photo, height: 300, width: 300, class: 'card-img' %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Profile</h5>
+            <p class="card-text">
+              <ul>
+              <li><strong>First Name: </strong><%= @user.first_name %></li>
+              <li><strong>Last name: </strong><%= @user.last_name %></li>
+              <li><strong>Email: </strong><%= @user.email %></  li>
+              <li><strong>Date of Birth: </strong><%= @user.dob %></li>
+              <li><strong>Your location: </strong><%= @user.location %></li>
+              <li><strong>A bit about you: </strong><%= @user.bio %></li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-<%= link_to "Edit user", edit_user_path %>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-6 card-organised" >
+        <h2>Organised Trips</h2>
+        <% @planned_trips.each do |planned| %>
+          <div class="card border-secondary mb-3" >
+            <div class="card-header"><%= planned.title %></div>
+            <div class="card-body text-secondary">
+
+              <p class="card-text">Destination: <%= planned.destination %></p>
+              <p class="card-text">Description: <%= planned.description %></p>
+              <p class="card-text">Start Date: <%= planned.start_date %></p>
+              <p class="card-text">End Date: <%= planned.end_date %></p>
+              <p class="card-text">Price: <%= planned.price_cents %></p>
+            </div>
+          <% end %>
+      </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <h2>Joined Trips</h2>
+        <% @joined_trips.each do |joined| %>
+        <div class="card border-secondary mb-3">
+          <div class="card-header"><%= joined.title %></div>
+          <div class="card-body text-secondary">
+
+
+              <p class="card-text">Destination: <%= joined.destination %></p>
+              <p class="card-text">Description: <%= joined.description %></p>
+              <p class="card-text">Start Date: <%= joined.start_date %></p>
+              <p class="card-text">End Date: <%= joined.end_date %></p>
+              <p class="card-text">Price: <%= joined.price_cents %></p>
+          </div>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!--
+      <div class="user-trips"> -->
+
+        <div class="planned-trips">
+
+        </div>
+
+        <div class="attending-trips">
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Edit user", edit_user_path %>
+</div>
