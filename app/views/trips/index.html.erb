@@ -16,9 +16,9 @@
     <div class="row">
       <% @trips.each do |trip| %>
         <div class="col-sm-6 col-md-3 trip-column">
-          <%#= cl_image_tag trip.photo, height: 300, width: 300 %>
           <div class="card trip-card">
-            <img class="card-img-top" src="https://images.unsplash.com/photo-1520853290592-81017d2bde21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80" alt="Card image cap">
+            <%#= cl_image_tag trip.photo, height: 200, width: auto %>
+            <%= cl_image_tag(trip.photo, height: 120, crop: "scale") %>
             <div class="card-info">
               <div class="title">
                 <%= trip.activity.name %>
