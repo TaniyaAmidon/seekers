@@ -1,2 +1,11 @@
-<%= trip.title %> with <%= trip.user.first_name %>
-<%= cl_image_tag(trip.photo) %>
+<div class="card">
+  <div class="card-title">
+     <strong>
+      <%= link_to trip.title, trip_path(trip)  %> with <%= trip.user.first_name %>
+     </strong>
+  </div>
+  <div class="card-body">
+
+    <%= cl_image_tag(trip.photo, width: 300, crop: 'fill') %>
+  </div>
+</div>
