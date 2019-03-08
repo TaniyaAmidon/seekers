@@ -7,6 +7,7 @@
     <p><strong>Destination: </strong><%= @trip.destination %></p>
     <p><strong>Activity: </strong><%= @trip.activity.name %></p>
     <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+    <%= cl_image_tag(@trip.photo, width: 300, crop: 'fill') %>
   </div>
 
   <div class="accepted-members">
