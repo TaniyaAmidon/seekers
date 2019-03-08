@@ -89,7 +89,7 @@ experiences = ['In west Philadelphia born and raised, on the playground was wher
   crew_exp: experiences.sample,
   crew_exp_required: [true,false].sample,
   max_crew_size: rand(2..12),
-  photo: open("https://source.unsplash.com/800x450/?#{destination},#{act}"))
+  photo: open("https://source.unsplash.com/800x450/?#{destination},#{act.name}"))
 end
 
 
