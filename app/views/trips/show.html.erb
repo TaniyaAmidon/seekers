@@ -1,4 +1,6 @@
 
+
+
 <h1>Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
   <% if current_user == @trip.user %>
@@ -34,15 +36,50 @@
   <% end %>
 
   <% if accepted_array.include?(current_user.id) %>
-  <p>You are the ONE</p>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 chat-form">
+            <div class="chat-header"><h4><%= @chat_room.name.capitalize %></h4></div>
+            <div class="messages">
+              <% @chat_room.messages.each do |message| %>
+                <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+              <% end %>
+            </div>
+            <div id="create-message">
+              <%= simple_form_for [ @chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+                <%= f.input :content, label: false %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% content_for :after_js do %>
+      <script>
+        scrollLastMessageIntoView();
+        App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
+          received: (data) => {
+            if (data.current_user_id !== <%= current_user.id %>) {
+              const messagesContainer = document.querySelector('.messages');
+              messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+              scrollLastMessageIntoView();
+            }
+          }
+        })
+      </script>
+    <% end %>
+
+    <% else %>
+       <% if user_signed_in? %>
+      <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
+      <% else %>
+      <%= link_to "Register to contact organiser",new_user_registration_path  %>
+      <% end %>
+
   <% end %>
 
 
-    <% if user_signed_in? %>
-    <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
-    <% else %>
-    <%= link_to "Register to contact organiser",new_user_registration_path  %>
-    <% end %>
+
 
   <p><%= link_to "Return to Trips Index", trips_path %></p>
 
