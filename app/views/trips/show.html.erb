@@ -3,22 +3,25 @@
 
 
   <div class="trip-info">
-    <p><strong>Trip description: </strong><%= @trip.description %></p>
-    <p><strong>Trip destination: </strong><%= @trip.destination %></p>
-    <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>
-    <p><strong>Trip price: </strong>£<%= @trip.price%></p>
+    <p><%= @trip.description %></p>
+    <p><strong>Destination: </strong><%= @trip.destination %></p>
+    <p><strong>Activity: </strong><%= @trip.activity.name %></p>
+    <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
   </div>
 
   <div class="accepted-members">
+    <h3 class="form-header">  Crew members</h3>
+    <div class="contents">
     <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
     <% accepted_members.each do |member| %>
       <%  accepted_user = User.find(member.user_id) %>
-      <p><strong>Group member: </strong><%=accepted_user.first_name%> <br> <strong>Bio: </strong><%=accepted_user.bio%></p>
+      <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
     <% end %>
+    </div>
   </div>
 
 
-  <div class="group-members">
+  <div class="group-members accepted-members">
     <% if user_signed_in? && current_user == @trip.user %>
       <%= render "group_members/index" %>
     <% end %>
@@ -88,13 +91,10 @@
       <% end %>
     <% end %>
   </div>
+  <div class="button">
+  <%= link_to "Return to Trips Index", trips_path, class: "btn btn-outline-success" %>
+</div>
 </div>
 
 
-  <p><%= link_to "Return to Trips Index", trips_path %></p>
-
-
-
-<!--
-<p><%#= link_to "Edit trip", edit_trip_path  %></p> -->
 
