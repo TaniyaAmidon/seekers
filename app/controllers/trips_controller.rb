@@ -3,7 +3,13 @@ class TripsController < ApplicationController
   before_action :find_trip, only: [:show, :edit, :update, :destroy, :pending_index, :accepted_index, :rejected_index]
 
   def index
-    @trips = Trip.all
+    @trip = Trip.where.not(latitude: nil, longitude: nil)
+
+    @markers = @trip.map do |trip|
+      {
+        lng: trip.longitude,
+        lat: trip.latitude
+      }
   end
 
   def show
