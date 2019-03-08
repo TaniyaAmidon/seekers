@@ -10,9 +10,12 @@
   <p><strong>Trip destination: </strong><%= @trip.destination %></p>
   <p><strong>Trip activity: </strong><%= @trip.activity.name %></p>
   <p><strong>Trip price: </strong>£<%= @trip.price%></p>
-  <% @trip.group.users.each do |user| %>
-    <p><strong>Group member: </strong><%=user.first_name%> <br> <strong>Bio: </strong><%=user.bio%></p>
+  <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+  <% accepted_members.each do |member| %>
+    <%  accepted_user = User.find(member.user_id) %>
+    <p><strong>Group member: </strong><%=accepted_user.first_name%> <br> <strong>Bio: </strong><%=accepted_user.bio%></p>
   <% end %>
+
 
 
   <% group = @trip.group.group_members.where(user: current_user) %>
