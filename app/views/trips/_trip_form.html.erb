@@ -1,3 +1,5 @@
+<div class="">
+
 <%= simple_form_for trip,
 wrapper: :floating_labels_form,
   wrapper_mappings: {
@@ -7,29 +9,52 @@ wrapper: :floating_labels_form,
 
   <%= f.error_notification %>
 
+<div class="full-page p-5" id="section-one">
+
 
 <%= f.input :title, label: "Provide a descriptive title for your trip" %>
  <!-- <label for="trip_destination">Destination</label> -->
 <%= f.input :destination, input_html: {id: "autocomplete-destination" }, label: "What's the destination of your trip?"%>
+<a href="#section-two"><i class="fas fa-arrow-circle-down"></i></a>
+
+</div>
+
+<div class="full-page p-5" id="section-two">
 
 <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"}, label: "When do you leave?" %>
 <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"}, label: "When do you return?" %>
+<a href="#section-three"><i class="fas fa-arrow-circle-down"></i></a>
 
+</div>
 <!-- <input type="date" name="start_date">
  --><!-- <input type="date" name="end_date"> -->
 
-<%= f.association :activity %>
-<%= f.input :description, as: :text, label: "Describe your trip to your fellow adventurers" %>
-<%= f.input :organiser_exp, as: :text, label: "Tell us about your experience with this kind of adventure" %>
-<%= f.input :crew_exp, as: :text, label: "What kind of crew do you want to take along with you?" %>
-<%= f.input :visited_before, wrapper: :custom_boolean_switch, label: "Have you done this trip (or one like it) before?" %>
-<%= f.input :crew_exp_required, label: "Is it important that your crew have relevant experience?", wrapper: :custom_boolean_switch %>
+ <div class="full-page p-5" id="section-three">
 
-<%= f.input :max_crew_size, collection: 2..12, label: "What's the maximum number of adventurers you'd like to bring along?" %>
-<%= f.input :price, label: "What's the approximate total £ cost of the trip per person?" %>
-Upload a photo that captures the essence of your adventure
-<%= f.input :photo %>
-<%= f.input :photo_cache, as: :hidden %>
-<%= f.button :submit, class: "btn-primary" %>
+<%= f.association :activity %>
+<p>Describe your trip to your fellow adventurers</p>
+<%= f.input :description,  as: :text, label: false %>
+<p>Tell us about your experience with this kind of adventure</p>
+<%= f.input :organiser_exp, as: :text, label: false %>
+<%= f.input :visited_before, wrapper: :custom_boolean_switch, label: "Have you done this trip (or one like it) before?" %>
+
+<a href="#section-four"><i class="fas fa-arrow-circle-down"></i></a>
+
+</div>
+
+
+
+<div class="full-page p-5" id="section-four">
+  <p>What kind of crew do you want to take along with you?</p>
+  <%= f.input :crew_exp, as: :text, label: false %>
+  <%= f.input :crew_exp_required, label: "Is it important that your crew have relevant experience?", wrapper: :custom_boolean_switch %>
+  <%= f.input :max_crew_size, collection: 2..12, label: "What's the maximum number of adventurers you'd like to bring along?" %>
+  <%= f.input :price, label: "What's the approximate total £ cost of the trip per person?" %>
+  Upload a photo that captures the essence of your adventure
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn-primary" %>
+  
 <% end %>
 
+</div>
