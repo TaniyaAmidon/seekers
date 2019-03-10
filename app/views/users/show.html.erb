@@ -26,7 +26,6 @@
               <li><strong>A bit about you: </strong><%= @user.bio %></li>
               </ul>
             </p>
-
           </div>
         </div>
       </div>
@@ -39,10 +38,9 @@
 
           <div id="Organised" class="tabcontent dflex">
               <% @planned_trips.each do |planned| %>
-
                 <div class="card card-organised">
                 <div class="card-header organised-header"><%= planned.title %></div>
-                <div><%= cl_image_tag @user.photo, height: 300, width: 200, class: 'card-img' %></div>
+                <div><%= cl_image_tag(planned.photo, height: 120, crop: "scale") %></div>
                   <div class="card-body text-secondary">
                     <p class="card-text"><strong>Destination: </strong><%= planned.destination %></p>
                     <p class="card-text"><strong>Description: </strong><%= planned.description %></p>
