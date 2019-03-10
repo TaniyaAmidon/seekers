@@ -29,14 +29,8 @@ ul {
     line-height: 35px;
 }
 
-.card-organised {
-  // background-color: blue;
-}
-
-.organised-header {
-  background-color: red;
-  color: #72ebd1;
-  font-weight: bold;
+.dflex {
+  display: inline-block;
 }
 
 .card-header {
@@ -44,10 +38,6 @@ ul {
   background-color: white;
 }
 
-
-#Organised.tabcontent {
-  margin-top: 20px;
-}
 
 /* Style the tab */
 // .tab {
@@ -66,6 +56,8 @@ ul {
    &:hover {
     text-decoration: none;
     color: black;
+    border: none;
+    transition: 0.3s;
 
   // background-color: inherit;
   // float: left;
@@ -85,13 +77,13 @@ ul {
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: none;
+  outline: none;
 }
+
 
 /* Style the tab content */
 .tabcontent {
   display: none;
-  // padding: 6px 12px;
-
   border-top: none;
 }
 
@@ -102,7 +94,5 @@ ul {
     line-height: 1.5;
     &:hover{}
     }
-  // color: #72ebd1;
-  // text-decoration: white underline;
-  // font-weight: bold;
+
 
