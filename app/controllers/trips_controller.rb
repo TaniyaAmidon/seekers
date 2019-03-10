@@ -3,7 +3,11 @@ class TripsController < ApplicationController
   before_action :find_trip, only: [:show, :edit, :update, :destroy, :pending_index, :accepted_index, :rejected_index]
 
   def index
-    @trips = Trip.where.not(latitude: nil, longitude: nil)
+    if params[:activity_id].nil? || params[:activity_id] == ""
+      @trips = Trip.where.not(latitude: nil, longitude: nil)
+    else
+      @trips = Trip.where("activity_id = ?", params[:activity_id]).where.not(latitude: nil, longitude: nil)
+    end
 
     @markers = @trips.map do |trip|
       {
@@ -12,6 +16,15 @@ class TripsController < ApplicationController
         infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
       }
     end
+
+    @activities = Activity.all
+
+
+    # respond_to :html, :js
+    # respond_to do |format|
+    #     format.js { render '_trips', layout: false }
+    #     format.html { render 'index' }
+    # end
   end
 
   def show
@@ -44,6 +57,10 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     redirect_to trips_path(@trip)
+  end
+
+  def find_by_activity
+
   end
 
   def pending_index

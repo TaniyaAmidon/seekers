@@ -19,15 +19,11 @@ puts 'creating activities'
 #seed activities
 
 activities = Activity.create([
-{ name: 'Hiking' },
-{ name: 'Skiing' },
-{ name: 'Snowboarding' },
-{ name: 'Mountain Biking' },
-{ name: 'Cycling' },
-{ name: 'Whitewater Rafting' },
-{ name: 'Climbing' },
-{ name: 'Skydiving' },
-{ name: 'Sailing' }])
+{ name: 'Mountain', style: "fas fa-mountain mountain" },
+{ name: 'Snow', style: "fas fa-snowflake" },
+{ name: 'Road', style: "fas fa-bicycle" },
+{ name: 'Water', style: "fas fa-water"},
+{ name: 'Arial', style: "fas fa-wind"}])
 
 puts "user activities seeded"
 
