@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_112639) do
     t.integer "price_cents", default: 0, null: false
     t.integer "activity_id"
     t.string "title"
+    t.date "trip_date"
+    t.integer "days"
     t.date "start_date"
     t.date "end_date"
     t.text "organiser_exp"
