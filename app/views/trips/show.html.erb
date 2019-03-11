@@ -5,25 +5,26 @@
 
 <!-- Trip info -->
 <div class="show-holder">
-  <div class="banner">
-   <%= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
+  <div class="banner rounded" style="background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200, crop: 'fill') %>); height: 200px">
+   <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
+    <div class="d-flex justify-content-between p-3 text-white">
+      <div id="trip-title-date">
+        <h2><%= @trip.title %> with <%= @trip.user.first_name %></h2>
+        <p><span class="badge">Departing <%= @trip.start_date.strftime("%A %B #{@trip.start_date.day.ordinalize} %Y") %></span></p>
+        <div class="organiser-info d-flex">
+          <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+          <div class="px-3">
+            <strong>Organiser:</strong> <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+            <p><%= @trip.user.location  %></p>
+          </div>
+        </div>
+
+      </div>
+      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
+    </div>
   </div>
 
   <div class="trip-info">
-    <div class="d-flex justify-content-between">
-      <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
-      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
-    </div>
-    <p><strong><%= @trip.start_date %></strong></p>
-    <hr>
-    <div class="organiser-info d-flex">
-      <%= cl_image_tag current_user.photo.url, crop: :fit, class: "avatar" %>
-      <div>
-        <%= @trip.user.first_name %> <%= @trip.user.last_name %>
-        <p><%= @trip.user.location  %></p>
-      </div>
-    </div>
-    <hr>
     <div>
       <p><%= @trip.description %></p>
       <p><strong>Destination: </strong><%= @trip.destination %></p>
