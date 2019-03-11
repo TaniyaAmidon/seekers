@@ -1,10 +1,12 @@
 .card .profile-card {
-  width: 500px;
+  width: 400px;
   margin-left: 100px;
 }
 
+
 .profile-container {
-  width: 700px;
+  width: 600px;
+  margin: 0 0;
 }
 
 .card-organised {
@@ -24,4 +26,73 @@ li {
 ul {
     margin-left: 0;
     padding-left: 0;
+    line-height: 30px;
 }
+
+.dflex {
+  display: inline-block;
+}
+
+.card-header {
+  color: #72ebd1;
+  background-color: white;
+}
+
+
+/* Style the tab */
+// .tab {
+//   overflow: hidden;
+//   border: 1px solid #ccc;
+//   background-color: white;
+//   border-radius: 4px;
+// }
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  color: black ;
+    text-decoration: none;
+    font-size: 24px;
+    text-decoration: underline #3CEAD0;
+   &:hover {
+    text-decoration: none;
+    color: black;
+    border: none;
+    transition: 0.3s;
+
+  // background-color: inherit;
+  // float: left;
+  // border: none;
+  // outline: none;
+  // cursor: pointer;
+  // padding: 14px 16px;
+  // transition: 0.3s;
+}
+}
+
+/* Change background color of buttons on hover */
+// .tab button:hover {
+//   background-color: #f7f8f9;
+// }
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: none;
+  outline: none;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  border-top: none;
+}
+
+.tablinks {
+    border-bottom: 4px solid white;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1.5;
+    &:hover{}
+    }
+
+

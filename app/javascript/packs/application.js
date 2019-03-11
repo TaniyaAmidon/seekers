@@ -23,5 +23,3 @@ const locationAutocomplete = () => {
 };
 
 locationAutocomplete();
-
-

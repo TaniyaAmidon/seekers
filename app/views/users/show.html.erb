@@ -1,3 +1,8 @@
+<html>
+<body>
+
+
+
 <div class="container">
   <div class="row">
     <h1><%= @user.first_name %> <%= @user.last_name %></h1>
@@ -26,63 +31,60 @@
       </div>
     </div>
   </div>
-
-
-    <div class="row">
-      <div class="col-xs-12 col-md-6 card-organised" >
-        <h2>Organised Trips</h2>
-        <% @planned_trips.each do |planned| %>
-          <div class="card border-secondary mb-3" >
-            <div class="card-header"><%= planned.title %></div>
-            <div class="card-body text-secondary">
-
-              <p class="card-text">Destination: <%= planned.destination %></p>
-              <p class="card-text">Description: <%= planned.description %></p>
-              <p class="card-text">Start Date: <%= planned.start_date %></p>
-              <p class="card-text">End Date: <%= planned.end_date %></p>
-              <p class="card-text">Price: <%= planned.price_cents %></p>
-            </div>
-          <% end %>
-      </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <h2>Joined Trips</h2>
-        <% @joined_trips.each do |joined| %>
-        <div class="card border-secondary mb-3">
-          <div class="card-header"><%= joined.title %></div>
-          <div class="card-body text-secondary">
-
-
-              <p class="card-text">Destination: <%= joined.destination %></p>
-              <p class="card-text">Description: <%= joined.description %></p>
-              <p class="card-text">Start Date: <%= joined.start_date %></p>
-              <p class="card-text">End Date: <%= joined.end_date %></p>
-              <p class="card-text">Price: <%= joined.price_cents %></p>
+          <div class="tab">
+            <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Organised</button>
+            <button class="tablinks" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
           </div>
-        </div>
 
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-<!--
-      <div class="user-trips"> -->
-
-        <div class="planned-trips">
-
-        </div>
-
-        <div class="attending-trips">
+          <div id="Organised" class="tabcontent dflex">
+              <% @planned_trips.each do |planned| %>
+                <div class="card card-organised">
+                <div class="card-header organised-header"><%= planned.title %></div>
+                <div><%= cl_image_tag(planned.photo, height: 120, crop: "scale") %></div>
+                  <div class="card-body text-secondary">
+                    <p class="card-text"><strong>Destination: </strong><%= planned.destination %></p>
+                    <p class="card-text"><strong>Description: </strong><%= planned.description %></p>
+                    <p class="card-text"><strong>Start Date: </strong><%= planned.start_date %></p>
+                    <p class="card-text"><strong>End Date: </strong> <%= planned.end_date %></p>
+                    <p class="card-text"><strong>Price: </strong><%= planned.price_cents %></p>
+                  </div>
+              <% end %>
+                </div>
+            </div>
 
 
-        </div>
-      </div>
-    </div>
-  </div>
-  <%= link_to "Edit user", edit_user_path %>
-</div>
+          <div id="Joined" class="tabcontent">
+             <h2>Joined Trips</h2>
+                  <% @joined_trips.each do |joined| %>
+                  <div class="card card-joined">
+                    <div class="card-header joined-header"><%= joined.title %></div>
+                    <div class="card-body text-secondary">
+                        <p class="card-text">Destination: <%= joined.destination %></p>
+                        <p class="card-text">Description: <%= joined.description %></p>
+                        <p class="card-text">Start Date: <%= joined.start_date %></p>
+                        <p class="card-text">End Date: <%= joined.end_date %></p>
+                        <p class="card-text">Price: <%= joined.price_cents %></p>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+          </div>
+
+<script>
+          function openTrip(evt, tripName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tripName).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+</script>
+
+          </body>
+          </html>
