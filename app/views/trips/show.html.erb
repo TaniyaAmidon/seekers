@@ -19,17 +19,34 @@
           </div>
         </div>
 
+  <div class="trip-info">
+    <div class="d-flex justify-content-between">
+      <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
+      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
+    </div>
+    <p><strong><%= @trip.start_date %></strong></p>
+    <hr>
+    <div class="organiser-info d-flex">
+      <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+      <div>
+        <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+        <p><%= @trip.user.location  %></p>
       </div>
       <%= link_to "Contact organiser", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
     </div>
-  </div>
 
-  <div class="trip-info">
-    <div>
-      <p><%= @trip.description %></p>
-      <p><strong>Destination: </strong><%= @trip.destination %></p>
-      <p><strong>Activity: </strong><%= @trip.activity.name %></p>
-      <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+    <hr>
+    <div class="d-flex">
+      <div>
+        <p><strong>Destination: </strong><%= @trip.destination %></p>
+        <p><strong>Activity: </strong><%= @trip.activity.name %></p>
+        <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+        <p><%= @trip.description %></p>
+      </div>
+      <div id="map" data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="min-width:62%; height: 300px">
+      </div>
+
     </div>
     <hr>
     <div class="">
