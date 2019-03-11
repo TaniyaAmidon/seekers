@@ -83,26 +83,34 @@ group1 = Group.new
 group2 = Group.new
 group3 = Group.new
 
-trip1 = Trip.create!(group: group1, user_id: arthur1.id, title: "Exhilerating week Skiing in the Alps", destination: "France", start_date: Date.new(2019, 8, 15),
+trip1 = Trip.new(group: group1, user_id: arthur1.id, title: "Exhilerating week Skiing in the Alps", destination: "France", start_date: Date.new(2019, 8, 15),
   end_date: Date.new(2019, 8, 30), days: 15, activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
   organiser_exp: "Have been skiing many times before, I am also an experience snowboarder and can help anyone out who needs it.", visited_before: true,
   crew_exp: "People DO have to of been skiing before. Should be able to navigate red slopes plus", crew_exp_required: true,
-  max_crew_size: 4, price_cents: 50, photo: "")
+  max_crew_size: 4, price_cents: 55000)
+
+  trip1.remote_photo_url = "https://res.cloudinary.com/sophiespratley/image/upload/v1552299568/nvedstpzhx0hnj6qenx6.jpg"
+  trip1.save!
 
 #trip2
 trip2 = Trip.create!(group: group2, user_id: kitty2.id, title: "Water rafting in Norway", destination: "Norway", start_date: Date.new(2019, 6, 14),
   end_date: Date.new(2019, 6, 27), days: 14, activity: activities[3], description: "Water rafting trip in the beautiful Nordic fjords near Bøkfjorden - everything included in the price!",
   organiser_exp: "I have been water rafting in many different locations all over the world, but Norway has alway been on my hit list. I am first aid trained", visited_before: false,
   crew_exp: "It would be great if some of the group members have experience, but it is not necessary", crew_exp_required: false,
-  max_crew_size: 7, price_cents: 60, photo: "")
+  max_crew_size: 7, price_cents: 67000, photo: "")
 
+  trip2.remote_photo_url = "https://res.cloudinary.com/sophiespratley/image/upload/v1552324784/photo-1530866495561-507c9faab2ed.jpg"
+  trip2.save!
 
 #trip3
 trip3 = Trip.create!(group: group3, user_id: sophie3.id, title: "Sky Diving in New Zealand", destination: "New Zealand", start_date: Date.new(2019, 7, 1),
   end_date: Date.new(2019, 7, 18), days: 18, activity: activities[4], description: "Sky Diving in stunning New Zealand - nature and adrenaline!",
   organiser_exp: "I have been bungee jumping before and loved the adrenaline rush, have not sky dived before", visited_before: false,
   crew_exp: "People should have experience of being at heights, as it can be scary up there. But if you beleive you are up for the challenge we might make an exception", crew_exp_required: true,
-  max_crew_size: 6, price_cents: 70, photo: "")
+  max_crew_size: 6, price_cents: 78000)
+
+  trip3.remote_photo_url = "https://res.cloudinary.com/sophiespratley/image/upload/v1552324963/photo-1529573603507-70ad30917905.jpg"
+  trip3.save!
 
 
 
@@ -186,7 +194,7 @@ three_users = [arthur1, kitty2, sophie3]
   title: "#{act.name} in #{destination}",
   destination: destination,
   description: "This is a #{duration}-day #{act.name.downcase} trip to the #{destination_adjective} #{destination}. If you love #{act.name.downcase} contact organiser to apply.",
-  price_cents: rand(200..1000),
+  price_cents: rand(2000..9000),
   activity: act,
   group: Group.new,
   user: three_users.sample,
