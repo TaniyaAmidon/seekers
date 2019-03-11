@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
 
-  resources :orders, only: [:show, :create]
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+  end
+
 
   mount ActionCable.server => "/cable"
 end
