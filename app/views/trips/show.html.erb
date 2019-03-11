@@ -3,6 +3,8 @@
   <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
 <% end %>
 
+<% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+<% group = @trip.group.group_members.where(user: current_user) %>
 <!-- Trip info -->
 <div class="show-holder">
   <div class="banner">
@@ -17,7 +19,7 @@
     <p><strong><%= @trip.start_date %></strong></p>
     <hr>
     <div class="organiser-info d-flex">
-      <%= cl_image_tag current_user.photo.url, crop: :fit, class: "avatar" %>
+      <%= cl_image_tag @trip.user.photo.url, crop: :fit, class: "avatar" %>
       <div>
         <%= @trip.user.first_name %> <%= @trip.user.last_name %>
         <p><%= @trip.user.location  %></p>
@@ -30,32 +32,8 @@
       <p><strong>Activity: </strong><%= @trip.activity.name %></p>
       <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
     </div>
-    <hr>
-    <div class="">
-      <h4>Crew members</h>
-    </div>
-    <div>
-      <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
-      <% accepted_members.each do |member| %>
-        <%  accepted_user = User.find(member.user_id) %>
-        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
-      <% end %>
-    </div>
-    <hr>
-    <div>
-      <% if user_signed_in? && current_user == @trip.user %>
-        <%= render "group_members/index" %>
-      <% end %>
 
-      <% group = @trip.group.group_members.where(user: current_user) %>
-        <% if group.any? || current_user == @trip.user %>
-        <% else %>
-        <h1>You are not a group member on this trip, why not apply to join?</h1>
-      <% end %>
-    </div>
-    <hr>
-
-<!-- chat  -->
+   <!-- chat  -->
   <div class="chat">
     <% if user_signed_in? %>
     <% accepted_array = [] %>
@@ -77,7 +55,7 @@
 
         <div class="">
             <div class="row">
-              <div class="col-sm-6 col-sm-offset-3 chat-form">
+              <div class=" chat-form">
                 <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
                   <% if order_paid %>
                     <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
@@ -119,9 +97,35 @@
       <% end %>
     <% end %>
   </div>
+
+    <div class="">
+      <h4>Crew members</h>
+    </div>
+    <div>
+
+      <% accepted_members.each do |member| %>
+        <%  accepted_user = User.find(member.user_id) %>
+        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+      <% end %>
+    </div>
+    <hr>
+
+    <div>
+      <% if user_signed_in? && current_user == @trip.user %>
+        <%= render "group_members/index" %>
+      <% end %>
+
+
+        <% if group.any? || current_user == @trip.user %>
+        <% else %>
+        <h1>You are not a group member on this trip, why not apply to join?</h1>
+      <% end %>
+    </div>
+    <hr>
+
   <hr>
   <div class="button">
-  <%= link_to "Return to Trips Index", trips_path, class: "btn btn-outline-success" %>
+  <%= link_to "Return to Trips Index", trips_path, class: "underline contact-btn" %>
   </div>
 </div>
 
