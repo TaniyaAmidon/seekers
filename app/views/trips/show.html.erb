@@ -1,3 +1,8 @@
+<% if user_signed_in? %>
+<% order_paid = true if Order.find_by(user: current_user, trip: @trip, state: 'paid') %>
+  <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
+<% end %>
+
 <div class="show-holder">
   <h1 class="form-header">Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
@@ -57,10 +62,9 @@
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3 chat-form">
                 <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
-                  <% order_paid = true if Order.find_by(user: current_user, trip: @trip, state: 'paid') %>
-                  <%# raise %>
-                  <% unless order_paid %>
-                  <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) %>
+                  <% if order_paid %>
+                    <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
+                    <% else %>
                   <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
                   <% end %>
 </div>
@@ -110,13 +114,13 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header form-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Pay deposit of <% @trip.price %> to secure your place</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Pay deposit to secure your place on <%= @trip.title %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <% unless order_paid %>
+        <% unless order_paid || !user_signed_in? %>
         <%= render 'payments/new' %>
         <% end %>
       </div>
