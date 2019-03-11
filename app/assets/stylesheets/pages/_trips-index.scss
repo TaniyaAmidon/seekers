@@ -13,13 +13,13 @@
 .trip-icons {
   padding: 16px;
 
-  .altitude {
-    color: #e84990;
-    border-color: #e84990;
+  .activity-btn {
+    color: black;
+    border-color: black;
     border-radius: 16px;
     width: 150px;
     &:hover {
-      background-color: #e84990;
+      background-color: rgba(114, 235, 209, 1.000);
       color: white;
     }
   }
