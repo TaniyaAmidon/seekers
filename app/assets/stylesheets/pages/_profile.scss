@@ -3,6 +3,9 @@
   margin-left: 100px;
 }
 
+.profile {
+  width: 240px;
+}
 
 .profile-container {
   width: 600px;
@@ -37,15 +40,23 @@ ul {
   color: #72ebd1;
   background-color: white;
 }
-
 .photo-top {
+  height: 120px;
+  width: 240px;
+}
 
+.top {
+  display: flex;
+  justify-content: right;
 }
 
 .deposit-status {
   position: absolute;
   top: 0px;
   z-index: 2;
+  color: white;
+  padding: 1px;
+  line-height: 0.5;
 
 }
 

@@ -78,16 +78,18 @@
                   <% y = 0 %>
                  <% @joined_trips.each do |joined| %>
                     <div class="col-sm-6 col-md-3 trip-column">
-                      <div class="card trip-card">
-                        <div class="photo-top">
-                        <%= cl_image_tag(joined.photo, width: 271, crop: "scale") %>
-                          <div class="deposit-status">
-                          <% if joined.orders[y] == "paid" %>
-                              <p> Deposit paid <i class="fas fa-check-circle"></i></p>
-                            <% else %>
-                              <p> Deposit outstanding <i class="fas fa-exclamation-circle"></i></p>
-                            <% end %>
-                            <% y += 1 %>
+                      <div class="card trip-card profile">
+                        <div class="top">
+                          <div class="photo-top">
+                          <%= cl_image_tag(joined.photo, width: 239, height: 120, crop:"fill") %>
+                            <div class="deposit-status">
+                               <p><% if joined.orders[y] == "paid" %>
+                                 Deposit paid <i class="fas fa-check-circle"></i>
+                              <% else %>
+                              Deposit outstanding <i class="fas fa-exclamation-circle"></i>
+                              <% end %></p>
+                              <% y += 1 %>
+                            </div>
                           </div>
                         </div>
                         <div class="card-info">
@@ -100,6 +102,7 @@
                           <div class="subtitle">
                             £ <%= joined.price %> <i class="fas fa-circle green-dot"></i> <%=joined.start_date %>
                           </div>
+                           <%= link_to "", trip_path(joined), class: "stretched-link" %>
                         </div>
                       </div>
                     </div>
