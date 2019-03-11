@@ -5,10 +5,10 @@
 
 <div class="container">
   <div class="row">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h1 id="user-name"><%= @user.first_name %> <%= @user.last_name %></h1>
   </div>
   <div class="row">
-    <div class="card mb-3">
+    <div id = "user-card" class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-4">
           <%= cl_image_tag @user.photo, height: 300, width: 300, class: 'card-img' %>
@@ -26,14 +26,15 @@
               <li><strong>A bit about you: </strong><%= @user.bio %></li>
               </ul>
             </p>
+            <%= link_to "Edit profile", edit_user_path(current_user), class: 'btn'  %>
           </div>
         </div>
       </div>
     </div>
   </div>
       <div class="tab">
-        <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Organised</button>
-        <button class="tablinks" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
+        <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
+        <button class="tablinks inactive" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
       </div>
 
 
@@ -43,7 +44,7 @@
               <% x = -1 %>
               <% @planned_trips.each do |planned| %>
               <div class="col-sm-6 col-md-3 trip-column p-3">
-                <div class="card trip-card profile">
+                <div id = "profile" class="card trip-card">
                   <div class="top">
                     <div class="photo-top">
                         <%= cl_image_tag(planned.photo, width: 239, height: 120, crop:"fill") %>
@@ -81,7 +82,7 @@
               <% y = -1 %>
               <% @joined_trips.each do |joined| %>
               <div class="col-sm-6 col-md-3 trip-column">
-                <div class="card trip-card profile">
+                <div id = "profile" class="card trip-card profile">
                   <div class="top">
                     <div class="photo-top">
                         <%= cl_image_tag(joined.photo, width: 239, height: 120, crop:"fill") %>
@@ -114,6 +115,9 @@
         </div>
 
 <script>
+         Window.onLoad= openTrip(event, 'Organised');
+
+
           function openTrip(evt, tripName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -127,6 +131,7 @@
             document.getElementById(tripName).style.display = "block";
             evt.currentTarget.className += " active";
           }
+
 </script>
 
 
