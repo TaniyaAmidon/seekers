@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
     @planned_trips = Trip.where(user_id: current_user.id)
-
     @joined_trips = Trip.joins(group: [:group_members]).where(group: { group_members: { user_id: current_user.id } })
     # group.group_members.where(user_id: current_user.id)
   end
