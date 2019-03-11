@@ -1,0 +1,30 @@
+.create {
+  padding: 10px;
+  text-align: center;
+
+  a {
+      color: #3CEAD0 ;
+      text-decoration: none;
+      font-size: 24px;
+      text-decoration: none;
+      border-bottom: solid 4px white;
+      display: inline-block;
+      line-height: 1.5;
+     &:hover {
+      text-decoration: none;
+      color: #3CEAD0;
+      border-bottom: solid 4px #3CEAD0;
+      display: inline-block;
+      line-height: 1.5;
+     }
+    }
+
+
+    .buttons {
+      display: flex;
+      justify-content: space-evenly;
+      padding-bottom: 20px;
+      }
+
+
+}

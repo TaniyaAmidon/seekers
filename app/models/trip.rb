@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :group
   belongs_to :user
   belongs_to :activity
+  has_many :orders
 
   # validations
   validates_presence_of :title, :description, :destination, :start_date, :end_date, :organiser_exp, :crew_exp, :max_crew_size

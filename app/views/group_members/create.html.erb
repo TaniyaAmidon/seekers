@@ -1,5 +1,12 @@
-<% @trip = Trip.find(params[:trip_id]) %>
-<p>Your request has been submitted to <%= @trip.title %></p>
-<p>While you wait for a response why not</p>
-<%= link_to "build your profile", edit_user_path(current_user)  %>
-<%= link_to "browse other trips", trips_path %>
+<div class="show-holder">
+  <h3 class="form-header" style="padding: 10px; text-align: center;"><%= @trip.title %> with <%=@trip.user.first_name %></h3>
+  <div class ="create">
+    <p>Your request has been submitted to <%= @trip.user.first_name %></p>
+    <p>While you wait for a response why not...</p>
+    <div class="buttons">
+      <%= link_to "Edit your profile", edit_user_path(current_user)%>
+      <%= link_to "Return to Trips Index", trips_path %>
+    </div>
+  </div>
+</div>
+
