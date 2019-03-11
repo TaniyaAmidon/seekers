@@ -4,15 +4,26 @@
 <% end %>
 
 <div class="show-holder">
+  <div class="banner">
+   <%= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
+  </div>
+  
   <h1 class="form-header">Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
 
 
+
   <div class="trip-info">
+    <div class="d-flex justify-content-between">
+      <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
+      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
+    </div>
+    <hr>
+    <p><strong><%= @trip.start_date %></strong></p>
+    <hr>
     <p><%= @trip.description %></p>
     <p><strong>Destination: </strong><%= @trip.destination %></p>
     <p><strong>Activity: </strong><%= @trip.activity.name %></p>
     <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
-    <%= cl_image_tag(@trip.photo, width: 300, crop: 'fill') %>
   </div>
 
   <div class="accepted-members">
@@ -104,7 +115,7 @@
   </div>
   <div class="button">
   <%= link_to "Return to Trips Index", trips_path, class: "btn btn-outline-success" %>
-  <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "btn btn-outline-success" %>
+
 </div>
 </div>
 
