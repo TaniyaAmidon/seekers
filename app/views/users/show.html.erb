@@ -47,6 +47,7 @@
                     <p class="card-text"><strong>Start Date: </strong><%= planned.start_date %></p>
                     <p class="card-text"><strong>End Date: </strong> <%= planned.end_date %></p>
                     <p class="card-text"><strong>Price: </strong><%= planned.price_cents %></p>
+                    <%= link_to "View trip", trip_path(planned)  %>
                   </div>
               <% end %>
                 </div>
