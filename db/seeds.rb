@@ -84,7 +84,7 @@ group2 = Group.new
 group3 = Group.new
 
 trip1 = Trip.new(group: group1, user_id: arthur1.id, title: "Exhilerating week Skiing in the Alps", destination: "France", start_date: Date.new(2019, 8, 15),
-  end_date: Date.new(2019, 8, 30), days: 15, activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
+  end_date: Date.new(2019, 8, 30), activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
   organiser_exp: "Have been skiing many times before, I am also an experience snowboarder and can help anyone out who needs it.", visited_before: true,
   crew_exp: "People DO have to of been skiing before. Should be able to navigate red slopes plus", crew_exp_required: true,
   max_crew_size: 4, price_cents: 55000)
@@ -94,7 +94,7 @@ trip1 = Trip.new(group: group1, user_id: arthur1.id, title: "Exhilerating week S
 
 #trip2
 trip2 = Trip.create!(group: group2, user_id: kitty2.id, title: "Water rafting in Norway", destination: "Norway", start_date: Date.new(2019, 6, 14),
-  end_date: Date.new(2019, 6, 27), days: 14, activity: activities[3], description: "Water rafting trip in the beautiful Nordic fjords near Bøkfjorden - everything included in the price!",
+  end_date: Date.new(2019, 6, 27), activity: activities[3], description: "Water rafting trip in the beautiful Nordic fjords near Bøkfjorden - everything included in the price!",
   organiser_exp: "I have been water rafting in many different locations all over the world, but Norway has alway been on my hit list. I am first aid trained", visited_before: false,
   crew_exp: "It would be great if some of the group members have experience, but it is not necessary", crew_exp_required: false,
   max_crew_size: 7, price_cents: 67000, photo: "")
@@ -104,7 +104,7 @@ trip2 = Trip.create!(group: group2, user_id: kitty2.id, title: "Water rafting in
 
 #trip3
 trip3 = Trip.create!(group: group3, user_id: sophie3.id, title: "Sky Diving in New Zealand", destination: "New Zealand", start_date: Date.new(2019, 7, 1),
-  end_date: Date.new(2019, 7, 18), days: 18, activity: activities[4], description: "Sky Diving in stunning New Zealand - nature and adrenaline!",
+  end_date: Date.new(2019, 7, 18), activity: activities[4], description: "Sky Diving in stunning New Zealand - nature and adrenaline!",
   organiser_exp: "I have been bungee jumping before and loved the adrenaline rush, have not sky dived before", visited_before: false,
   crew_exp: "People should have experience of being at heights, as it can be scary up there. But if you beleive you are up for the challenge we might make an exception", crew_exp_required: true,
   max_crew_size: 6, price_cents: 78000)
@@ -118,21 +118,21 @@ trip3 = Trip.create!(group: group3, user_id: sophie3.id, title: "Sky Diving in N
 
 #trip4
 # trip4 = Trip.create!(group: group1, user_id: ife4.id, title: "Cyling in the hills", destination: "Colorado", start_date: Date.new(2019, 7, 10),
-#   end_date: Date.new(2019, 7, 20), days: 10, activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
+#   end_date: Date.new(2019, 7, 20), activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
 #   organiser_exp: "Have been skiing many times before Have been skiing many times before Have been skiing many times before", visited_before: true,
 #   crew_exp: "People DO have to of been skiing before People DO have to of been skiing before People DO have to of been skiing before", crew_exp_required: true,
 #   max_crew_size: 6, price_cents: 50, photo: "")
 
 # #trip5
 # trip5 = Trip.create!(group: group2, user_id: tanyia5.id, title: "Exhilerating week Skiing in the Alps", destination: "France", start_date: Date.new(2019, 12, 1),
-#   end_date: Date.new(2019, 12, 12), days: 12, activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
+#   end_date: Date.new(2019, 12, 12), activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
 #   organiser_exp: "Have been skiing many times before Have been skiing many times before Have been skiing many times before", visited_before: true,
 #   crew_exp: "People DO have to of been skiing before People DO have to of been skiing before People DO have to of been skiing before", crew_exp_required: true,
 #   max_crew_size: 6, price_cents: 50, photo: "")
 
 # #trip6
 # trip6 = Trip.create!(group: group3, user_id: dan6.id, title: "Exhilerating week Skiing in the Alps", destination: "France", start_date: Date.new(2019, 8, 15),
-#   end_date: Date.new(2019, 8, 30), days: 15, activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
+#   end_date: Date.new(2019, 8, 30), activity: activities[1], description: "Great trip skiing going up and down mountains and there is lots of snow",
 #   organiser_exp: "Have been skiing many times before Have been skiing many times before Have been skiing many times before", visited_before: true,
 #   crew_exp: "People DO have to of been skiing before People DO have to of been skiing before People DO have to of been skiing before", crew_exp_required: true,
 #   max_crew_size: 6, price_cents: 50, photo: "")
