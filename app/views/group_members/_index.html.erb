@@ -1,7 +1,10 @@
 <div class="">
-  <h4 class="">View the statuses of different group members</h4>
+  <a class="btn accordion" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+     All members!
+    </a>
   <br>
-  <div class="row">
+  <br>
+  <div class="row collapse" id="collapseExample" >
     <div class="col-sm">
       <p><strong>Pending members</strong></p>
       <% pending_index.each do |member| %>
