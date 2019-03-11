@@ -5,6 +5,7 @@
 
 <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
 <% group = @trip.group.group_members.where(user: current_user) %>
+
 <!-- Trip info -->
 <div class="show-holder">
   <div class="banner">
@@ -98,16 +99,19 @@
     <% end %>
   </div>
 
-    <div class="">
-      <h4>Crew members</h>
-    </div>
     <div>
+      <button class="btn accordion" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapseExample">
+      Click to see your crew members!
+      </button>
 
+    <div class="collapse" id="collapse-1">
+      <!-- <p>hello</p> -->
       <% accepted_members.each do |member| %>
         <%  accepted_user = User.find(member.user_id) %>
         <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
       <% end %>
     </div>
+  </div>
     <hr>
 
     <div>
@@ -154,3 +158,19 @@
 </div>
 
 
+<!-- <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script> -->
