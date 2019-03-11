@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: :show do
     resources :messages, only: :create
   end
+
+  resources :orders, only: [:show, :create]
+
   mount ActionCable.server => "/cable"
 end
