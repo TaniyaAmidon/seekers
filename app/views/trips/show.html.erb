@@ -17,18 +17,23 @@
     <p><strong><%= @trip.start_date %></strong></p>
     <hr>
     <div class="organiser-info d-flex">
-      <%= cl_image_tag current_user.photo.url, crop: :fit, class: "avatar" %>
+      <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
       <div>
         <%= @trip.user.first_name %> <%= @trip.user.last_name %>
         <p><%= @trip.user.location  %></p>
       </div>
     </div>
     <hr>
-    <div>
-      <p><%= @trip.description %></p>
-      <p><strong>Destination: </strong><%= @trip.destination %></p>
-      <p><strong>Activity: </strong><%= @trip.activity.name %></p>
-      <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+    <div class="d-flex">
+      <div>
+        <p><strong>Destination: </strong><%= @trip.destination %></p>
+        <p><strong>Activity: </strong><%= @trip.activity.name %></p>
+        <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+        <p><%= @trip.description %></p>
+      </div>
+      <div id="map" data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="min-width:62%; height: 300px">
+      </div>
     </div>
     <hr>
     <div class="">
