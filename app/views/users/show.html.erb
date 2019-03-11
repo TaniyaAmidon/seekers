@@ -65,6 +65,7 @@
                         <p class="card-text">Start Date: <%= joined.start_date %></p>
                         <p class="card-text">End Date: <%= joined.end_date %></p>
                         <p class="card-text">Price: <%= joined.price_cents %></p>
+                        <%= link_to "View trip", trip_path(joined)  %>
                     </div>
                   </div>
                   <% end %>
