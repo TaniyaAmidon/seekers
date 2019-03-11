@@ -3,48 +3,59 @@
   <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
 <% end %>
 
+<!-- Trip info -->
 <div class="show-holder">
   <div class="banner">
    <%= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
   </div>
+
   <div class="trip-info">
     <div class="d-flex justify-content-between">
       <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
       <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
     </div>
-    <hr>
     <p><strong><%= @trip.start_date %></strong></p>
     <hr>
-    <p><%= @trip.description %></p>
-    <p><strong>Destination: </strong><%= @trip.destination %></p>
-    <p><strong>Activity: </strong><%= @trip.activity.name %></p>
-    <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
-  </div>
-
-  <div class="accepted-members">
-    <h3 class="form-header">  Crew members</h3>
-    <div class="contents">
-    <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
-    <% accepted_members.each do |member| %>
-      <%  accepted_user = User.find(member.user_id) %>
-      <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
-    <% end %>
+    <div class="organiser-info d-flex">
+      <%= cl_image_tag current_user.photo.url, crop: :fit, class: "avatar" %>
+      <div>
+        <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+        <p><%= @trip.user.location  %></p>
+      </div>
     </div>
-  </div>
+    <hr>
+    <div>
+      <p><%= @trip.description %></p>
+      <p><strong>Destination: </strong><%= @trip.destination %></p>
+      <p><strong>Activity: </strong><%= @trip.activity.name %></p>
+      <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+    </div>
+    <hr>
+    <div class="">
+      <h4>Crew members</h>
+    </div>
+    <div>
+      <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+      <% accepted_members.each do |member| %>
+        <%  accepted_user = User.find(member.user_id) %>
+        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+      <% end %>
+    </div>
+    <hr>
+    <div>
+      <% if user_signed_in? && current_user == @trip.user %>
+        <%= render "group_members/index" %>
+      <% end %>
 
+      <% group = @trip.group.group_members.where(user: current_user) %>
+        <% if group.any? || current_user == @trip.user %>
+        <% else %>
+        <h1>You are not a group member on this trip, why not apply to join?</h1>
+      <% end %>
+    </div>
+    <hr>
 
-  <div class="group-members accepted-members">
-    <% if user_signed_in? && current_user == @trip.user %>
-      <%= render "group_members/index" %>
-    <% end %>
-
-    <% group = @trip.group.group_members.where(user: current_user) %>
-      <% if group.any? || current_user == @trip.user %>
-      <% else %>
-      <h1>You are not a group member on this trip, why not apply to join?</h1>
-    <% end %>
-  </div>
-
+<!-- chat  -->
   <div class="chat">
     <% if user_signed_in? %>
     <% accepted_array = [] %>
@@ -64,7 +75,7 @@
 
       <% unless @chat_room == nil %>
 
-        <div class="container">
+        <div class="">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3 chat-form">
                 <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
@@ -73,7 +84,7 @@
                     <% else %>
                   <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
                   <% end %>
-</div>
+        </div>
                 <div class="messages">
                   <% @chat_room.messages.each do |message| %>
                     <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -108,14 +119,15 @@
       <% end %>
     <% end %>
   </div>
+  <hr>
   <div class="button">
   <%= link_to "Return to Trips Index", trips_path, class: "btn btn-outline-success" %>
-
-</div>
+  </div>
 </div>
 
 
 <!-- Modal log in-->
+
 <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
