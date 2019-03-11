@@ -19,12 +19,6 @@ class TripsController < ApplicationController
 
     @activities = Activity.all
 
-
-    # respond_to :html, :js
-    # respond_to do |format|
-    #     format.js { render '_trips', layout: false }
-    #     format.html { render 'index' }
-    # end
   end
 
   def show

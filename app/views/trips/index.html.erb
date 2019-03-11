@@ -7,7 +7,6 @@
   <div class="trip-icons d-flex justify-content-between">
     <% @activities.each do |activity| %>
         <a class="btn btn-outline-primary activity-btn" href="/trips?activity_id=<%= activity.id %>" >
-         <!--  data-remote="true" -->
           <i class= "<%= activity.style %>"> </i> <%= activity.name %>
         </a>
     <% end %>
