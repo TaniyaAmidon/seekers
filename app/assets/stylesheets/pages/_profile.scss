@@ -3,6 +3,9 @@
   margin-left: 100px;
 }
 
+.profile {
+  width: 240px;
+}
 
 .profile-container {
   width: 600px;
@@ -37,7 +40,25 @@ ul {
   color: #72ebd1;
   background-color: white;
 }
+.photo-top {
+  height: 120px;
+  width: 240px;
+}
 
+.top {
+  display: flex;
+  justify-content: right;
+}
+
+.deposit-status {
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  color: white;
+  padding: 1px;
+  line-height: 0.5;
+
+}
 
 /* Style the tab */
 // .tab {
@@ -53,6 +74,10 @@ ul {
     text-decoration: none;
     font-size: 24px;
     text-decoration: underline #3CEAD0;
+    border: none;
+    background-color: white;
+
+
    &:hover {
     text-decoration: none;
     color: black;
@@ -76,15 +101,30 @@ ul {
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: none;
+  background-color: white;
   outline: none;
 }
+
+.tab button.inactive {
+  background-color: gray;
+  outline: none;
+}
+.tab button.inactive.active {
+  background-color: white;
+  outline: none;
+}
+
 
 
 /* Style the tab content */
 .tabcontent {
   display: none;
   border-top: none;
+  background-color: white;
+  padding: 8px;
+
+
+
 }
 
 .tablinks {
@@ -95,4 +135,15 @@ ul {
     &:hover{}
     }
 
+#profile {
+  border: none;
+}
 
+#user-card {
+  width: 96%;
+  border: none;
+  margin: 20px;
+}
+ #user-name {
+  margin-left: 20px;
+ }
