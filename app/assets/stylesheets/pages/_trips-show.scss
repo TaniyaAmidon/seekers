@@ -59,11 +59,6 @@
    }
 }
 
-.collapse {
-  padding: 18px !important;
-  width: 100% !important;
-}
-
 .accordion {
   background-color: #eee;
   color: #444;
@@ -76,20 +71,19 @@
   transition: 0.4s;
 }
 
-// .active, .accordion:hover {
-//   background-color: #ccc;
-// }
+.select, .accordion:hover {
+  background-color: #ccc;
+}
 
-// .accordion:after {
-//   content: '\02795'; /* Unicode character for "plus" sign (+) */
-//   font-size: 13px;
-//   color: #777;
-//   float: right;
-//   margin-left: 5px;
-// }
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
 
-// .active:after {
-//   content: "\2796"; /* Unicode character for "minus" sign (-) */
-// }
-
+.select:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
 
