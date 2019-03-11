@@ -3,7 +3,11 @@ class TripsController < ApplicationController
   before_action :find_trip, only: [:show, :edit, :update, :destroy, :pending_index, :accepted_index, :rejected_index]
 
   def index
-    @trips = Trip.where.not(latitude: nil, longitude: nil)
+    if params[:activity_id].nil? || params[:activity_id] == ""
+      @trips = Trip.where.not(latitude: nil, longitude: nil)
+    else
+      @trips = Trip.where("activity_id = ?", params[:activity_id]).where.not(latitude: nil, longitude: nil)
+    end
 
     @markers = @trips.map do |trip|
       {
@@ -12,6 +16,9 @@ class TripsController < ApplicationController
         infoWindow: render_to_string(partial: "infowindow", locals: { trip: trip })
       }
     end
+
+    @activities = Activity.all
+
   end
 
   def show
@@ -24,8 +31,9 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.group = Group.new
-    ChatRoom.new(group: @trip.group)
     @trip.user = current_user
+    ChatRoom.new(group: @trip.group, name: @trip.title).save
+    GroupMember.new(group: @trip.group, user_id: current_user, status: 'accepted').save
     if @trip.save
       redirect_to trip_path(@trip)
     else

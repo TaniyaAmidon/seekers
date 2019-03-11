@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_112639) do
+ActiveRecord::Schema.define(version: 2019_03_11_101401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_112639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "style"
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -49,6 +50,18 @@ ActiveRecord::Schema.define(version: 2019_03_08_112639) do
     t.string "content"
     t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_orders_on_trip_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -111,6 +124,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_112639) do
   add_foreign_key "group_members", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "orders", "trips"
+  add_foreign_key "orders", "users"
   add_foreign_key "trips", "groups"
   add_foreign_key "trips", "users"
   add_foreign_key "user_activities", "activities"

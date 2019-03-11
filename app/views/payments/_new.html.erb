@@ -1,0 +1,23 @@
+<%= form_tag order_payments_path(@order) do %>
+  <article>
+    <label class="amount">
+      <strong>Deposit: <%= humanized_money_with_symbol(@order.amount) %></strong>
+    </label>
+    <p>Once the trip starts, the group's deposits will be used by the organiser for group expenses.</p>
+    <p><span class="badge badge-warning">Warning</span>
+    <em>Your deposit will be shared between the group if you pull out after committing!</em></p>
+
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="Trip deposit"
+    data-email="<%= current_user.email %>"
+    data-description="<%= @order.trip.title %>"
+    data-amount="<%= @order.amount_cents %>"
+    data-currency="<%= @order.amount.currency %>">
+
+    </script>
+
+<% end %>
+

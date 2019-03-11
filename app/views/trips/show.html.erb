@@ -1,13 +1,29 @@
+<% if user_signed_in? %>
+<% order_paid = true if Order.find_by(user: current_user, trip: @trip, state: 'paid') %>
+  <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
+<% end %>
+
 <div class="show-holder">
-<h1 class="form-header">Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
+  <div class="banner">
+   <%= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
+  </div>
+  
+  <h1 class="form-header">Would you like to go <%= @trip.title %>, with <%= @trip.user.first_name %>?</h1>
+
 
 
   <div class="trip-info">
+    <div class="d-flex justify-content-between">
+      <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
+      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
+    </div>
+    <hr>
+    <p><strong><%= @trip.start_date %></strong></p>
+    <hr>
     <p><%= @trip.description %></p>
     <p><strong>Destination: </strong><%= @trip.destination %></p>
     <p><strong>Activity: </strong><%= @trip.activity.name %></p>
     <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
-    <%= cl_image_tag(@trip.photo, width: 300, crop: 'fill') %>
   </div>
 
   <div class="accepted-members">
@@ -29,7 +45,6 @@
 
     <% group = @trip.group.group_members.where(user: current_user) %>
       <% if group.any? || current_user == @trip.user %>
-      <p>you are already part of this trip</p>
       <% else %>
       <h1>You are not a group member on this trip, why not apply to join?</h1>
     <% end %>
@@ -57,7 +72,13 @@
         <div class="container">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3 chat-form">
-                <div class="chat-header"><h4><%= @chat_room.name.capitalize %></h4></div>
+                <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
+                  <% if order_paid %>
+                    <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
+                    <% else %>
+                  <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
+                  <% end %>
+</div>
                 <div class="messages">
                   <% @chat_room.messages.each do |message| %>
                     <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
@@ -94,9 +115,31 @@
   </div>
   <div class="button">
   <%= link_to "Return to Trips Index", trips_path, class: "btn btn-outline-success" %>
-  <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "btn btn-outline-success" %>
+
 </div>
 </div>
 
+
+<!-- Modal log in-->
+<div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header form-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Pay deposit to secure your place on <%= @trip.title %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% unless order_paid || !user_signed_in? %>
+        <%= render 'payments/new' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
