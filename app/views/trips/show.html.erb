@@ -14,30 +14,17 @@
       <div id="trip-title-date">
         <h2><%= @trip.title %> with <%= @trip.user.first_name %></h2>
         <p><span class="badge">Departing <%= @trip.start_date.strftime("%A %B #{@trip.start_date.day.ordinalize} %Y") %></span></p>
-        <div class="organiser-info d-flex">
-          <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
-          <div class="px-3">
-            <strong>Organiser:</strong> <%= @trip.user.first_name %> <%= @trip.user.last_name %>
-            <p><%= @trip.user.location  %></p>
-          </div>
+      <div class="organiser-info d-flex">
+        <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+        <div class="px-3">
+          <strong>Organiser:</strong> <%= @trip.user.first_name %> <%= @trip.user.last_name %>
+          <p><%= @trip.user.location  %></p>
         </div>
-
-  <div class="trip-info">
-    <div class="d-flex justify-content-between">
-      <h2><%= @trip.title %>, with <%= @trip.user.first_name %>?</h2>
-      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "underline contact-btn" %>
-    </div>
-    <p><strong><%= @trip.start_date %></strong></p>
-    <hr>
-    <div class="organiser-info d-flex">
-      <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
-      <div>
-        <%= @trip.user.first_name %> <%= @trip.user.last_name %>
-        <p><%= @trip.user.location  %></p>
       </div>
-      <%= link_to "Contact organiser", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
+      </div>
+        <%= link_to "Contact organiser", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
+      </div>
     </div>
-
     <hr>
     <div class="d-flex">
       <div>
