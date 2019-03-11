@@ -5,10 +5,10 @@
 
 <div class="container">
   <div class="row">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h1 id="user-name"><%= @user.first_name %> <%= @user.last_name %></h1>
   </div>
   <div class="row">
-    <div class="card mb-3">
+    <div id = "user-card" class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-4">
           <%= cl_image_tag @user.photo, height: 300, width: 300, class: 'card-img' %>
@@ -26,51 +26,98 @@
               <li><strong>A bit about you: </strong><%= @user.bio %></li>
               </ul>
             </p>
+            <%= link_to "Edit profile", edit_user_path(current_user), class: 'btn'  %>
           </div>
         </div>
       </div>
     </div>
   </div>
-          <div class="tab">
-            <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Organised</button>
-            <button class="tablinks" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
-          </div>
+      <div class="tab">
+        <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
+        <button class="tablinks inactive" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
+      </div>
 
-          <div id="Organised" class="tabcontent dflex">
+
+        <div id="Organised" class="tabcontent">
+         <h2>Planned Trips</h2>
+            <div class="row">
+              <% x = -1 %>
               <% @planned_trips.each do |planned| %>
-                <div class="card card-organised">
-                <div class="card-header organised-header"><%= planned.title %></div>
-                <div><%= cl_image_tag(planned.photo, height: 120, crop: "scale") %></div>
-                  <div class="card-body text-secondary">
-                    <p class="card-text"><strong>Destination: </strong><%= planned.destination %></p>
-                    <p class="card-text"><strong>Description: </strong><%= planned.description %></p>
-                    <p class="card-text"><strong>Start Date: </strong><%= planned.start_date %></p>
-                    <p class="card-text"><strong>End Date: </strong> <%= planned.end_date %></p>
-                    <p class="card-text"><strong>Price: </strong><%= planned.price_cents %></p>
-                  </div>
-              <% end %>
-                </div>
-            </div>
-
-
-          <div id="Joined" class="tabcontent">
-             <h2>Joined Trips</h2>
-                  <% @joined_trips.each do |joined| %>
-                  <div class="card card-joined">
-                    <div class="card-header joined-header"><%= joined.title %></div>
-                    <div class="card-body text-secondary">
-                        <p class="card-text">Destination: <%= joined.destination %></p>
-                        <p class="card-text">Description: <%= joined.description %></p>
-                        <p class="card-text">Start Date: <%= joined.start_date %></p>
-                        <p class="card-text">End Date: <%= joined.end_date %></p>
-                        <p class="card-text">Price: <%= joined.price_cents %></p>
+              <div class="col-sm-6 col-md-3 trip-column p-3">
+                <div id = "profile" class="card trip-card">
+                  <div class="top">
+                    <div class="photo-top">
+                        <%= cl_image_tag(planned.photo, width: 239, height: 120, crop:"fill") %>
+                      <div class="deposit-status">
+                         <p><% if planned.orders[x] == "paid" %>
+                           Deposit paid <i class="fas fa-check-circle"></i>
+                        <% else %>
+                        Deposit outstanding <i class="fas fa-exclamation-circle"></i>
+                        <% end %></p>
+                        <% x += 1 %>
+                      </div>
                     </div>
                   </div>
-                  <% end %>
+                  <div class="card-info">
+                    <div class="title">
+                        <%= planned.title %>
+                    </div>
+                    <div class="description">
+                        <%= planned.description %>
+                    </div>
+                    <div class="subtitle">
+                            £ <%= planned.price %> <i class="fas fa-circle green-dot"></i> <%=planned.start_date %>
+                    </div>
+                         <%= link_to "", trip_path(planned), class: "stretched-link" %>
+                  </div>
                 </div>
-          </div>
+              </div>
+              <% end %>
+            </div>
+         </div>
+
+        <div id="Joined" class="tabcontent">
+           <h2>Joined Trips</h2>
+            <div class="row">
+              <% y = -1 %>
+              <% @joined_trips.each do |joined| %>
+              <div class="col-sm-6 col-md-3 trip-column">
+                <div id = "profile" class="card trip-card profile">
+                  <div class="top">
+                    <div class="photo-top">
+                        <%= cl_image_tag(joined.photo, width: 239, height: 120, crop:"fill") %>
+                      <div class="deposit-status">
+                         <p><% if joined.orders[y] == "paid" %>
+                           Deposit paid <i class="fas fa-check-circle"></i>
+                        <% else %>
+                        Deposit outstanding <i class="fas fa-exclamation-circle"></i>
+                        <% end %></p>
+                        <% y += 1 %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-info">
+                    <div class="title">
+                        <%= joined.title %>
+                    </div>
+                    <div class="description">
+                        <%= joined.description %>
+                    </div>
+                    <div class="subtitle">
+                            £ <%= joined.price %> <i class="fas fa-circle green-dot"></i> <%=joined.start_date %>
+                    </div>
+                         <%= link_to "", trip_path(joined), class: "stretched-link" %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+        </div>
 
 <script>
+         Window.onLoad= openTrip(event, 'Organised');
+
+
           function openTrip(evt, tripName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -84,7 +131,7 @@
             document.getElementById(tripName).style.display = "block";
             evt.currentTarget.className += " active";
           }
+
 </script>
 
-          </body>
-          </html>
+
