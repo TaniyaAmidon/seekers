@@ -9,7 +9,7 @@ class Trip < ApplicationRecord
   validates_presence_of :title, :description, :destination, :start_date, :end_date, :organiser_exp, :crew_exp, :max_crew_size
   validates :visited_before, :crew_exp_required, inclusion: { in: [true, false] }
   validates_numericality_of :max_crew_size, on: :create
-  validates_length_of :description, :organiser_exp, :crew_exp, minimum: 50, maximum: 250
+  validates_length_of :description, :organiser_exp, :crew_exp, minimum: 10, maximum: 250
   validate :start_date_must_be_future
   validate :end_date_after_start?
 
