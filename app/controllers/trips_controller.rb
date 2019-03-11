@@ -53,10 +53,6 @@ class TripsController < ApplicationController
     redirect_to trips_path(@trip)
   end
 
-  def find_by_activity
-
-  end
-
   def pending_index
     @pending_members = GroupMember.where(status: "pending", group: @trip.group)
   end
