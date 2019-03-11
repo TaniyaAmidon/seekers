@@ -31,8 +31,9 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.group = Group.new
-    ChatRoom.new(group: @trip.group)
     @trip.user = current_user
+    ChatRoom.new(group: @trip.group, name: @trip.title).save
+    GroupMember.new(group: @trip.group, user_id: current_user, status: 'accepted').save
     if @trip.save
       redirect_to trip_path(@trip)
     else
