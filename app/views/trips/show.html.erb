@@ -98,5 +98,12 @@
 </div>
 </div>
 
+<div class="deposit-form">
+  <%= form_tag orders_path do %>
+    <%= hidden_field_tag 'trip_id', @trip.id %>
+    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
 
 
