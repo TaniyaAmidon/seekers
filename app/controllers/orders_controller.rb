@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     trip = Trip.find(params[:trip_id])
     order = Order.create!(trip: trip, amount: (trip.price/10), state: 'pending', user: current_user)
 
-    redirect_to new_order_payment_path(order)
+    redirect_to trip_path(trip)
   end
 
   def show
