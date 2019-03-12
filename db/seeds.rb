@@ -5,6 +5,7 @@ require 'faker'
 GroupMember.destroy_all
 UserActivity.destroy_all
 Activity.destroy_all
+Order.destroy_all
 Trip.destroy_all
 User.destroy_all
 Group.destroy_all
@@ -184,6 +185,7 @@ adjectives = %w(breathtaking electrifying enchanting frantic gripping hair-raisi
 experiences = ['In west Philadelphia born and raised, on the playground was where I spent most of my days', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.']
 three_users = [arthur1, kitty2, sophie3]
 
+
 20.times do
   act = Activity.all.sample
   destination = Faker::Address.country
@@ -206,6 +208,7 @@ three_users = [arthur1, kitty2, sophie3]
   crew_exp_required: [true,false].sample,
   max_crew_size: rand(2..12),
   photo: open("https://source.unsplash.com/800x450/?#{destination},#{act.name}"))
+  puts "TRIP CREATED"
 end
 
 
