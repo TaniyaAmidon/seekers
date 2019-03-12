@@ -37,7 +37,7 @@
         <p><%= @trip.description %></p>
       </div>
       <div class="map" id="map" data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="width:640px; height: 240px">
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="width:540px; height: 240px">
       </div>
 
 
@@ -65,15 +65,15 @@
           <div class="">
               <div class="row">
                 <div class=" chat-form">
-                  <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
+                  <div class="chat-header d-flex justify-content-between"><h4> Chat with your <%= @trip.activity.name%> crew</h4>
                     <% if order_paid %>
                       <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
                       <% else %>
-                    <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
+                    <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn btn-success" %>
                     <% end %>
-          </div>
+                  </div>
                   <div class="messages">
-                    <% @chat_room.messages.each do |message| %>
+                      <% @chat_room.messages.each do |message| %>
                       <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
                     <% end %>
                   </div>

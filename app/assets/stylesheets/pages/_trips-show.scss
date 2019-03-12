@@ -15,7 +15,7 @@
   justify-items: left;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 360px 160px 248px 112px  ;
+  grid-template-rows: 360px 240px 248px 112px  ;
   // grid-template-areas:
   //   "head head"
   //   "info chat"
@@ -63,6 +63,7 @@
 .chat {
   grid-column: 2 / span 1;
   grid-row: 2/ span 2;
+  margin: 24px;
 }
 
 .map {
