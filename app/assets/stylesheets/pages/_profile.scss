@@ -104,6 +104,10 @@ ul {
   background-color: white;
   outline: none;
 }
+.tab button {
+  background-color: white;
+  outline: none;
+}
 
 .tab button.inactive {
   background-color: gray;
@@ -115,16 +119,12 @@ ul {
 }
 
 
-
 /* Style the tab content */
 .tabcontent {
   display: none;
   border-top: none;
   background-color: white;
   padding: 8px;
-
-
-
 }
 
 .tablinks {
@@ -147,3 +147,21 @@ ul {
  #user-name {
   margin-left: 20px;
  }
+
+.show-button {
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
+  margin: 0px 8px;
+ &:hover {
+  color: #3CEAD0;
+  text-decoration: none;
+ }
+   .line {
+  border-bottom: 4px solid #3CEAD0;
+  display: inline-block;
+  line-height: 1.5;
+  &:hover {
+  border-bottom: 4px solid white;
+  }
+  } }
