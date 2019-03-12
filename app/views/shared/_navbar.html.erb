@@ -11,10 +11,10 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "/", class: "nav-link", class: "underline" %>
+          <%= link_to "Home", "/", class: "nav-link", class: "underline #{params[:controller] == 'pages' && params[:action] == 'home' ? '' : 'altered-navbar'}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Create a trip", new_trip_path, class: "nav-link", class: "underline" %>
+          <%= link_to "Create a trip", new_trip_path, class: "underline #{params[:controller] == 'pages' && params[:action] == 'home' ? '' : 'altered-navbar'}" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo? %>
@@ -29,10 +29,10 @@
         </li>
       <% else %>
         <li class="nav-item p-3">
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link", class: "underline" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{params[:controller] == 'pages' && params[:action] == 'home' ? '' : 'altered-navbar'}", class: "underline #{params[:controller] == 'pages' && params[:action] == 'home' ? '' : 'altered-navbar'}" %>
         </li>
         <li class="nav-item p-3">
-          <%= link_to "Log in", '#exampleModalCenter', 'data-toggle' => 'modal', class: "underline" %>
+          <%= link_to "Log in", '#exampleModalCenter', 'data-toggle' => 'modal', class: "underline #{params[:controller] == 'pages' && params[:action] == 'home' ? '' : 'altered-navbar'}" %>
         </li>
       <% end %>
     </ul>

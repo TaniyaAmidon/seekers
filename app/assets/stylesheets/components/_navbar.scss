@@ -3,6 +3,7 @@
   justify-content: space-between;
   z-index: 10;
   padding-bottom: 20px;
+  padding-top: 20px;
 
 }
 
@@ -13,6 +14,7 @@
 .navbar img {
   width: 60px;
   height: 60px;
+
 }
 
 .navbar a {
@@ -26,9 +28,11 @@
  }
 }
   .navbar .underline {
-  border-bottom: 4px solid #3CEAD0;
+  border-bottom: 4px solid #FFF;
   display: inline-block;
   line-height: 1.5;
+  margin-right: 30px;
+  margin-top: 10px;
   &:hover {
   border-bottom: 4px solid white;
   }
@@ -38,3 +42,10 @@
   color: white !important;
 }
 
+.altered-navbar {
+  color: black !important;
+  border-bottom: 4px solid #3CEAD0 !important;
+  &:hover {
+    color: black !important;
+  }
+}

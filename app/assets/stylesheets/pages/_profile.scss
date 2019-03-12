@@ -51,10 +51,16 @@
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
   border-top: none;
   background-color: white;
   padding: 16px;
+}
+
+.inactive {
+  text-decoration: none !important;
+}
+.active {
+  display: block;
 }
 
 .tablinks {
