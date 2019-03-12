@@ -182,7 +182,7 @@ GroupMember.create(group: group3, user: dan6, status: "accepted")
 puts "starting trips.."
 
 adjectives = %w(breathtaking electrifying enchanting frantic gripping hair-raising sensational mind-blowing)
-experiences = ['In west Philadelphia born and raised, on the playground was where I spent most of my days', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.']
+experiences = ['Have done similar trips', 'Have done this activity before, but not in this location', 'Know how to train beginners, no worries there']
 three_users = [arthur1, kitty2, sophie3]
 
 
