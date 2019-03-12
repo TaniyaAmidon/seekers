@@ -5,6 +5,7 @@ require 'faker'
 GroupMember.destroy_all
 UserActivity.destroy_all
 Activity.destroy_all
+Order.destroy_all
 Trip.destroy_all
 User.destroy_all
 Group.destroy_all
@@ -182,8 +183,9 @@ GroupMember.create(group: group3, user: dan6, status: "accepted")
 
 
 adjectives = %w(breathtaking electrifying enchanting frantic gripping hair-raising sensational mind-blowing)
-experiences = ['In west Philadelphia born and raised, on the playground was where I spent most of my days', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.']
+experiences = ['Have done similar trips', 'Have done this activity before, but not in this location', 'Know how to train beginners, no worries there']
 three_users = [arthur1, kitty2, sophie3]
+
 
 20.times do
   act = Activity.all.sample
@@ -195,7 +197,7 @@ three_users = [arthur1, kitty2, sophie3]
   title: "#{act.name} in #{destination}",
   destination: destination,
   description: "This is a #{duration}-day #{act.name.downcase} trip to the #{destination_adjective} #{destination}. If you love #{act.name.downcase} contact organiser to apply.",
-  price_cents: rand(2000..9000),
+  price_cents: rand(20000..90000),
   activity: act,
   group: Group.new,
   user: three_users.sample,
@@ -207,10 +209,7 @@ three_users = [arthur1, kitty2, sophie3]
   crew_exp_required: [true,false].sample,
   max_crew_size: rand(2..12),
   photo: open("https://source.unsplash.com/800x450/?#{destination},#{act.name}"))
-  puts "CREATED -> #{act.name} in #{destination}"
-  sleep rand(100..300)/100.0
+  puts "TRIP CREATED"
 end
-
-
 
 puts "Seed done"
