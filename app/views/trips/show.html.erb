@@ -8,7 +8,7 @@
 
 <!-- Trip banner -->
 <div class="box1">
-  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200) %>); height: 360px; width: 960px;">
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200) %>); height: 360px;">
    <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
     <div class="headline">
      <div class="headline-info">
@@ -107,9 +107,9 @@
       <br>
       <br>
     <div class="accepted">
-       <h3>Crew members:</h3>
+       <h4>Crew members:</h4>
       <% if accepted_members == [] %>
-        <p><%= @trip.user.first_name %> is still waiting for a crew...</p>
+        <p><%= @trip.user.first_name %> is still looking for a crew...</p>
       <% else %>
         <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>

@@ -8,13 +8,13 @@
   margin: 0 auto;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   border-radius: 4px;
-  width: 960px;
+  width: 80vw;
   line-height: 25px;
   margin-top: 50px;
   margin-bottom: 160px;
   justify-items: left;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 10fr 6fr;
   grid-template-rows: 360px 240px 248px 112px  ;
   // grid-template-areas:
   //   "head head"
@@ -30,7 +30,8 @@
 }
 
 .banner-show {
-  width: 960px;
+width: 80vw;
+
   grid-column:1 / span 2;
   grid-row: 1 / span 1 ;
   padding-top: 112px;
