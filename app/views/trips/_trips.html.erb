@@ -4,7 +4,7 @@
           <div class="card trip-card">
             <%= cl_image_tag(trip.photo, height: 320, gravity: :auto, crop: :fill) %>
             <div class="card-info">
-              <div class="title">
+              <div class="badge badge-secondary" style="position: absolute; top:16px; left:16px; background: #f57665">
                 <%= trip.activity.name %>
               </div>
               <div class="description">
