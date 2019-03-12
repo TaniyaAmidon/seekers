@@ -8,7 +8,7 @@
 
 <!-- Trip banner -->
 <div class="box1">
-  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200) %>); height: 360px;">
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 360px; background-position: center;">
    <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
     <div class="headline">
      <div class="headline-info">
@@ -23,14 +23,14 @@
           </div>
         </div>
         </div>
-          <%= link_to "Join trip", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
+          <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn btn-call-to-action" %>
         </div>
       </div>
     </div>
   <!--info-->
 
 
-      <div class="info">
+      <div class="info-show">
         <p><strong><%= @trip.activity.name %></strong> trip to  <strong><%= @trip.destination %></strong></p>
         <p></p>
         <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
@@ -137,7 +137,7 @@
       <p class="badge"><%= @trip.activity.name %> in <%= @trip.destination %> with <%= @trip.user.first_name %></p>
     </div>
     <div>
-      <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "underline contact-btn" %> </p>
+      <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action" %> </p>
     </div>
 </div>
 
