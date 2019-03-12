@@ -6,138 +6,140 @@
 <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
 <% group = @trip.group.group_members.where(user: current_user) %>
 
-<!-- Trip info -->
-<div class="show-holder">
-  <div class="banner rounded" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200, crop: 'fill') %>); height: 200px">
+<!-- Trip banner -->
+<div class="box1">
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200) %>); height: 360px; width: 960px;">
    <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
-    <div class="d-flex justify-content-between p-3 text-white">
+    <div class="headline">
+     <div class="headline-info">
       <div id="trip-title-date">
-        <h2><%= @trip.title %> with <%= @trip.user.first_name %></h2>
+        <h2><%= @trip.title %> with <%=@trip.user.first_name %></h2>
         <p><span class="badge">Departing <%= @trip.start_date.strftime("%A %B #{@trip.start_date.day.ordinalize} %Y") %></span></p>
-      <div class="organiser-info d-flex">
-        <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
-        <div class="px-3">
-          <strong>Organiser:</strong> <%= @trip.user.first_name %> <%= @trip.user.last_name %>
-          <p><%= @trip.user.location  %></p>
+        <div class="organiser-info d-flex">
+          <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+          <div class="px-3">
+             <%= link_to @trip.user.first_name, user_path(@trip.user) %> <%= link_to @trip.user.last_name, user_path(@trip.user) %>
+            <p><%= @trip.user.location  %></p>
+          </div>
+        </div>
+        </div>
+          <%= link_to "Join trip", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
         </div>
       </div>
-      </div>
-        <%= link_to "Contact organiser", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
-      </div>
     </div>
-    <hr>
-    <div class="d-flex">
-      <div>
-        <p><strong>Destination: </strong><%= @trip.destination %></p>
-        <p><strong>Activity: </strong><%= @trip.activity.name %></p>
+  <!--info-->
+
+
+      <div class="info">
+        <p><strong><%= @trip.activity.name %></strong> trip to  <strong><%= @trip.destination %></strong></p>
+        <p></p>
         <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
         <p><%= @trip.description %></p>
       </div>
-      <div id="map" data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="min-width:62%; height: 300px">
+      <div class="map" id="map" data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="width:640px; height: 240px">
       </div>
 
-    </div>
+
 
    <!-- chat  -->
-  <div class="chat">
-    <% if user_signed_in? %>
-    <% accepted_array = [] %>
-      <% group.each do |member| %>
-        <% if member.status == 'accepted' %>
-        <% accepted_array << member.user_id %>
-      <% end %>
-    <% end %>
-
-    <% if accepted_array.include?(current_user.id) || current_user == @trip.user %>
-
-      <% groupid = @trip.group.id%>
-      <% rooms = ChatRoom.where(group_id: groupid) %>
-      <% rooms.each do |cr| %>
-      <% @chat_room = cr %>
-      <% end %>
-
-      <% unless @chat_room == nil %>
-
-        <div class="">
-            <div class="row">
-              <div class=" chat-form">
-                <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
-                  <% if order_paid %>
-                    <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
-                    <% else %>
-                  <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
-                  <% end %>
-        </div>
-                <div class="messages">
-                  <% @chat_room.messages.each do |message| %>
-                    <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-                  <% end %>
-                </div>
-                <div id="create-message">
-                  <%= simple_form_for [ @chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-                    <%= f.input :content, label: false %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-        </div>
-        <% content_for :after_js do %>
-          <script>
-            scrollLastMessageIntoView();
-            App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
-              received: (data) => {
-                if (data.current_user_id !== <%= current_user.id %>) {
-                  const messagesContainer = document.querySelector('.messages');
-                  messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-                  scrollLastMessageIntoView();
-                }
-              }
-            })
-          </script>
+    <div class="chat">
+      <% if user_signed_in? %>
+      <% accepted_array = [] %>
+        <% group.each do |member| %>
+          <% if member.status == 'accepted' %>
+          <% accepted_array << member.user_id %>
         <% end %>
       <% end %>
 
-      <% else %>
-        <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
-      <% end %>
-    <% end %>
-  </div>
+      <% if accepted_array.include?(current_user.id) || current_user == @trip.user %>
 
-    <div>
-      <button class="btn accordion" type="button" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false" aria-controls="collapseExample">
-      Accepted group members!
-      </button>
-    <div class="collapse" id="collapse-1">
-      <br>
-      <p>hello</p>
-      <% accepted_members.each do |member| %>
-        <%  accepted_user = User.find(member.user_id) %>
-        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+        <% groupid = @trip.group.id%>
+        <% rooms = ChatRoom.where(group_id: groupid) %>
+        <% rooms.each do |cr| %>
+        <% @chat_room = cr %>
+        <% end %>
+
+        <% unless @chat_room == nil %>
+
+          <div class="">
+              <div class="row">
+                <div class=" chat-form">
+                  <div class="chat-header d-flex justify-content-between"><h4><%= @chat_room.name.capitalize %></h4>
+                    <% if order_paid %>
+                      <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
+                      <% else %>
+                    <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-primary btn-sm" %>
+                    <% end %>
+          </div>
+                  <div class="messages">
+                    <% @chat_room.messages.each do |message| %>
+                      <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+                    <% end %>
+                  </div>
+                  <div id="create-message">
+                    <%= simple_form_for [ @chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+                      <%= f.input :content, label: false %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <% content_for :after_js do %>
+            <script>
+              scrollLastMessageIntoView();
+              App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
+                received: (data) => {
+                  if (data.current_user_id !== <%= current_user.id %>) {
+                    const messagesContainer = document.querySelector('.messages');
+                    messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+                    scrollLastMessageIntoView();
+                  }
+                }
+              })
+            </script>
+          <% end %>
+        <% end %>
+        <% end %>
       <% end %>
     </div>
-  </div>
-  <br>
-    <hr>
+      <br>
+      <br>
+      <br>
+    <div class="accepted">
+       <h3>Crew members:</h3>
+      <% if accepted_members == [] %>
+        <p><%= @trip.user.first_name %> is still waiting for a crew...</p>
+      <% else %>
+        <% accepted_members.each do |member| %>
+          <%  accepted_user = User.find(member.user_id) %>
+          <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+        <% end %>
+      <% end %>
+    </div>
 
-    <div>
+      <br>
+      <br>
+      <br>
+
+
+    <div class="pending">
+
       <% if user_signed_in? && current_user == @trip.user %>
         <%= render "group_members/index" %>
       <% end %>
-
-
-        <% if group.any? || current_user == @trip.user %>
-        <% else %>
-        <h1>You are not a group member on this trip, why not apply to join?</h1>
-      <% end %>
     </div>
-    <hr>
+</div>
 
-  <hr>
-  <div class="button">
-  <%= link_to "Return to Trips Index", trips_path, class: "underline contact-btn" %>
-  <%= link_to "View all trips", trips_path, class: "btn btn-outline-success" %>
-  </div>
+<div class="trip-footer">
+    <div class="headline-info">
+      <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+      <p class="badge"><%= @trip.activity.name %> in <%= @trip.destination %> with <%= @trip.user.first_name %></p>
+    </div>
+    <div>
+      <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "underline contact-btn" %> </p>
+
+    </div>
 </div>
 
 
@@ -164,9 +166,9 @@
   </div>
 </div>
 
-<!-- Accordion  -->
+<!-- AccoAccordion  -->
   <script>
-  var acc = document.getElementsByClassName("accordion");
+  var acc = document.getElementsByClassName("accoaccordion");
   var i;
 
   for (i = 0; i < acc.length; i++) {
