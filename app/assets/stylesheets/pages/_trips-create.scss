@@ -28,3 +28,42 @@
 
 
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.full-page {
+  height: 100vh;
+  a {
+    color: #3CEAD0;
+    text-decoration: none;
+    font-size: 5em;
+    text-align: center;
+  }
+
+  .form-control {
+    width: 500px !important;
+    height: 5rem !important;
+  }
+
+  .ap-input-icon {
+    left: 475px !important
+  }
+
+  .custom-select {
+    width: 500px !important;
+    height: 5rem !important;
+  }
+
+  .flatpickr-calendar {
+    $blue: #3CEAD0 !important;
+  }
+
+  textarea {
+      white-space: normal;
+      text-align: justify;
+      text-align-last: bottom !important;
+  }
+}
+
