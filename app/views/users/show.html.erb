@@ -6,23 +6,28 @@
             <div class="card-img-top">
               <%= cl_image_tag @user.photo, height: 400, width: 400%>
             </div>
+
             <div class="card-body">
               <h4 class="card-title" style="text-align: center;"><%= @user.first_name %> <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
                     <i class="btn fas fa-pencil-alt"></i>
                 <% end %></h4>
             </div>
+
           </div>
         </div>
     </div>
-    <div class="user-info">
+    <div class="user-info"">
       <br>
       <br>
-      <br>
-      <br>
-      <div class="" style="width: 400px">
+      <div class="profile-text" style="width: 400px">
+          <h3 style="text-align: left;"><%= @user.first_name %> <%= @user.last_name %></h3>
           <p>I'm <strong><%= @user.first_name %></strong> from <strong><%= @user.location %></strong>.</p>
           <p><%= @user.bio %></p>
           <p><strong>Contact:</strong> <%= @user.email %></p>
+          <%= link_to edit_user_path(current_user) do %>
+                     <p>edit profile</p>
+                <% end %>
+
       </div>
     </div>
     <div>
@@ -32,11 +37,11 @@
 
   <br>
     <div class="tab">
-      <button class="tablinks inactive" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
-      <button class="tablinks " onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
+      <button class="tablinks" id="planned_trips_button" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
+      <button class="tablinks inactive" id="joined_trips_button" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
     </div>
 
-    <div id="Organised" class="tabcontent">
+    <div id="organised" class="tabcontent">
       <br>
       <br>
         <div class="row">
@@ -75,7 +80,7 @@
         </div>
     </div>
 
-    <div id="Joined" class="tabcontent">
+    <div id="joined" class="tabcontent d-none">
       <br>
       <br>
         <div class="row">
@@ -118,22 +123,39 @@
 
 <!-- tabs -->
 <script>
-         Window.onLoad= openTrip(event, 'Joined');
+  btnJoinedTrip = document.getElementById('joined_trips_button');
+  btnPlannedTrip = document.getElementById('planned_trips_button');
+  organized = document.getElementById('organised');
+  joined = document.getElementById('joined');
+
+  btnPlannedTrip.addEventListener('click', (event) => {
+    btnPlannedTrip.classList.remove('inactive');
+    btnJoinedTrip.classList.add('inactive');
+    organized.classList.remove('d-none');
+    joined.classList.add('d-none');
+  });
+  btnJoinedTrip.addEventListener('click', (event) => {
+    btnJoinedTrip.classList.remove('inactive');
+    btnPlannedTrip.classList.add('inactive');
+    organized.classList.add('d-none');
+    joined.classList.remove('d-none');
+  });
+         // Window.onLoad= openTrip(event, 'Joined');
 
 
-          function openTrip(evt, tripName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-              tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tripName).style.display = "block";
-            evt.currentTarget.className += " active";
-          }
+         //  function openTrip(evt, tripName) {
+         //    var i, tabcontent, tablinks;
+         //    tabcontent = document.getElementsByClassName("tabcontent");
+         //    for (i = 0; i < tabcontent.length; i++) {
+         //      tabcontent[i].style.display = "none";
+         //    }
+         //    tablinks = document.getElementsByClassName("tablinks");
+         //    for (i = 0; i < tablinks.length; i++) {
+         //      tablinks[i].className = tablinks[i].className.replace(" active", "");
+         //    }
+         //    document.getElementById(tripName).style.display = "block";
+         //    evt.currentTarget.className += " active";
+         //  }
 
 </script>
 
