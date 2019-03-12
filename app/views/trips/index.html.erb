@@ -15,7 +15,7 @@
     </div>
   <div class="trip-icons d-flex justify-content-between">
     <a class="btn btn-outline-primary btn-light activity-btn" href="/trips">All trips</a>
-    <% @activities.each do |activity| <%></%>
+    <% @activities.each do |activity| %>
         <a class="btn btn-light activity-btn" href="/trips?activity_id=<%= activity.id %>" >
           <i class= "<%= activity.style %>"> </i> <%= activity.name %>
         </a>
