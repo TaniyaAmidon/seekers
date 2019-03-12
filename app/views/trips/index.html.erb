@@ -1,10 +1,6 @@
 <div class="container">
   <%= content_for(:title, "View active trips") %>
-  <div class="trip-title w-100 p-3 underline d-flex flex-column justify-content-between rounded" style="height: 400px; background-image:
-  linear-gradient(
-    rgba(0,0,0,0.4),
-    rgba(0,0,0,0.4)),
-    url(<%= asset_path('home-splash') %>)">
+  <div class="trip-title w-100 p-3 underline d-flex flex-column justify-content-between rounded">
     <div class="d-flex justify-content-between">
       <span>
         <h1 class="text-white display-3">Choose your dream adventure...</h1>
@@ -36,5 +32,3 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-
