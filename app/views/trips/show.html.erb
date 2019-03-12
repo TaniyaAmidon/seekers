@@ -8,7 +8,7 @@
 
 <!-- Trip banner -->
 <div class="box1">
-  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 800, height: 200) %>); height: 360px;">
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 360px; background-position: center;">
    <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
     <div class="headline">
      <div class="headline-info">
@@ -30,7 +30,7 @@
   <!--info-->
 
 
-      <div class="info">
+      <div class="info-show">
         <p><strong><%= @trip.activity.name %></strong> trip to  <strong><%= @trip.destination %></strong></p>
         <p></p>
         <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
