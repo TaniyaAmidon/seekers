@@ -1,103 +1,34 @@
-.card .profile-card {
-  width: 400px;
-  margin-left: 100px;
+
+.profile-card {
+  border: none;
+  width: 96%
 }
 
-.profile {
-  width: 240px;
+.profile-content {
+  margin-right: none;
 }
-
-.profile-container {
-  width: 600px;
-  margin: 0 0;
-}
-
-.card-organised {
-  padding-left: 0;
-
-}
-
-li {
-  list-style: none;
-
-}
-
-.card-text {
-  text-align: left;
-}
-
-ul {
-    margin-left: 0;
-    padding-left: 0;
-    line-height: 30px;
-}
-
-.dflex {
-  display: inline-block;
-}
-
-.card-header {
-  color: #72ebd1;
-  background-color: white;
-}
-.photo-top {
-  height: 120px;
-  width: 240px;
-}
-
-.top {
-  display: flex;
-  justify-content: right;
-}
-
-.deposit-status {
-  position: absolute;
-  top: 0px;
-  z-index: 2;
-  color: white;
-  padding: 1px;
-  line-height: 0.5;
-
-}
-
-/* Style the tab */
-// .tab {
-//   overflow: hidden;
-//   border: 1px solid #ccc;
-//   background-color: white;
-//   border-radius: 4px;
-// }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
   color: black ;
     text-decoration: none;
-    font-size: 24px;
-    text-decoration: underline #F67280;
+    font-size: 20px;
+    text-decoration: underline #3CEAD0;
     border: none;
-    background-color: white;
-
-
+    width: 200px;
+    font-family: Cabin;
    &:hover {
     text-decoration: none;
     color: black;
     border: none;
     transition: 0.3s;
-
-  // background-color: inherit;
-  // float: left;
-  // border: none;
-  // outline: none;
-  // cursor: pointer;
-  // padding: 14px 16px;
-  // transition: 0.3s;
-}
+ }
 }
 
 /* Change background color of buttons on hover */
-// .tab button:hover {
-//   background-color: #f7f8f9;
-// }
+.tab button:hover {
+  background-color: #f7f8f;
+}
 
 /* Create an active/current tablink class */
 .tab button.active {
@@ -110,7 +41,7 @@ ul {
 }
 
 .tab button.inactive {
-  background-color: gray;
+  background-color: white;
   outline: none;
 }
 .tab button.inactive.active {
@@ -118,13 +49,12 @@ ul {
   outline: none;
 }
 
-
 /* Style the tab content */
 .tabcontent {
   display: none;
   border-top: none;
   background-color: white;
-  padding: 8px;
+  padding: 16px;
 }
 
 .tablinks {
@@ -135,6 +65,8 @@ ul {
     &:hover{}
     }
 
+
+/*trip card */
 #profile {
   border: none;
 }
@@ -148,20 +80,3 @@ ul {
   margin-left: 20px;
  }
 
-.show-button {
-  color: black;
-  text-decoration: none;
-  font-size: 24px;
-  margin: 0px 8px;
- &:hover {
-  color: #3CEAD0;
-  text-decoration: none;
- }
-   .line {
-  border-bottom: 4px solid #3CEAD0;
-  display: inline-block;
-  line-height: 1.5;
-  &:hover {
-  border-bottom: 4px solid white;
-  }
-  } }
