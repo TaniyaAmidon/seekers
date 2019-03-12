@@ -15,7 +15,7 @@
   justify-items: left;
   display: grid;
   grid-template-columns: 10fr 6fr;
-  grid-template-rows: 360px 200px 248px 112px  ;
+  grid-template-rows: 360px auto 248px auto auto  ;
   // grid-template-areas:
   //   "head head"
   //   "info chat"
