@@ -1,36 +1,21 @@
 <div class="container">
 
-  <div class="d-flex justify-content-centers">
+  <div class="d-flex justify-content-around">
     <div class="profile-content">
-      <div class="">
-        <h1 id="user-name"><%= @user.first_name %> <%= @user.last_name %></h1>
-      </div>
-      <div class="">
-        <div id = "user-card" class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <%= cl_image_tag @user.photo, height: 300, width: 300, class: 'card-img' %>
+        <div>
+          <div class="card" style="width: 400px">
+            <div class="card-img-top">
+              <%= cl_image_tag @user.photo, height: 400, width: 400, class: '' %>
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Profile</h5>
-                <p class="card-text">
-                  <ul>
-                  <li><strong>First Name: </strong><%= @user.first_name %></li>
-                  <li><strong>Last name: </strong><%= @user.last_name %></li>
-                  <li><strong>Email: </strong><%= @user.email %></  li>
-                  <li><strong>Date of Birth: </strong><%= @user.dob %></li>
-                  <li><strong>Your location: </strong><%= @user.location %></li>
-                  <li><strong>A bit about you: </strong><%= @user.bio %></li>
-                  </ul>
-                </p>
-                <%= link_to "Edit profile", edit_user_path(current_user), class: 'show-button line'  %>
-              </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h5>
             </div>
           </div>
-        </div>
-      </div>
+          <br>
 
+          <%= link_to "Edit profile", edit_user_path(current_user), class: ''  %>
+        </div>
+      <br>
       <div class="tab">
         <button class="tablinks" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
         <button class="tablinks inactive" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
@@ -113,10 +98,21 @@
       </div>
     </div>
   </div>
-  <div class="user-map">
-      <p>map</p>
-      <img src="https://images.unsplash.com/photo-1544830826-4ccc3bf5ceb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="map" style="height: 100%;width: 50%;">
-    </div>
+  <div class="user-info">
+    <br>
+    <br>
+      <div class="" style="width: 400px">
+          <p>I'm <%= @user.first_name %> from <strong><%= @user.location %></strong>.</p>
+          <p><%= @user.bio %></p>
+          <p><strong>Contact:</strong> <%= @user.email %></p>
+                 <!--  <ul>
+                    <li><strong>From: </strong><%= @user.location %></li>
+                    <li><strong>Age: </strong><%= @user.dob %></li>
+                    <li><%= @user.email %></li>
+                    <li> <%= @user.bio %></li>
+                  </ul> -->
+          </div>
+  </div>
 </div>
 </div>
 
