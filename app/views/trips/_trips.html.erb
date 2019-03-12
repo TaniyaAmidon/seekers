@@ -1,23 +1,29 @@
 <div class="d-flex flex-wrap">
-    <div class="row">
       <% @trips.each do |trip| %>
-        <div class="col-sm-6 col-md-3 trip-column">
+        <div class="col-sm-6 col-md-4 trip-column">
           <div class="card trip-card">
-            <%= cl_image_tag(trip.photo, height: 120, crop: "scale") %>
+            <%= cl_image_tag(trip.photo, height: 320, gravity: :auto, crop: :fill) %>
             <div class="card-info">
-              <div class="title">
+              <div class="badge badge-secondary" style="position: absolute; top:16px; left:16px; background: #f57665">
                 <%= trip.activity.name %>
               </div>
               <div class="description">
                 <%= trip.title %>
               </div>
-              <div class="subtitle">
-                £ <%= trip.price %> <i class="fas fa-circle green-dot"></i> <%=trip.start_date %>
+              <div class="title d-flex justify-content-between pr-3">
+                <span>
+                  <%= trip.start_date.strftime('%b %Y') %>
+                </span>
+                <span>
+                  £<%= trip.price.to_i.round %>pp
+                </span>
+                <span>
+                  Max <%= trip.max_crew_size %> <i class="fas fa-users"></i>
+                </span>
               </div>
               <%= link_to "", trip_path(trip), class: "stretched-link" %>
             </div>
           </div>
         </div>
       <% end %>
-    </div>
   </div>
