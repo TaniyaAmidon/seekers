@@ -23,7 +23,7 @@
           </div>
         </div>
         </div>
-          <%= link_to "Join trip", new_trip_group_member_path(@trip), style: "text-decoration: underline;   text-decoration-color: #3CEAD0;", class: "text-white contact-btn" %>
+          <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn btn-call-to-action" %>
         </div>
       </div>
     </div>
@@ -137,7 +137,7 @@
       <p class="badge"><%= @trip.activity.name %> in <%= @trip.destination %> with <%= @trip.user.first_name %></p>
     </div>
     <div>
-      <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "underline contact-btn" %> </p>
+      <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action" %> </p>
     </div>
 </div>
 

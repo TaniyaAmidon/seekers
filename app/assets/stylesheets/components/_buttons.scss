@@ -68,11 +68,12 @@
   font-size: 1.3rem;
   padding: 10px 30px;
   text-decoration: none;
+  &:hover {
+    box-shadow: gray 2px 1px 1px;
+  }
 }
 
-.btn-call-to-action:hover {
-  color: white;
-}
+
 
 // white button pink outline pink text
 .btn-secondary-call-to-action {
@@ -86,10 +87,12 @@
   font-size: 1.3rem;
   padding: 10px 20px;
   text-decoration: none;
+  &:hover {
+  background-color: #F67280;
+  color: white;
+}
 }
 
-.btn-secondary-call-to-action:hover {
-  color: #F67280;
-}
+
 
 
