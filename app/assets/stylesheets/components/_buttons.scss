@@ -1,0 +1,95 @@
+ // link underline white, text blue
+
+ a {
+    color: #3CEAD0 ;
+    text-decoration: none;
+    font-size: 24px;
+   &:hover {
+    text-decoration: none;
+    color: white;
+   }
+  }
+  .info {
+    margin-left: 48px;
+    position: absolute;
+    top: 40%;
+    p {
+      font-family: "IBM plex sans";
+      font-weight: lighter;
+      color: white;
+      font-size: 24px;
+    }
+  .underline {
+    border-bottom: 4px solid white;
+    display: inline-block;
+    line-height: 1.5;
+    &:hover{}
+    }
+  }
+
+// link underline pink, text black
+
+
+ a {
+    color: black ;
+    text-decoration: none;
+    font-size: 24px;
+   &:hover {
+    text-decoration: none;
+    color: white;
+   }
+  }
+  .info {
+    margin-left: 48px;
+    position: absolute;
+    top: 40%;
+    p {
+      font-family: "IBM plex sans";
+      font-weight: lighter;
+      color: white;
+      font-size: 24px;
+    }
+  .underline {
+    border-bottom: 4px solid #F67280;
+    display: inline-block;
+    line-height: 1.5;
+    &:hover{}
+    }
+  }
+
+// solid pink with white text
+
+.btn-call-to-action {
+  color: white;
+  background-color: #F67280;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  padding: 10px 30px;
+  text-decoration: none;
+}
+
+.btn-call-to-action:hover {
+  color: white;
+}
+
+// white button pink outline pink text
+.btn-secondary-call-to-action {
+  color: #F67280;
+  background-color: white;
+    border: 1px solid #F67280;
+  // border: 2px solid tomato;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.btn-secondary-call-to-action:hover {
+  color: #F67280;
+}
+
+

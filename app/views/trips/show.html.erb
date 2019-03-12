@@ -99,7 +99,7 @@
       <% end %>
 
       <% else %>
-        <%= link_to "Contact organiser", new_trip_group_member_path(@trip) %>
+        <%= link_to "Contact organiser", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action" %>
       <% end %>
     <% end %>
   </div>
@@ -136,7 +136,7 @@
   <hr>
   <div class="button">
   <%= link_to "Return to Trips Index", trips_path, class: "underline contact-btn" %>
-  <%= link_to "View all trips", trips_path, class: "btn btn-outline-success" %>
+  <%= link_to "View all trips", trips_path, class: "btn-call-to-action" %>
   </div>
 </div>
 
