@@ -3,16 +3,25 @@
   margin-top: 50px;
 }
 
-.show-holder {
+.box1 {
   background-color: white;
   margin: 0 auto;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   border-radius: 4px;
-  width: 800px;
+  width: 80vw;
   line-height: 25px;
   margin-top: 50px;
+  margin-bottom: 160px;
+  justify-items: left;
+  display: grid;
+  grid-template-columns: 10fr 6fr;
+  grid-template-rows: 360px 240px 248px 112px  ;
+  // grid-template-areas:
+  //   "head head"
+  //   "info chat"
+  //   "map chat";
    h1 {
-    text-align: center;
+    text-align: left;
     color: black;
     margin: 0px;
     padding-top: 8px;
@@ -20,9 +29,64 @@
   }
 }
 
-.trip-info {
-  margin: 20px;
+.banner-show {
+width: 80vw;
+
+  grid-column:1 / span 2;
+  grid-row: 1 / span 1 ;
+  padding-top: 112px;
+  padding-left: 8px;
+  color: white;
+
 }
+.banner-show a {
+    color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+  }
+
+.headline {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+
+.headline-info {
+  margin-bottom: 0px;
+}
+
+.info {
+  grid-column: 1 / span 1;
+  grid-row: 2/ span 1;
+}
+
+.chat {
+  grid-column: 2 / span 1;
+  grid-row: 2/ span 2;
+  margin: 24px;
+}
+
+.map {
+  grid-column: 1 / span 1;
+  grid-row: 3/ span 1;
+  padding: 0px;
+  margin: 8px;
+  border-radius: 1px;
+}
+
+.accepted {
+  grid-column: 1 / span 1;
+  grid-row: 4 / span 1 ;
+  padding-left: 8px;
+}
+
+.pending {
+  grid-column: 1 / span 1;
+  grid-row: 5 / span 1 ;
+  padding-left: 8px;
+}
+
 
 .accepted-members {
   margin: 20px;
@@ -31,6 +95,23 @@
   h3 {
     font-size: 18px;
   }
+}
+
+.trip-footer {
+  display: flex;
+  width: 100% ;
+  position: fixed;
+  bottom: 0px;
+  padding-top: 16px;
+  padding-bottom: 32px;
+  height: 80px;
+  background-color: white;
+  justify-content: space-around;
+  box-shadow: 1px 1px 1px;
+
+  &:hover{
+  background-color: (255, 255, 255, 0.8);
+}
 }
 
 .contents {
