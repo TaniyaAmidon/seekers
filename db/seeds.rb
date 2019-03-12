@@ -196,7 +196,7 @@ three_users = [arthur1, kitty2, sophie3]
   title: "#{act.name} in #{destination}",
   destination: destination,
   description: "This is a #{duration}-day #{act.name.downcase} trip to the #{destination_adjective} #{destination}. If you love #{act.name.downcase} contact organiser to apply.",
-  price_cents: rand(2000..9000),
+  price_cents: rand(20000..90000),
   activity: act,
   group: Group.new,
   user: three_users.sample,
