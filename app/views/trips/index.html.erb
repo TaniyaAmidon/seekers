@@ -1,22 +1,30 @@
 <div class="container">
   <%= content_for(:title, "View active trips") %>
-  <div class="trip-title underline">
-    <h1>Choose your dream adventure... <a href="#map"><i class="fas fa-map-signs"></i></a></h1>
-  </div>
-
+  <div class="trip-title w-100 p-3 underline d-flex flex-column justify-content-between rounded">
+    <div class="d-flex justify-content-between">
+      <span>
+        <h1 class="text-white display-3">Choose your dream adventure...</h1>
+      </span>
+      <span>
+        <h3><a class="text-white" href="#map">View map <i class="fas fa-map-signs"></i></a></h3>
+      </span>
+    </div>
   <div class="trip-icons d-flex justify-content-between">
+    <a class="btn btn-outline-primary btn-light activity-btn" href="/trips">All trips</a>
     <% @activities.each do |activity| %>
-        <a class="btn btn-outline-primary activity-btn" href="/trips?activity_id=<%= activity.id %>" >
+        <a class="btn btn-light activity-btn" href="/trips?activity_id=<%= activity.id %>" >
           <i class= "<%= activity.style %>"> </i> <%= activity.name %>
         </a>
     <% end %>
-    <a class="btn btn-outline-primary activity-btn" href="/trips">All trips</a>
   </div>
+  </div>
+
 
  <div id="showTripsElem">
    <%= render partial: 'trips/trips', locals: { trips: @trips } %>
  </div>
 
+</div>
   <div
     id="map"
     style="width: 100%;
@@ -24,6 +32,3 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-</div>
-
-

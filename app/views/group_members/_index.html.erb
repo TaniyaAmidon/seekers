@@ -1,12 +1,7 @@
-<div class="">
-  <a class="btn accordion" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-     All members!
-    </a>
-  <br>
-  <br>
-  <div class="row collapse" id="collapseExample" >
+ <h4>Manage crew</h4>
+  <div class="row" >
     <div class="col-sm">
-      <p><strong>Pending members</strong></p>
+      <p><strong>Pending</strong></p>
       <% pending_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
@@ -33,7 +28,7 @@
     </div>
 
     <div class="col-sm">
-      <p><strong>Accepted members</strong></p>
+      <p><strong>Accepted</strong></p>
       <% accepted_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>
@@ -42,7 +37,7 @@
     </div>
 
     <div class="col-sm">
-      <p><strong>Rejected members</strong></p>
+      <p><strong>Rejected</strong></p>
       <% rejected_index.each do |member| %>
       <ul>
         <li><%= member.user.first_name %></li>

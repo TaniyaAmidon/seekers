@@ -3,9 +3,8 @@
   <div class ="create">
     <p>Your request has been submitted to <%= @trip.user.first_name %></p>
     <p>While you wait for a response why not...</p>
-    <div class="buttons">
-      <%= link_to "Edit your profile", edit_user_path(current_user)%>
-      <%= link_to "View all trips", trips_path %>
+    <div class="">
+      <%= link_to "View all trips", trips_path, class: " btn-call-to-action" %>
     </div>
   </div>
 </div>

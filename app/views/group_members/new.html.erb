@@ -1,17 +1,19 @@
-<h1>Request to join group</h1>
-
-<p>request to join <%= @trip.user.first_name %>'s trip to <%= @trip.destination %>  </p>
-<%= @trip.title %>
-<br>
-<%= @trip.destination %>
-<br>
-<%= @trip.description %>
-
-<%= simple_form_for [@trip, @group_member] do |f|%>
-
-<%= f.input :message_to_organiser, label: "Enter a message to the organiser"  %>
-
-<%= f.submit "Request to join group", class: "btn btn-success"%>
-
-<% end %>
+<div class="container">
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 360px; background-position: center;">
+    <br>
+    <br>
+    <h1><%= @trip.title %></h1>
+  </div>
+  <br>
+  <br>
+  <h4>Request to join <%= @trip.user.first_name %>'s trip to <%= @trip.destination %> </h4>
+  <br>
+  <%= @trip.description %>
+  <br>
+  <%= simple_form_for [@trip, @group_member], html: {class: "wide" } do |f|%>
+  <br>
+  <%= f.input :message_to_organiser, label: "Enter a message to the organiser", class: "txt-input" %>
+  <%= f.submit "Request to join group", class: "btn btn-call-to-action"%>
+  <% end %>
+</div>
 

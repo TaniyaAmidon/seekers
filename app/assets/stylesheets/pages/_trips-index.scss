@@ -1,6 +1,11 @@
 .trip-title {
-  margin-top: 16px;
   font-family: IBM Plex Sans;
+  height: 400px; background-image:
+      linear-gradient(100deg,
+      rgba(28, 49, 53, 0.65),
+      rgba(0, 0, 0, 0.2)),
+      asset-url(home-splash);
+      background-position: center;
 }
 .underline {
   border-bottom: 4px solid #67d5bf;
@@ -66,6 +71,7 @@
 }
 
 .trip-card {
+  border: none !important;
   transition: transform .5s;
   height: 100%;
   // margin-bottom: 16px;
@@ -96,6 +102,14 @@
   }
 }
 
+.wide {
+  width: 80vw;
+}
+
 .trip-column {
   margin-bottom: 16px;
+}
+
+.txt-input {
+  width: 80vw;
 }
