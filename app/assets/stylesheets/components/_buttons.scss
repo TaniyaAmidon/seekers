@@ -1,14 +1,14 @@
  // link underline white, text blue
 
- a {
-    color: #3CEAD0 ;
-    text-decoration: none;
-    font-size: 24px;
-   &:hover {
-    text-decoration: none;
-    color: white;
-   }
-  }
+ // a {
+ //    color: #3CEAD0 ;
+ //    text-decoration: none;
+ //    font-size: 24px;
+ //   &:hover {
+ //    text-decoration: none;
+ //    color: white;
+ //   }
+ //  }
   .info {
     margin-left: 48px;
     position: absolute;
@@ -30,15 +30,15 @@
 // link underline pink, text black
 
 
- a {
-    color: black ;
-    text-decoration: none;
-    font-size: 24px;
-   &:hover {
-    text-decoration: none;
-    color: white;
-   }
-  }
+ // a {
+ //    color: black ;
+ //    text-decoration: none;
+ //    font-size: 24px;
+ //   &:hover {
+ //    text-decoration: none;
+ //    color: white;
+ //   }
+ //  }
   .info {
     margin-left: 48px;
     position: absolute;
@@ -69,9 +69,12 @@
   padding: 10px 30px;
   text-decoration: none;
   &:hover {
-    box-shadow: gray 2px 1px 1px;
+    color: #F67280;
+    background-color: white;
+    border: 1px solid #F67280;
   }
 }
+
 
 
 
