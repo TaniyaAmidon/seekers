@@ -8,6 +8,8 @@
   margin-right: none;
 }
 
+
+
 /* Style the buttons that are used to open the tab content */
 .tab button {
   color: black ;
@@ -41,7 +43,7 @@
 }
 
 .tab button.inactive {
-  background-color: white;
+  background-color: lightgray;
   outline: none;
 }
 .tab button.inactive.active {
@@ -58,6 +60,7 @@
 
 .inactive {
   text-decoration: none !important;
+  background-color: gray;
 }
 .active {
   display: block;
@@ -65,7 +68,7 @@
 
 .tablinks {
     border-bottom: 4px solid white;
-    border-radius: 4px;
+    border-radius: 4px 4px 0px 0px;
     display: inline-block;
     line-height: 1.5;
     &:hover{}
@@ -85,4 +88,14 @@
  #user-name {
   margin-left: 20px;
  }
+
+.profile-text{
+  margin: auto;
+}
+.user-info {
+  width: 700px;
+  height: 400px;
+  background-color: white;
+  justify-content: space-around;
+}
 

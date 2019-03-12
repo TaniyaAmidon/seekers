@@ -6,23 +6,22 @@
             <div class="card-img-top">
               <%= cl_image_tag @user.photo, height: 400, width: 400%>
             </div>
-            <div class="card-body">
-              <h4 class="card-title" style="text-align: center;"><%= @user.first_name %> <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
-                    <i class="fas fa-pencil-alt"></i>
-                <% end %></h4>
-            </div>
+
           </div>
         </div>
     </div>
-    <div class="user-info">
+    <div class="user-info"">
       <br>
       <br>
-      <br>
-      <br>
-      <div class="" style="width: 400px">
+      <div class="profile-text" style="width: 400px">
+          <h3 style="text-align: left;"><%= @user.first_name %> <%= @user.last_name %></h3>
           <p>I'm <strong><%= @user.first_name %></strong> from <strong><%= @user.location %></strong>.</p>
           <p><%= @user.bio %></p>
           <p><strong>Contact:</strong> <%= @user.email %></p>
+          <%= link_to edit_user_path(current_user) do %>
+                     <p>edit profile</p>
+                <% end %>
+
       </div>
     </div>
     <div>
