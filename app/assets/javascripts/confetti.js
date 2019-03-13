@@ -71,6 +71,7 @@ var isConfettiRunning; //call and returns true or false depending on whether the
         }
       })();
     }
+    setTimeout(stopConfetti,2500)
   }
 
   function stopConfettiInner() {
