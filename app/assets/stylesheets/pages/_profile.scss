@@ -46,7 +46,7 @@
     width: 200px;
     font-family: Cabin;
     height: 60px;
-    width: 703px;
+    width: 50%;
    &:hover {
     text-decoration: none;
     color: black;
@@ -97,10 +97,12 @@
 .tablinks {
     border-bottom: 4px solid white;
     border-radius: 4px 4px 0px 0px;
-    display: inline-block;
+    // display: inline-block;
     line-height: 1.5;
+    width: 100%;
+    height: 100%;
     &:hover{}
-    }
+  }
 
 
 
@@ -147,13 +149,13 @@
   border-radius: 50%;
   position: absolute;
   top: 220px;
-  left: 41%;
+  left: 39%;
   border: 5px solid white;
 }
 
-.bio {
-  width: 450px;
-}
+// .bio {
+//   width: 450px;
+// }
 
 
 .trip-card {
@@ -188,3 +190,73 @@
     transform: scale3d(1.04, 1.04, 1.04);
   }
 }
+
+@media only screen and (max-width: 1100px) {
+  .cl-img {
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 295px;
+    left: 41%;
+    border: 5px solid white;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .cl-img {
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 295px;
+    left: 38%;
+    border: 5px solid white;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .cl-img {
+    height: 90px;
+    width: 90px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 323px;
+    left: 35%;
+    border: 5px solid white;
+  }
+  .tablinks {
+    font-size: 10px;
+  }
+  .tablink-left {
+    text-align: left;
+  }
+  .tablink-right {
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .cl-img {
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: 338px;
+    left: 35%;
+    border: 5px solid white;
+  }
+  .tablinks {
+    font-size: 10px;
+  }
+}
+
+
