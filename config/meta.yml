@@ -3,5 +3,5 @@ meta_title: "Seekrs - Find people who share your passion
 and start planning your adventure together"
 meta_description: "Place to find adventure sports and to host your dream adventure."
 meta_image: "home-splash.jpg" # should exist in `app/assets/images/`
-twitter_account: "@product_twitter_account"   # required for Twitter Cards
+twitter_account: "@seekrs_twitter_account"   # required for Twitter Cards
 
