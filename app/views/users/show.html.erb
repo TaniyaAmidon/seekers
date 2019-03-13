@@ -3,31 +3,26 @@
     <div class="profile-content">
       <div>
         <div class="container-img">
-          <div class="card profile-card" style="width: 400px">
             <div class="top-left"><h4 style="text-align: center; font-size: 35px; padding-top: 5px;"><%= @user.first_name %>
               <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
                   <% end %></h4>
             </div>
-            <div class="bottom-right"><i class="btn fas fa-pencil-alt" style="color: white; font-size: 20px;"></i> </div>
-            <div class="cl-img"
-              style="background-image: linear-gradient(180deg,
-              rgba(0, 0, 0, 0.5),
-              rgba(250, 250, 250, 0.1)), url(<%= cl_image_path(@user.photo, gravity: :auto) %>)">
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="user-info"">
       <br>
       <br>
-      <div class="profile-text" style="width: 400px">
-          <p style="font-size: 25px;">I'm <strong><%= @user.first_name %></strong> from <strong><%= @user.location %></strong>.</p>
-          <p style="font-size: 18px;"><%= @user.bio %></p>
-          <p style="font-size: 18px;"><strong>Contact:</strong> <%= @user.email %></p>
-          <%= link_to edit_user_path(current_user) do %>
-          <p>edit profile</p>
-          <% end %>
+      <div class="cl-img"
+              style="background-image: linear-gradient(180deg,
+              rgba(0, 0, 0, 0.5),
+              rgba(250, 250, 250, 0.1)), url(<%= cl_image_path(@user.photo, gravity: :auto) %>)">
+            </div>
+      <div class="profile-text" style="width: 700px">
+          <p style="font-size: 50px;"><%= @user.first_name %> from <%= @user.location %></p>
+          <div class="bio"><p style="font-size: 18px;"><%= @user.bio %></p></div>
+          <p style="font-size: 18px;"><strong>Contact me:</strong> <%= @user.email %></p>
+
       </div>
     </div>
   </div>
@@ -61,14 +56,22 @@
               </div>
               <div class="card-info">
                 <div class="title">
-                    <%= planned.title %>
+                    <%= planned.activity.name %>
                 </div>
                 <div class="description">
-                    <%= planned.description %>
+                    <%= planned.title %>
                 </div>
-                <div class="subtitle">
-                        £ <%= planned.price %> <i class="fas fa-circle green-dot"></i> <%=planned.start_date %>
-                </div>
+                 <div class="title d-flex justify-content-between pr-3">
+                <span>
+                  <%= planned.start_date.strftime('%b %Y') %>
+                </span>
+                <span>
+                  £<%= planned.price.to_i.round %>pp
+                </span>
+                <span>
+                  Max <%= planned.max_crew_size %> <i class="fas fa-users"></i>
+                </span>
+              </div>
                      <%= link_to "", trip_path(planned), class: "stretched-link" %>
               </div>
             </div>
