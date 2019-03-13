@@ -3,6 +3,7 @@
   <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
 <% end %>
 
+<% status_members = @trip.group.group_members.to_a %>
 <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
 <% group = @trip.group.group_members.where(user: current_user) %>
 
@@ -23,7 +24,13 @@
           </div>
         </div>
         </div>
+          <% if current_user.id == @trip.user.id %>
+            <p>You are the trip organiser</p>
+          <% elsif status_members.include? current_user.id %>
+            <p>application pending</p>
+          <% else %>
           <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -137,7 +144,13 @@
       <p class="badge"><%= @trip.activity.name %> in <%= @trip.destination %> with <%= @trip.user.first_name %></p>
     </div>
     <div>
+      <% if current_user.id == @trip.user.id %>
+            <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Edit trip", edit_trip_path(@trip), class: "btn-secondary-call-to-action" %> </p>
+          <% elsif status_members.include? current_user.id %>
+            <p>application pending</p>
+          <% else %>
       <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action" %> </p>
+      <% end %>
     </div>
 </div>
 
