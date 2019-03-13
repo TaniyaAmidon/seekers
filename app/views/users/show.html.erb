@@ -101,18 +101,27 @@
                  <!--   </div>  -->
                 </div>
               </div>
-              <div class="card-info">
+                <div class="card-info">
                 <div class="title">
-                    <%= joined.title %>
+                    <%= joined.activity.name %>
                 </div>
                 <div class="description">
-                    <%= joined.description %>
+                    <%= joined.title %>
                 </div>
-                <div class="subtitle">
-                        £ <%= joined.price %> | </i> <%=joined.start_date %>
-                </div>
+                 <div class="title d-flex justify-content-between pr-3">
+                <span>
+                  <%= joined.start_date.strftime('%b %Y') %>
+                </span>
+                <span>
+                  £<%= joined.price.to_i.round %>pp
+                </span>
+                <span>
+                  Max <%= joined.max_crew_size %> <i class="fas fa-users"></i>
+                </span>
+              </div>
                      <%= link_to "", trip_path(joined), class: "stretched-link" %>
               </div>
+            </div>
             </div>
         </div>
           <% end %>
