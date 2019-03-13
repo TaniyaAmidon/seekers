@@ -4,10 +4,11 @@
       <div>
         <div class="container-img">
           <div class="card profile-card" style="width: 400px">
-            <div class="top-left"><h4 class="card-title" style="text-align: left; font-size: 35px"><%= @user.first_name %><%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
-                    <i class="btn fas fa-pencil-alt"></i>
+            <div class="top-left"><h4 style="text-align: center; font-size: 35px; padding-top: 5px;"><%= @user.first_name %>
+              <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
                   <% end %></h4>
             </div>
+            <div class="bottom-right"><i class="btn fas fa-pencil-alt" style="color: white; font-size: 20px;"></i> </div>
             <div class="cl-img"
               style="background-image: linear-gradient(180deg,
               rgba(0, 0, 0, 0.5),
