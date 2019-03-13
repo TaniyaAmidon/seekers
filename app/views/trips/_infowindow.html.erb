@@ -1,11 +1,11 @@
-<div class="card">
-  <div class="card-title">
+<div class="card" style="border-style: none;">
+  <div class="card-title" style=" background-color:(0, 0, 0, 0);">
      <strong>
-      <%= link_to trip.title, trip_path(trip)  %> with <%= trip.user.first_name %>
+      <%= link_to trip.title, trip_path(trip), style: 'color:black; font-size: 24px; font-family: Cabin;'
+       %>
      </strong>
   </div>
-  <div class="card-body">
-
+  <div class="card-body" style=" background-color:(0, 0, 0, 0);">
     <%= cl_image_tag(trip.photo, width: 300, crop: 'fill') %>
   </div>
 </div>
