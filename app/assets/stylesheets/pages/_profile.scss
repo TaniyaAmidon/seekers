@@ -2,6 +2,7 @@
 .profile-card {
   border: none;
   width: 96%
+
 }
 
 .profile-content {
@@ -9,6 +10,31 @@
 }
 
 
+.container-img {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 6px;
+  left: 16px;
+  text-align: center;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 6px;
+  right: 16px;
+  padding: none;
+
+}
+
+.tab {
+  margin-top:-47px;
+}
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
@@ -19,6 +45,8 @@
     border: none;
     width: 200px;
     font-family: Cabin;
+    height: 60px;
+    width: 703px;
    &:hover {
     text-decoration: none;
     color: black;
@@ -75,6 +103,7 @@
     }
 
 
+
 /*trip card */
 #profile {
   border: none;
@@ -90,12 +119,72 @@
  }
 
 .profile-text{
-  margin: auto;
-}
-.user-info {
-  width: 700px;
-  height: 400px;
-  background-color: white;
-  justify-content: space-around;
+  color: #fff;
+  margin-left: 3%;
+  margin-right: none;
 }
 
+
+.user-info {
+  height: 350px;
+  justify-content: space-around;
+  border-radius: 4px;
+  position: relative;
+  width: 100%;
+  background-image:
+  linear-gradient(100deg,
+      rgba(28, 49, 53, 0.65),
+      rgba(0, 0, 0, 0.2)),
+    asset-url(home-splash);
+    background-position: center;
+}
+
+.cl-img {
+  height: 250px;
+  width: 250px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 220px;
+  left: 41%;
+  border: 5px solid white;
+}
+
+.bio {
+  width: 450px;
+}
+
+
+.trip-card {
+  border: none !important;
+  transition: transform .5s;
+  height: 100%;
+  // margin-bottom: 16px;
+  .card-info{
+    max-width: 239px;
+    margin: 8px 0 8px 8px;
+  }
+  .green-dot {
+    color: #72ebd1;
+    font-size: 8px;
+  }
+  .title {
+    color: #a7a7a7;
+    font-size: 14px;
+    font-family: IBM Plex Sans;
+  }
+  .description {
+    font-size: 18px;
+    font-family: Cabin;
+  }
+  .subtitle {
+    font-family: IBM Plex Sans;
+    font-size: 16px;
+    color: #a7a7a7;
+  }
+  &:hover
+  {
+    transform: scale3d(1.04, 1.04, 1.04);
+  }
+}
