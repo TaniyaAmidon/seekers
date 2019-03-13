@@ -3,24 +3,29 @@
   <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
 <% end %>
 <div class="member-logic">
-  <% status_members = @trip.group.group_members %>
-  <% rejects = [] %>
-  <% crews = [] %>
-  <% waiting = [] %>
-  <% status_members.each do |member| %>
-      <% if member.status == "rejected" %>
-        <%  @reject = User.find(member.user_id) %>
-        <%  rejects << @reject %>
-      <% elsif member.status == "accepted" %>
-        <%  @crew = User.find(member.user_id) %>
-        <%  crews << @crew %>
-      <% else member.status == "pending" %>
-        <% @waiter = User.find(member.user_id)  %>
-        <%  waiting << @waiter %>
-      <% end %>
+  <% if user_signed_in? %>
+
+
+    <% status_members = @trip.group.group_members %>
+    <% rejects = [] %>
+    <% crews = [] %>
+    <% waiting = [] %>
+    <% status_members.each do |member| %>
+        <% if member.status == "rejected" %>
+          <%  @reject = User.find(member.user_id) %>
+          <%  rejects << @reject %>
+        <% elsif member.status == "accepted" %>
+          <%  @crew = User.find(member.user_id) %>
+          <%  crews << @crew %>
+        <% else member.status == "pending" %>
+          <% @waiter = User.find(member.user_id)  %>
+          <%  waiting << @waiter %>
+        <% end %>
+    <% end %>
+
+    <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+    <% group = @trip.group.group_members.where(user: current_user) %>
   <% end %>
-  <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
-  <% group = @trip.group.group_members.where(user: current_user) %>
 </div>
 
 <!-- Trip banner -->
@@ -40,14 +45,17 @@
           </div>
         </div>
         </div>
-          <% if current_user.id == @trip.user.id %>
-            <p>You are the trip organiser</p>
-          <% elsif waiting.include? current_user %>
-            <p>Application pending</p>
-          <% elsif crews.include? current_user %>
-            <p>Welcome aboard </p>
-          <% elsif rejects.include? current_user %>
-            <p>Your application was unsuccessful%>
+          <% if user_signed_in? %>
+            <% if current_user.id == @trip.user.id %>
+              <p>You are the trip organiser</p>
+            <% elsif waiting.include? current_user %>
+              <p>Application pending</p>
+            <% elsif crews.include? current_user %>
+              <p>Welcome aboard </p>
+            <% else rejects.include? current_user %>
+              <p>Your application was unsuccessful</p>
+            <% end %>
+          <% else %>
           <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
           <% end %>
         </div>
@@ -160,17 +168,19 @@
       <p class="badge"><%= @trip.activity.name %> in <%= @trip.destination %> with <%= @trip.user.first_name %></p>
     </div>
     <div>
-       <% if current_user.id == @trip.user.id %>
-            <p style="margin: 8px;"> <%= link_to "Edit trip", edit_trip_path(@trip), class: "btn-secondary-call-to-action" %> </p>
-          <% elsif waiting.include? current_user %>
-            <p style="margin: 8px;"> Waiting for<strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action" %> </p>
-          <% elsif crews.include? current_user %>
-            <p style="margin: 8px;"> Welcome aboard<strong> <%= current_user.first_name %> </strong><%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action" %> </p>
-          <% elsif rejects.include? current_user %>
-              <p style="margin: 8px;"> Sorry <strong> <%= current_user.first_name %> </strong>, your application was unsuccessful <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action" %> </p>
-          <% else %>
-            <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action" %> </p>
-          <% end %>
+      <% if user_signed_in? %>
+          <% if current_user.id == @trip.user.id%>
+              <p style="margin: 8px;"> <%= link_to "Edit trip", edit_trip_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
+            <% elsif waiting.include? current_user %>
+              <p style="margin: 8px;"> Waiting for<strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
+            <% elsif crews.include? current_user %>
+              <p style="margin: 8px;"> Welcome aboard<strong> <%= current_user.first_name %> </strong><%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
+            <% else rejects.include? current_user %>
+                <p style="margin: 8px;"> Sorry <strong> <%= current_user.first_name %> </strong>, your application was unsuccessful <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
+              <% end %>
+            <% else %>
+              <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
+        <% end %>
     </div>
 </div>
 
