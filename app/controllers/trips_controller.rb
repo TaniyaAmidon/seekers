@@ -6,7 +6,7 @@ class TripsController < ApplicationController
     if params[:activity_id].nil? || params[:activity_id] == ""
       @trips = Trip.where.not(latitude: nil, longitude: nil)
     else
-      @trips = Trip.where("activity_id = ?", params[:activity_id]).where.not(latitude: nil, longitude: nil)
+      @trips = Trip.where(activity: Activity.find(params[:activity_id])).where.not(latitude: nil, longitude: nil)
     end
 
     @markers = @trips.map do |trip|
