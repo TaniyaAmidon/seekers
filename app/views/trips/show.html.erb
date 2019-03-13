@@ -23,7 +23,6 @@
         <% end %>
     <% end %>
     <% group = @trip.group.group_members.where(user: current_user) %>
-
     <% end %>
 
     <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
@@ -54,8 +53,10 @@
               <p>Application pending</p>
             <% elsif crews.include? current_user %>
               <p>Welcome aboard </p>
-            <% else rejects.include? current_user %>
+            <% elsif rejects.include? current_user %>
               <p>Your application was unsuccessful</p>
+            <% else %>
+          <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
             <% end %>
           <% else %>
           <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
@@ -141,13 +142,50 @@
     <br>
 
   <div class="accepted">
-    <h4>Crew members:</h4>
-    <% if accepted_members == [] %>
-      <p><%= @trip.user.first_name %> is still looking for a crew...</p>
+    <% if user_signed_in? && current_user == @trip.user%>
+      <h4>Crew members:</h4>
+      <div class="acc"><h4>Accepted</h4>
+        <% accepted_members.each do |member| %>
+          <%  accepted_user = User.find(member.user_id) %>
+          <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+        <% end %>
+      </div>
+      <div class="pend">
+          <% unless  waiting == [] %>
+            <h4>Pending</h4>
+            <% pending_index.each do |member| %>
+            <p><strong> <%= member.user.first_name %></li></strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></p>
+            <%= simple_form_for [@trip, member] do |f|%>
+
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
+
+              <%= f.submit "accept", class: "btn-call-to-action px-5 inline"%>
+
+            <% end %>
+            <%= simple_form_for [@trip, member] do |f|%>
+
+              <%= f.input :status, :as => :hidden, :input_html => { :value => "rejected" } %>
+
+              <%= f.submit "reject", class: "btn-neutral px-5"%>
+
+            <% end %>
+
+          <% end %>
+        <% end %>
+      </div>
     <% else %>
-      <% accepted_members.each do |member| %>
-        <%  accepted_user = User.find(member.user_id) %>
-        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+      <% if accepted_members == [] %>
+        <p><%= @trip.user.first_name %> is still looking for a crew...</p>
+      <% else %>
+      <h4>Crew members:</h4>
+        <% if accepted_members == [] && current_user %>
+          <p><%= @trip.user.first_name %> is still looking for a crew...</p>
+        <% else %>
+          <% accepted_members.each do |member| %>
+            <%  accepted_user = User.find(member.user_id) %>
+            <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -156,13 +194,8 @@
     <br>
     <br>
 
-  <div class="pending">
-
-    <% if user_signed_in? && current_user == @trip.user %>
-      <%= render "group_members/index" %>
-    <% end %>
-  </div>
 </div>
+
 
 <div class="trip-footer">
     <div class="headline-info">
@@ -177,10 +210,12 @@
               <p style="margin: 8px;"> Waiting for<strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif crews.include? current_user %>
               <p style="margin: 8px;"> Welcome aboard<strong> <%= current_user.first_name %> </strong><%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
-            <% else rejects.include? current_user %>
+            <% elsif rejects.include? current_user %>
                 <p style="margin: 8px;"> Sorry <strong> <%= current_user.first_name %> </strong>, your application was unsuccessful <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
-              <% end %>
             <% else %>
+                 <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
+            <% end %>
+          <% else %>
               <p style="margin: 8px;"> <strong>£ <%= @trip.price %> </strong> per person <%= link_to "Apply to join", new_trip_group_member_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
         <% end %>
     </div>

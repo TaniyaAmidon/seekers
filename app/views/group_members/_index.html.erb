@@ -1,4 +1,35 @@
- <h4>Manage crew</h4>
+<% if user_signed_in? %>
+<% order_paid = true if Order.find_by(user: current_user, trip: @trip, state: 'paid') %>
+  <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
+<% end %>
+<div class="member-logic">
+  <% if user_signed_in? %>
+
+
+    <% status_members = @trip.group.group_members %>
+    <% rejects = [] %>
+    <% crews = [] %>
+    <% waiting = [] %>
+    <% status_members.each do |member| %>
+        <% if member.status == "rejected" %>
+          <%  @reject = User.find(member.user_id) %>
+          <%  rejects << @reject %>
+        <% elsif member.status == "accepted" %>
+          <%  @crew = User.find(member.user_id) %>
+          <%  crews << @crew %>
+        <% else member.status == "pending" %>
+          <% @waiter = User.find(member.user_id)  %>
+          <%  waiting << @waiter %>
+        <% end %>
+    <% end %>
+    <% group = @trip.group.group_members.where(user: current_user) %>
+
+    <% end %>
+
+    <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+
+</div>
+<h4>The crew</h4>
   <div class="row" >
     <div class="col-sm">
       <p><strong>Pending</strong></p>
