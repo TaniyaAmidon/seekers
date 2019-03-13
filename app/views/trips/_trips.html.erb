@@ -2,7 +2,7 @@
       <% trips.each do |trip| %>
         <div class="col-sm-6 col-md-4 trip-column">
           <div class="card trip-card">
-            <div class="trip-image" style="background-image: url(<%= cl_image_path(trip.photo, gravity: :auto) %>)">
+            <div class="trip-image" style="background-image: url('<%= cl_image_path(trip.photo, gravity: :auto) %>')">
             </div>
             <div class="card-info">
               <div class="badge badge-secondary" style="position: absolute; top:16px; left:16px; background: #f57665">
