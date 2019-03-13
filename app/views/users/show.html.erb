@@ -1,40 +1,36 @@
 <div class="container">
   <div class="d-flex justify-content-between">
     <div class="profile-content">
-        <div>
+      <div>
+        <div class="container-img">
           <div class="card profile-card" style="width: 400px">
-            <div class="card-img-top">
-              <%= cl_image_tag @user.photo, height: 400, width: 400%>
-            </div>
-
-            <div class="card-body">
-              <h4 class="card-title" style="text-align: center;"><%= @user.first_name %> <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
+            <div class="top-left"><h4 class="card-title" style="text-align: left; font-size: 35px"><%= @user.first_name %><%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
                     <i class="btn fas fa-pencil-alt"></i>
-                <% end %></h4>
+                  <% end %></h4>
             </div>
-
+            <div class="cl-img"
+              style="background-image: linear-gradient(180deg,
+              rgba(0, 0, 0, 0.5),
+              rgba(250, 250, 250, 0.1)), url(<%= cl_image_path(@user.photo, gravity: :auto) %>)">
+            </div>
           </div>
         </div>
+      </div>
     </div>
     <div class="user-info"">
       <br>
       <br>
       <div class="profile-text" style="width: 400px">
-          <h3 style="text-align: left;"><%= @user.first_name %> <%= @user.last_name %></h3>
-          <p>I'm <strong><%= @user.first_name %></strong> from <strong><%= @user.location %></strong>.</p>
-          <p><%= @user.bio %></p>
-          <p><strong>Contact:</strong> <%= @user.email %></p>
+          <p style="font-size: 25px;">I'm <strong><%= @user.first_name %></strong> from <strong><%= @user.location %></strong>.</p>
+          <p style="font-size: 18px;"><%= @user.bio %></p>
+          <p style="font-size: 18px;"><strong>Contact:</strong> <%= @user.email %></p>
           <%= link_to edit_user_path(current_user) do %>
-                     <p>edit profile</p>
-                <% end %>
-
+          <p>edit profile</p>
+          <% end %>
       </div>
     </div>
-    <div>
-
-    </div>
   </div>
-
+  <br>
   <br>
     <div class="tab">
       <button class="tablinks" id="planned_trips_button" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>

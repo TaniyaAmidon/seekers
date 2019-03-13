@@ -2,6 +2,7 @@
 .profile-card {
   border: none;
   width: 96%
+
 }
 
 .profile-content {
@@ -9,6 +10,18 @@
 }
 
 
+.container-img {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 6px;
+  left: 16px;
+}
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
@@ -19,6 +32,8 @@
     border: none;
     width: 200px;
     font-family: Cabin;
+    height: 60px;
+    width: 703px;
    &:hover {
     text-decoration: none;
     color: black;
@@ -75,6 +90,31 @@
     }
 
 
+// .profile-img {
+//   height: 400px;
+//   width: 400px;
+//   z-index: -1;
+//   position: relative;
+// }
+
+.cl-img {
+  height: 400px;
+  width: 400px;
+  background-position: center;
+  background-size: cover;
+}
+
+// .profile-img::after {
+//   display: block;
+//   position: relative;
+//   background-image: linear-gradient(to top, rgba(300, 300, 300, 0) 0, #fff 100%);
+//   margin-top: -150px;
+//   height: 150px;
+//   width: 100%;
+//   content: '';
+// }
+
+
 /*trip card */
 #profile {
   border: none;
@@ -90,10 +130,11 @@
  }
 
 .profile-text{
-  margin: auto;
+  margin-left: 50px;
+  margin-top: 10px;
 }
 .user-info {
-  width: 700px;
+  width: 1010px;
   height: 400px;
   background-color: white;
   justify-content: space-around;
