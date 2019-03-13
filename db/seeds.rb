@@ -13,11 +13,11 @@ Group.destroy_all
 # seed activities
 
 activities = Activity.create([
-{ name: 'Hiking', style: "fas fa-mountain mountain" },
-{ name: 'Skiing', style: "fas fa-snowflake" },
+{ name: 'Expeditions', style: "fas fa-mountain mountain" },
+{ name: 'Snowsport', style: "fas fa-snowflake" },
 { name: 'Cycling', style: "fas fa-bicycle" },
-{ name: 'Water rafting', style: "fas fa-water"},
-{ name: 'Sky diving', style: "fas fa-wind"}])
+{ name: 'Watersports', style: "fas fa-water"},
+{ name: 'Aerial sports', style: "fas fa-wind"}])
 
 puts "user activities seeded"
 
