@@ -75,6 +75,42 @@
   }
 }
 
+.btn-accept {
+  width: 64px;
+  color: white;
+  background-color: #F67280;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  padding: 8px 8px;
+  margin: 8px;
+  text-decoration: none;
+  &:hover {
+    color: #F67280;
+    background-color: white;
+    border: 1px solid #F67280;
+  }
+}
+
+.btn-reject {
+  color: gray;
+  border: 1px solid gray;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  width: 64px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  padding: 8px 8px;
+  margin: 8px;
+  text-decoration: none;
+  &:hover {
+  color: gray;
+  background-color: lightgray;
+  border: 1px solid gray;
+  text-decoration: none;
+  }
+}
 
 
 

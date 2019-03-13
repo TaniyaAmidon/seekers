@@ -83,13 +83,15 @@ width: 80vw;
 .accepted {
   grid-column: 1 / span 1;
   grid-row: 4 / span 1 ;
-  padding-left: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .pending {
   grid-column: 1 / span 1;
   grid-row: 5 / span 1 ;
-  padding-left: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 
