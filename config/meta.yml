@@ -2,6 +2,6 @@ meta_product_name: "Seekrs"
 meta_title: "Seekrs - Find people who share your passion
 and start planning your adventure together"
 meta_description: "Place to find adventure sports and to host your dream adventure."
-meta_image: "facebook.jpeg" # should exist in `app/assets/images/`
+meta_image: "facebook.jpg" # should exist in `app/assets/images/`
 twitter_account: "@seekrs_twitter_account"   # required for Twitter Cards
 
