@@ -1,6 +1,19 @@
+<script>
+    const alertFade = () => {
+      const alerts = document.querySelectorAll("div.alert");
+        alerts.forEach((e) => {
+          e.classList.add('fadeout');
+        });
+      };
+</script>
+
+
 <% if notice %>
   <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
     <%= notice %>
+    <script>
+      setTimeout(alertFade,1500);
+    </script>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,8 +22,12 @@
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <%= alert %>
+    <script>
+      setTimeout(alertFade,1500);
+    </script>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 <% end %>
+

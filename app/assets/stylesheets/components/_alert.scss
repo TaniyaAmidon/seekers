@@ -1,6 +1,12 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  top: 106px;
+  right: 32px;
   z-index: 1000;
+}
+
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
 }
