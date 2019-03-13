@@ -96,6 +96,24 @@
 }
 }
 
+.btn-neutral {
+  color: gray;
+    border: 1px solid gray;
+  // border: 2px solid tomato;
+  letter-spacing: 0.1px;
+  font-weight: 300;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  text-decoration: none;
+  &:hover {
+  color: gray;
+  background-color: white;
+  border: 1px solid gray;
+  text-decoration: none;
+}
+}
+
 
 
 
