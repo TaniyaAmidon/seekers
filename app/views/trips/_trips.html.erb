@@ -2,7 +2,7 @@
       <% trips.each do |trip| %>
         <div class="col-sm-6 col-md-4 trip-column">
           <div class="card trip-card">
-            <% if trip.photo %>
+            <% if trip.photo.url %>
               <div class="trip-image" style="background-image: url('<%= cl_image_path(trip.photo, gravity: :auto) %>')">
               </div>
             <% end %>
