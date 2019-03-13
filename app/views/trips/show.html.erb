@@ -2,25 +2,26 @@
 <% order_paid = true if Order.find_by(user: current_user, trip: @trip, state: 'paid') %>
   <% @order = Order.create!(trip: @trip, amount: (@trip.price/10), state: 'pending', user: current_user) if !order_paid %>
 <% end %>
-
-<% status_members = @trip.group.group_members %>
-<% rejects = [] %>
-<% crews = [] %>
-<% waiting = [] %>
-<% status_members.each do |member| %>
-    <% if member.status == "rejected" %>
-      <%  @reject = User.find(member.user_id) %>
-      <%  rejects << @reject %>
-    <% elsif member.status == "accepted" %>
-      <%  @crew = User.find(member.user_id) %>
-      <%  crews << @crew %>
-    <% else member.status == "pending" %>
-      <% @waiter = User.find(member.user_id)  %>
-      <%  waiting << @waiter %>
-    <% end %>
-<% end %>
-<% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
-<% group = @trip.group.group_members.where(user: current_user) %>
+<div class="member-logic">
+  <% status_members = @trip.group.group_members %>
+  <% rejects = [] %>
+  <% crews = [] %>
+  <% waiting = [] %>
+  <% status_members.each do |member| %>
+      <% if member.status == "rejected" %>
+        <%  @reject = User.find(member.user_id) %>
+        <%  rejects << @reject %>
+      <% elsif member.status == "accepted" %>
+        <%  @crew = User.find(member.user_id) %>
+        <%  crews << @crew %>
+      <% else member.status == "pending" %>
+        <% @waiter = User.find(member.user_id)  %>
+        <%  waiting << @waiter %>
+      <% end %>
+  <% end %>
+  <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
+  <% group = @trip.group.group_members.where(user: current_user) %>
+</div>
 
 <!-- Trip banner -->
 <div class="box1">
@@ -54,106 +55,103 @@
     </div>
   <!--info-->
 
+  <div class="info-show">
+    <p><strong><%= @trip.activity.name %></strong> trip to  <strong><%= @trip.destination %></strong></p>
+    <p></p>
+    <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
+    <p><%= @trip.description %></p>
+  </div>
 
-      <div class="info-show">
-        <p><strong><%= @trip.activity.name %></strong> trip to  <strong><%= @trip.destination %></strong></p>
-        <p></p>
-        <p><strong>Estimated cost: </strong>£<%= @trip.price%></p>
-        <p><%= @trip.description %></p>
-      </div>
-      <div class="map" id="map" data-markers="<%= @markers.to_json %>"
+  <div class="map" id="map" data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>" style="width:640px; height: 240px">
-      </div>
-
-
-
+  </div>
    <!-- chat  -->
-    <div class="chat">
-      <% if user_signed_in? %>
-      <% accepted_array = [] %>
-        <% group.each do |member| %>
-          <% if member.status == 'accepted' %>
-          <% accepted_array << member.user_id %>
-        <% end %>
+  <div class="chat">
+    <% if user_signed_in? %>
+    <% accepted_array = [] %>
+      <% group.each do |member| %>
+        <% if member.status == 'accepted' %>
+        <% accepted_array << member.user_id %>
+      <% end %>
+    <% end %>
+
+    <% if accepted_array.include?(current_user.id) || current_user == @trip.user %>
+
+      <% groupid = @trip.group.id%>
+      <% rooms = ChatRoom.where(group_id: groupid) %>
+      <% rooms.each do |cr| %>
+      <% @chat_room = cr %>
       <% end %>
 
-      <% if accepted_array.include?(current_user.id) || current_user == @trip.user %>
+      <% unless @chat_room == nil %>
 
-        <% groupid = @trip.group.id%>
-        <% rooms = ChatRoom.where(group_id: groupid) %>
-        <% rooms.each do |cr| %>
-        <% @chat_room = cr %>
-        <% end %>
-
-        <% unless @chat_room == nil %>
-
-          <div class="">
-              <div class="row">
-                <div class=" chat-form">
-                  <div class="chat-header d-flex justify-content-between"><h4> Chat with your <%= @trip.activity.name%> crew</h4>
-                    <% if order_paid %>
-                      <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
-                      <% else %>
-                    <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-call-to-action" %>
-                    <% end %>
-                  </div>
-                  <div class="messages">
-                      <% @chat_room.messages.each do |message| %>
-                      <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-                    <% end %>
-                  </div>
-                  <div id="create-message">
-                    <%= simple_form_for [ @chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-                      <%= f.input :content, label: false %>
-                    <% end %>
-                  </div>
+        <div class="">
+            <div class="row">
+              <div class=" chat-form">
+                <div class="chat-header d-flex justify-content-between"><h4> Chat with your <%= @trip.activity.name%> crew</h4>
+                  <% if order_paid %>
+                    <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
+                    <% else %>
+                  <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-call-to-action" %>
+                  <% end %>
+                </div>
+                <div class="messages">
+                    <% @chat_room.messages.each do |message| %>
+                    <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+                  <% end %>
+                </div>
+                <div id="create-message">
+                  <%= simple_form_for [ @chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+                    <%= f.input :content, label: false %>
+                  <% end %>
                 </div>
               </div>
-          </div>
-          <% content_for :after_js do %>
-            <script>
-              scrollLastMessageIntoView();
-              App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
-                received: (data) => {
-                  if (data.current_user_id !== <%= current_user.id %>) {
-                    const messagesContainer = document.querySelector('.messages');
-                    messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-                    scrollLastMessageIntoView();
-                  }
+            </div>
+        </div>
+        <% content_for :after_js do %>
+          <script>
+            scrollLastMessageIntoView();
+            App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
+              received: (data) => {
+                if (data.current_user_id !== <%= current_user.id %>) {
+                  const messagesContainer = document.querySelector('.messages');
+                  messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+                  scrollLastMessageIntoView();
                 }
-              })
-            </script>
-          <% end %>
-        <% end %>
-        <% end %>
-      <% end %>
-    </div>
-      <br>
-      <br>
-      <br>
-    <div class="accepted">
-       <h4>Crew members:</h4>
-      <% if accepted_members == [] %>
-        <p><%= @trip.user.first_name %> is still looking for a crew...</p>
-      <% else %>
-        <% accepted_members.each do |member| %>
-          <%  accepted_user = User.find(member.user_id) %>
-          <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+              }
+            })
+          </script>
         <% end %>
       <% end %>
-    </div>
-
-      <br>
-      <br>
-      <br>
-
-
-    <div class="pending">
-
-      <% if user_signed_in? && current_user == @trip.user %>
-        <%= render "group_members/index" %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+    <br>
+    <br>
+    <br>
+
+  <div class="accepted">
+    <h4>Crew members:</h4>
+    <% if accepted_members == [] %>
+      <p><%= @trip.user.first_name %> is still looking for a crew...</p>
+    <% else %>
+      <% accepted_members.each do |member| %>
+        <%  accepted_user = User.find(member.user_id) %>
+        <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+      <% end %>
+    <% end %>
+  </div>
+
+    <br>
+    <br>
+    <br>
+
+  <div class="pending">
+
+    <% if user_signed_in? && current_user == @trip.user %>
+      <%= render "group_members/index" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="trip-footer">
