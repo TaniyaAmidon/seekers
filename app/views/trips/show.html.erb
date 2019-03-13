@@ -36,6 +36,7 @@
       <button id="big-red-button" class="btn btn-call-to-action my-3" onclick="startConfetti()">Launch trip!</button>
       <br>
     <% end %>
+    <% if user_signed_in? %>
       <div id="users-icon-box" class="d-flex flex-wrap w-75">
 
         <i class="fas fa-user m-1 text-success" style="font-size: 1.5em"></i>
@@ -44,6 +45,7 @@
         <br>
         <p style="font-size: 1em;">(<%= @trip.max_crew_size %> max.)</p>
       </div>
+      <% end %>
     </div>
 
    <%#= cl_image_tag(@trip.photo, width: 800, height: 200, crop: 'fill')%>
