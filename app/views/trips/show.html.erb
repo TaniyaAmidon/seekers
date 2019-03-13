@@ -22,10 +22,12 @@
           <%  waiting << @waiter %>
         <% end %>
     <% end %>
+    <% group = @trip.group.group_members.where(user: current_user) %>
+
+    <% end %>
 
     <% accepted_members = @trip.group.group_members.where(status: 'accepted') %>
-    <% group = @trip.group.group_members.where(user: current_user) %>
-  <% end %>
+
 </div>
 
 <!-- Trip banner -->
