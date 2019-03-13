@@ -24,7 +24,7 @@
   margin: 0px 8px;
  &:hover {
   text-decoration: none;
-  color: white;
+  color: black;
  }
 }
   .navbar .underline {
@@ -47,5 +47,11 @@
   border-bottom: 4px solid #3CEAD0 !important;
   &:hover {
     color: black !important;
+  }
+}
+
+.dropdown-item {
+  &:hover {
+  background-color: transparent;
   }
 }
