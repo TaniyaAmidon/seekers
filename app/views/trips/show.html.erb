@@ -227,7 +227,7 @@
           <% if current_user.id == @trip.user.id%>
               <p style="margin: 8px;"> <%= link_to "Edit trip", edit_trip_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif waiting.include? current_user %>
-              <p style="margin: 8px;"> Waiting for<strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
+              <p style="margin: 8px;"> Waiting for <strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif crews.include? current_user %>
               <p style="margin: 8px;"> Welcome aboard<strong> <%= current_user.first_name %> </strong><%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif rejects.include? current_user %>
