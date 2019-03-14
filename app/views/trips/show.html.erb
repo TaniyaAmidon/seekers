@@ -165,7 +165,12 @@
       <div class="acc"><h4>Accepted</h4>
         <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>
-          <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+          <p><strong><%= accepted_user.first_name%></strong><% if accepted_user.first_name == "Taniya" %>
+            <i class="fas fa-circle" style="color: #72ebd1;"></i>
+            <% else %>
+              <i class="fas fa-circle" style="color: #F67280;"> </i>
+            <% end %>
+            <br><%=accepted_user.bio%></p>
         <% end %>
       </div>
       <div class="pend">
