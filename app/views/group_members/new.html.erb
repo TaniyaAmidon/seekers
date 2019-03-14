@@ -1,19 +1,20 @@
-<div class="container">
+<div class="container w-75">
   <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 360px; background-position: center;">
-    <br>
-    <br>
     <h1><%= @trip.title %></h1>
   </div>
   <br>
   <br>
+  <div class="w-50">
+
   <h4>Request to join <%= @trip.user.first_name %>'s trip to <%= @trip.destination %> </h4>
   <br>
   <%= @trip.description %>
   <br>
-  <%= simple_form_for [@trip, @group_member], html: {class: "wide" } do |f|%>
+  <%= simple_form_for [@trip, @group_member] do |f|%>
   <br>
-  <%= f.input :message_to_organiser, label: "Enter a message to the organiser", class: "txt-input" %>
+  <%= f.input :message_to_organiser, label: "Enter a message to the organiser" %>
   <%= f.submit "Request to join group", class: "btn btn-call-to-action"%>
   <% end %>
+  </div>
 </div>
 
