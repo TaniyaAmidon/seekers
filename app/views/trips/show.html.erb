@@ -116,11 +116,12 @@
         <div class="">
             <div class="row">
               <div class=" chat-form">
-                <div class="chat-header d-flex justify-content-between"><h4> Chat with your crew</h4>
+                <div class="chat-header d-flex justify-content-around">
+                  <h5 style="padding-top: 16px;"> Chat with your crew</h5>
                   <% if order_paid %>
                     <span class="badge badge-light"><i class="far fa-check-circle"></i> Deposit paid</span>
                     <% else %>
-                  <%= link_to "Pay £#{@trip.price/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "btn-accept" %>
+                    <%= link_to "Pay £#{@trip.price.to_i.round/10} deposit", '#depositModal', 'data-toggle' => 'modal', class: "badge btn-accept px-1" %>
                   <% end %>
                 </div>
                 <div class="messages">
