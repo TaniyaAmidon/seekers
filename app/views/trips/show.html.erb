@@ -166,8 +166,15 @@
       <div class="acc d-flex">
         <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>
+
           <span> <%= cl_image_tag accepted_user.photo, crop: :fit, class: "avatar" %> </span>
-          <p><span><strong> <%= link_to accepted_user.first_name, user_path(accepted_user.id) %> </strong><br><%= accepted_user.bio%><br></span></p>
+          <p><span><strong> <%= link_to accepted_user.first_name, user_path(accepted_user.id) %> </strong>
+            <% if accepted_user.first_name == "Taniya" %>
+            <i class="fas fa-circle" style="color: #72ebd1;"></i>
+            <% else %>
+              <i class="fas fa-circle" style="color: #F67280;"> </i>
+            <% end %>
+            <br><%= accepted_user.bio%><br></span></p>
           <span><%= simple_form_for [@trip, member] do |f|%>
 
                 <%= f.input :status, :as => :hidden, :input_html => { :value => "rejected" } %>
@@ -175,8 +182,6 @@
                 <%= f.submit "Remove", class: "btn-accept"%>
 
               <% end %></span>
-
-
         <% end %>
       </div>
       <div class="pend">

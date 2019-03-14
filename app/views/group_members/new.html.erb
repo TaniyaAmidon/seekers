@@ -1,6 +1,6 @@
 <div class="container w-75">
-  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 360px; background-position: center;">
-    <h1><%= @trip.title %></h1>
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1200, crop: "scale") %>); height: 240px; background-position: center;">
+    <h1 mx-8><%= @trip.title %></h1>
   </div>
   <br>
   <br>
@@ -13,8 +13,7 @@
   <%= simple_form_for [@trip, @group_member] do |f|%>
   <br>
   <%= f.input :message_to_organiser, label: "Enter a message to the organiser" %>
-  <%= f.submit "Request to join group", class: "btn btn-call-to-action"%>
+  <%= f.submit "Request to join group", class: "btn btn-call-to-action", style: "margin-bottom: 40px;"%>
   <% end %>
   </div>
 </div>
-
