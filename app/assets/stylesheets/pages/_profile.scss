@@ -16,7 +16,7 @@
   color: white;
 }
 
-/* Top left text */
+/* Top left text img */
 .top-left {
   position: absolute;
   top: 6px;
@@ -24,20 +24,21 @@
   text-align: center;
 }
 
-.bottom-right {
-  position: absolute;
-  bottom: 6px;
-  right: 16px;
-  padding: none;
+// .bottom-right {
+//   position: absolute;
+//   bottom: 6px;
+//   right: 16px;
+//   padding: none;
 
-}
+// }
 
 .tab {
   margin-top:-47px;
 }
 
+
 /* Style the buttons that are used to open the tab content */
-.tab button {
+.tablinks {
   color: black ;
     text-decoration: none;
     font-size: 20px;
@@ -47,27 +48,12 @@
     font-family: Cabin;
     height: 60px;
     width: 50%;
-   &:hover {
-    text-decoration: none;
-    color: black;
-    border: none;
-    transition: 0.3s;
- }
+    border: 0;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #f7f8f;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: white;
+.tablinks:focus {
   outline: none;
-}
-.tab button {
-  background-color: white;
-  outline: none;
+  border: none;
 }
 
 .tab button.inactive {
@@ -90,7 +76,7 @@
 
 .inactive {
   text-decoration: none !important;
-  background-color: gray;
+  background-color: lightgray !important;
 }
 .active {
   display: block;
@@ -102,7 +88,13 @@
     line-height: 1.7;
     width: 100%;
     height: 100%;
-    &:hover{}
+    background-color: white;
+    // &:hover{
+    // text-decoration: underline;
+    // text-decoration-color: #F67280;
+    // display: inline-block;
+    // line-height: 1.5;
+    // }
   }
 
 
@@ -131,7 +123,7 @@
 .user-info {
   height: 350px;
   justify-content: space-around;
-  border-radius: 4px;
+  border-radius: 2px 2px 0px 0px;
   position: relative;
   width: 100%;
   background-image:
@@ -140,6 +132,10 @@
       rgba(0, 0, 0, 0.2)),
     asset-url(home-splash);
     background-position: center;
+}
+
+.user-info p {
+  width: 38%;
 }
 
 .cl-img {
@@ -153,10 +149,6 @@
   left: 39%;
   border: 5px solid white;
 }
-
-// .bio {
-//   width: 450px;
-// }
 
 
 .trip-card {
@@ -191,6 +183,29 @@
     transform: scale3d(1.04, 1.04, 1.04);
   }
 }
+
+#joined {
+  width: 80%;
+  margin-left: 144px;
+}
+
+#planned_trips_button {
+  border-radius: 0px 0px 0px 0px;
+}
+
+#joined_trips_button {
+  border-radius: 0px 0px 0px 0px;
+}
+
+.tab button.active {
+  background-color: white;
+  outline: none;
+}
+.tab button {
+  background-color: white;
+  outline: none;
+}
+
 
 @media only screen and (max-width: 1100px) {
   .cl-img {
