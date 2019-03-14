@@ -163,7 +163,7 @@
   <div class="accepted">
     <% if user_signed_in? && current_user == @trip.user%>
       <h4>Crew members:</h4>
-      <div class="acc d-flex">
+      <div class="acc">
         <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>
 
