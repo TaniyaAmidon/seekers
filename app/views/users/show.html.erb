@@ -41,9 +41,7 @@
 
       <br>
       <br>
-        <div class="row tabcontent" id="organised">
-<!--               <div id="organised" class="tabcontent">
- -->          <% x = -1 %>
+        <div class="row tabcontent" id="organised"><% x = -1 %>
           <% @planned_trips.each do |planned| %>
           <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 trip-column p-3">
             <div id = "profile" class="card trip-card">
@@ -84,15 +82,13 @@
           </div>
           <% end %>
         </div>
-    </div>
 
-    <div id="joined" class="tabcontent d-none">
+    <div id="joined" class="row tabcontent d-none">
       <br>
       <br>
-        <div class="row">
           <% y = -1 %>
           <% @joined_trips.each do |joined| %>
-          <div class="col-sm-12 col-md-6 trip-column">
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 trip-column p-3">
             <div id = "profile" class="card trip-card profile">
               <div class="top">
                 <div class="photo-top">
@@ -129,12 +125,8 @@
               </div>
             </div>
             </div>
-        </div>
           <% end %>
     </div>
-  </div>
-</div>
-
 
 <!-- tabs -->
 <script>
