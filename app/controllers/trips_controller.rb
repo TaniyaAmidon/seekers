@@ -7,6 +7,7 @@ class TripsController < ApplicationController
       @trips = Trip.where.not(latitude: nil, longitude: nil)
     else
       @trips = Trip.where(activity: Activity.find(params[:activity_id])).where.not(latitude: nil, longitude: nil)
+      @trips.reject { |trip| Date.today > trip.start_date }
     end
 
     @markers = @trips.map do |trip|
