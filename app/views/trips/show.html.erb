@@ -192,7 +192,7 @@
 
             <div class="d-flex" >
               <span> <%= cl_image_tag member.user.photo, crop: :fit, class: "avatar px-1" %> </span>
-              <span><strong> <%= link_to member.user.first_name, user_path(member) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
+              <span><strong> <%= link_to member.user.first_name, user_path(member.user) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
               <span><%= simple_form_for [@trip, member] do |f|%>
 
                 <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
