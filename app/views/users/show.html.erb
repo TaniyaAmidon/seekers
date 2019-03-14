@@ -1,15 +1,19 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <div class="profile-content">
-      <div>
-        <div class="container-img">
-            <div class="top-left"><h4 style="text-align: center; font-size: 35px; padding-top: 5px;"><%= @user.first_name %>
-              <%= @user.last_name %><%= link_to edit_user_path(current_user) do %>
-                  <% end %></h4>
+  <div class="row">
+    <div class="d-flex justify-content-between">
+        <div class="profile-content">
+          <div class="container-img">
+            <div class="top-left"><h4 style="text-align: center; font-size: 35px; padding-top: 5px;">
+              <%= link_to edit_user_path(current_user) do %>
+                <%= @user.first_name %>
+                <%= @user.last_name %>
+              <% end %></h4>
             </div>
+          </div>
         </div>
       </div>
     </div>
+  <div class="row">
     <div class="user-info"">
       <br>
       <br>
@@ -17,33 +21,35 @@
               style="background-image: linear-gradient(180deg,
               rgba(0, 0, 0, 0.5),
               rgba(250, 250, 250, 0.1)), url(<%= cl_image_path(@user.photo, gravity: :auto) %>)">
-            </div>
-      <div class="profile-text" style="width: 700px">
-          <p style="font-size: 50px;"><%= @user.first_name %> from <%= @user.location %></p>
-          <div class="bio"><p style="font-size: 18px;"><%= @user.bio %></p></div>
+      </div>
+      <div class="profile-text">
+        <p style="font-size: 1.7em;"><%= @user.first_name %> from <%= @user.location %></p>
+        <div class="bio"><p style="font-size: 1.1em;"><%= @user.bio %></p></div>
           <p style="font-size: 18px;"><strong>Contact me:</strong> <%= @user.email %></p>
-
+        </div>
       </div>
     </div>
-  </div>
-  <br>
-  <br>
-    <div class="tab">
-      <button class="tablinks" id="planned_trips_button" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
-      <button class="tablinks inactive" id="joined_trips_button" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
+  <div class="row">
+    <div class="col-xs-6" style="height: 50px; width: 50%; text-align: center">
+      <button class="tablinks tablink-left" id="planned_trips_button" onclick="openTrip(event, 'Organised')">Trips I've Planned</button>
     </div>
+    <div class="col-xs-6" style="height: 50px; width: 50%; text-align: center">
+      <button class="tablinks inactive tablink-right" id="joined_trips_button" onclick="openTrip(event, 'Joined')">Trips I've Joined</button>
+    </div>
+  </div>
 
-    <div id="organised" class="tabcontent">
+
       <br>
       <br>
-        <div class="row">
-          <% x = -1 %>
+        <div class="row tabcontent" id="organised">
+<!--               <div id="organised" class="tabcontent">
+ -->          <% x = -1 %>
           <% @planned_trips.each do |planned| %>
-          <div class="col-sm-6 col-md-3 trip-column p-3">
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 trip-column p-3">
             <div id = "profile" class="card trip-card">
               <div class="top">
                 <div class="photo-top">
-                    <%= cl_image_tag(planned.photo, width: 239, height: 120, crop:"fill") %>
+                    <%= cl_image_tag(planned.photo, width: 220, height: 120, crop:"fill") %>
                   <!-- <div class="deposit-status">
                      <p><%# if planned.orders[x] == "paid" %>
                        Deposit paid <i class="fas fa-check-circle"></i>
@@ -86,11 +92,11 @@
         <div class="row">
           <% y = -1 %>
           <% @joined_trips.each do |joined| %>
-          <div class="col-sm-6 col-md-3 trip-column">
+          <div class="col-sm-12 col-md-6 trip-column">
             <div id = "profile" class="card trip-card profile">
               <div class="top">
                 <div class="photo-top">
-                    <%= cl_image_tag(joined.photo, width: 239, height: 120, crop:"fill") %>
+                    <%= cl_image_tag(joined.photo, width: 220, height: 120, crop:"fill") %>
                   <!-- <div class="deposit-status"> -->
                      <!-- <p><%# if joined.orders[y] == "paid" %> -->
                        <!-- Deposit paid <i class="fas fa-check-circle"></i> -->

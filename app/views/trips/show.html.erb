@@ -34,7 +34,7 @@
   <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.2)), url(<%= cl_image_path(@trip.photo, width: 1600, crop: "scale") %>); height: 360px; background-position: center; position: absolute">
     <div style="position:absolute;bottom:16px;right:32px;width: 180px">
     <% if user_signed_in? && current_user.id == @trip.user.id && accepted_members.count > 0  %>
-      <button id="big-red-button" class="btn btn-call-to-action my-3" onclick="startConfetti()">Launch trip!</button>
+      <button id="big-red-button" class="btn btn-call-to-action my-3" onclick="startConfetti()" data-toggle="modal" data-target="#launchModal">Launch trip!</button>
       <br>
     <% end %>
     <% if user_signed_in? %>
@@ -76,7 +76,8 @@
           <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
             <% end %>
           <% else %>
-          <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
+          <%#= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
+            <%= link_to "Log in to join trip", '#', class: "btn-call-to-action" %>
           <% end %>
         </div>
       </div>
@@ -228,7 +229,7 @@
           <% if current_user.id == @trip.user.id%>
               <p style="margin: 8px;"> <%= link_to "Edit trip", edit_trip_path(@trip), class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif waiting.include? current_user %>
-              <p style="margin: 8px;"> Waiting for<strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
+              <p style="margin: 8px;"> Waiting for <strong><%= @trip.user.first_name %> </strong> to respond <%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif crews.include? current_user %>
               <p style="margin: 8px;"> Welcome aboard<strong> <%= current_user.first_name %> </strong><%= link_to "Explore more", trips_path, class: "btn-secondary-call-to-action mx-3" %> </p>
             <% elsif rejects.include? current_user %>
@@ -243,7 +244,7 @@
 </div>
 
 
-<!-- Modal log in-->
+<!-- Deposit log in-->
 
 <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -266,20 +267,25 @@
   </div>
 </div>
 
-<!-- AccoAccordion  -->
-  <script>
-  var acc = document.getElementsByClassName("accoaccordion");
-  var i;
+<!-- Modal -->
+<div class="modal fade" id="launchModal" tabindex="-1" role="dialog" aria-labelledby="launchModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-seekers-coral">
+        <h4 class="modal-title text-white" id="launchModalLongTitle">Your trip to <%= @trip.destination %> is going ahead!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        We've notified your crew - bon voyage!
+      </div>
+<!--       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+ </div> -->
+  </div>
+</div>
 
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("select");
-      var panel = this.nextElementSibling;
-      if (panel.style.maxHeight){
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
-  }
-  </script>
+

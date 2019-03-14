@@ -1,6 +1,13 @@
+.bg-seekers-blue {
+  background-color: $turquoise;
+}
+.bg-seekers-coral {
+  background-color: $coral;
+}
+
 .trip-info {
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 1 auto;
+  margin-top: 51px;
 }
 
 .box1 {
@@ -69,6 +76,7 @@ width: 80vw;
   grid-column: 2 / span 1;
   grid-row: 2/ span 2;
   margin: 24px;
+  overflow: scroll;
 }
 
 .map {
