@@ -76,7 +76,8 @@
           <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
             <% end %>
           <% else %>
-          <%= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
+          <%#= link_to "Join trip", new_trip_group_member_path(@trip), class: "btn-call-to-action" %>
+            <%= link_to "Log in to join trip", '#', class: "btn-call-to-action" %>
           <% end %>
         </div>
       </div>
@@ -242,7 +243,7 @@
 </div>
 
 
-<!-- Modal log in-->
+<!-- Deposit log in-->
 
 <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -285,3 +286,5 @@
  </div> -->
   </div>
 </div>
+
+
