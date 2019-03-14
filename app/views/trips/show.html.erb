@@ -183,10 +183,11 @@
           <% unless  waiting == [] %>
             <h4>Pending</h4>
 
-            <% pending_index.each do |member| %>
+            <% pending_index.each do |pending| %>
+            <% member =  GroupMember.find(pending.user_id) %>
             <div class="d-flex" >
-              <span> <%= cl_image_tag user.photo, crop: :fit, class: "avatar" %> </span>
-              <span><strong> <%= link_to user.first_name, user_path(user) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
+              <span> <%= cl_image_tag member.user.photo, crop: :fit, class: "avatar" %> </span>
+              <span><strong> <%= link_to member.user.first_name, user_path(member) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
               <span><%= simple_form_for [@trip, member] do |f|%>
 
                 <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
@@ -211,13 +212,16 @@
         <p><%= @trip.user.first_name %> is still looking for a crew...</p>
       <% else %>
       <h4>Crew members:</h4>
-        <% if accepted_members == [] && current_user %>
+        <% if accepted_members == [] %>
           <p><%= @trip.user.first_name %> is still looking for a crew...</p>
         <% else %>
+         <div class="acc d-flex">
           <% accepted_members.each do |member| %>
-            <%  accepted_user = User.find(member.user_id) %>
-            <p><strong><%=accepted_user.first_name%></strong> <br><%=accepted_user.bio%></p>
+          <%  accepted_user = User.find(member.user_id) %>
+          <span> <%= cl_image_tag accepted_user.photo, crop: :fit, class: "avatar" %> </span>
+          <p><span><strong> <%= link_to accepted_user.first_name, user_path(accepted_user.id) %> </strong><br><%= accepted_user.bio%><br></span></p>
           <% end %>
+        </div>
         <% end %>
       <% end %>
     <% end %>
