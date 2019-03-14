@@ -220,7 +220,7 @@
         <% if accepted_members == [] %>
           <p><%= @trip.user.first_name %> is still looking for a crew...</p>
         <% else %>
-         <div class="acc d-flex">
+         <div class="acc">
           <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>
           <span> <%= cl_image_tag accepted_user.photo, crop: :fit, class: "avatar" %> </span>
