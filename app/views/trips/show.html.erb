@@ -56,7 +56,7 @@
         <h2><%= @trip.title %> with <%=@trip.user.first_name %></h2>
         <p><span class="badge">Departing <%= @trip.start_date.strftime("%A %B #{@trip.start_date.day.ordinalize} %Y") %></span></p>
         <div class="organiser-info d-flex">
-          <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar" %>
+          <%= cl_image_tag @trip.user.photo, crop: :fit, class: "avatar mx-3" %>
           <div class="px-3">
              <%= link_to @trip.user.first_name, user_path(@trip.user) %> <%= link_to @trip.user.last_name, user_path(@trip.user) %>
             <p><%= @trip.user.location  %></p>
@@ -167,7 +167,7 @@
         <% accepted_members.each do |member| %>
           <%  accepted_user = User.find(member.user_id) %>
 
-          <span> <%= cl_image_tag accepted_user.photo, crop: :fit, class: "avatar" %> </span>
+          <span> <%= cl_image_tag accepted_user.photo, crop: :fit, class: "avatar mx-3" %> </span>
           <p><span><strong> <%= link_to accepted_user.first_name, user_path(accepted_user.id) %> </strong>
             <% if accepted_user.first_name == "Taniya" %>
             <i class="fas fa-circle" style="color: #72ebd1;"></i>
@@ -191,7 +191,7 @@
             <% pending_index.each do |member| %>
 
             <div class="d-flex" >
-              <span> <%= cl_image_tag member.user.photo, crop: :fit, class: "avatar" %> </span>
+              <span> <%= cl_image_tag member.user.photo, crop: :fit, class: "avatar px-1" %> </span>
               <span><strong> <%= link_to member.user.first_name, user_path(member) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
               <span><%= simple_form_for [@trip, member] do |f|%>
 
