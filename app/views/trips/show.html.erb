@@ -183,8 +183,8 @@
           <% unless  waiting == [] %>
             <h4>Pending</h4>
 
-            <% pending_index.each do |pending| %>
-            <% member =  GroupMember.find(pending.user_id) %>
+            <% pending_index.each do |member| %>
+
             <div class="d-flex" >
               <span> <%= cl_image_tag member.user.photo, crop: :fit, class: "avatar" %> </span>
               <span><strong> <%= link_to member.user.first_name, user_path(member) %> </strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
