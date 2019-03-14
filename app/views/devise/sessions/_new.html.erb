@@ -6,7 +6,7 @@
       <h1>Log in</h1>
     </div> -->
 
-    <div class="form-content">
+    <div class="form-content ">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
@@ -23,7 +23,7 @@
           <%= f.button :submit, "Log in", class: "btn-secondary-call-to-action" %>
           <span class="p-3">
             <a href="">
-              <%= image_tag("google", width:200) %>
+              <%= image_tag("google.png", width:200) %>
             </a>
           </span>
         </div>
