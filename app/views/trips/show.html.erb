@@ -175,7 +175,8 @@
 
             <% pending_index.each do |member| %>
             <div class="d-flex" >
-              <span><strong> <%= member.user.first_name %></li></strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
+              <span> <%= cl_image_tag user.photo, crop: :fit, class: "avatar" %> </span>
+              <span><strong> <%= link_to user.first_name, user_path(user) %> </li></strong><br><%=member.user.bio%><br><%= member.message_to_organiser %></span>
               <span><%= simple_form_for [@trip, member] do |f|%>
 
                 <%= f.input :status, :as => :hidden, :input_html => { :value => "accepted" } %>
