@@ -183,3 +183,11 @@ width: 80vw;
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+
+.accepted a {
+    color: black;
+  &:hover {
+    color: #3CEAD0;
+    text-decoration: none;
+  }
+  }
