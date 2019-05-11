@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+## Rails app
+Rails prototype app for adventure seekers to find adventures and adventure organisers to host their trips. 
